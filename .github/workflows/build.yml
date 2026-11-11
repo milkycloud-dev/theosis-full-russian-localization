@@ -22,6 +22,9 @@ jobs:
         with:
           python-version: "3.12"
 
+      - name: Install dependencies
+        run: pip install pyyaml
+
       - name: Validate syntax
         run: |
           python -c "
