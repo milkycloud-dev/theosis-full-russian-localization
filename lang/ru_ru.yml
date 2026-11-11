@@ -1,0 +1,3156 @@
+commands:
+  no_permission: "&cУ вас нет прав."
+  reloaded: "&aTheosis перезагружен."
+
+  theosis:
+    usage:
+      - "&dTheosis &7Команды:"
+      - "&7/theosis perk add <id> [level]"
+      - "&7/theosis gem <id> [tier]"
+    hold_item: "&cВозьмите предмет Theosis в основную руку."
+    sheet_given: "&aЛист перков добавлен в ваш инвентарь."
+    perk_applied: "&aПерк применен: &e{perk} &7ур.{level}"
+    gem_given: "&aСамоцвет выдан: &e{gem} &7T{tier}"
+    boss_spawned: "&aБосс призван для &e{player}&a."
+    boss_cleared: "&aБоссы удалены: &e{count}&a."
+    boss_usage_player: "&7/theosis boss spawn [игрок] [редкость] [<x> <y> <z>]"
+    boss_usage_coordinates: "&7/theosis boss spawn <x> <y> <z> [редкость]"
+    boss_usage_clear: "&7/theosis boss clear [all]"
+    boss_spawn_console_usage: "&cВ консоли используйте /theosis boss spawn <игрок> [редкость] [<x> <y> <z>]."
+    boss_clear_console_usage: "&cВ консоли используйте /theosis boss clear all."
+    boss_disabled: "&cМодуль боссов отключён."
+    boss_invalid_coordinates: "&cУкажите допустимые абсолютные координаты в порядке <x> <y> <z>."
+    boss_invalid_rarity: "&cНедопустимая редкость &e{rarity}&c. Доступны: &e{available}&c."
+    boss_player_not_found: "&cИгрок &e{player} &cне найден."
+    boss_player_offline: "&cИгрок &e{player} &cбольше не в сети."
+    boss_player_unavailable: "&cИгрок &e{player} &cнедоступен."
+    boss_spawn_invalid_height: "&cКоордината Y выходит за допустимый диапазон высот этого мира."
+    boss_spawn_region_unavailable: "&cРегион назначения недоступен."
+    boss_spawn_chunk_unloaded: "&cЧанк назначения должен быть загружен."
+    boss_spawn_outside_border: "&cУказанное место находится за границей мира."
+    boss_spawn_unsafe_ground: "&cВ указанном месте нужна твёрдая опора и два свободных блока над ней."
+    boss_spawn_protected: "&cУказанное место защищено магическим фонарём."
+    boss_spawn_rejected: "&cСервер не смог призвать босса в этом месте. Проверьте правила появления и плагины."
+    boss_spawn_no_safe_location: "&cНе удалось найти безопасное место для призыва босса."
+    boss_spawned_at: "&aБосс для &e{player} &aпризван по координатам &e{x} {y} {z}&a."
+
+lore:
+  rarity: "&7Редкость: {color}{rarity}"
+  perk_header: "&6Перк:"
+  sockets_header: "&6Слоты:"
+  socket_empty: "&8• Пустой слот"
+
+bosses:
+  spawn:
+    actionbar: "&dПоявился Босс: {rarity_color}{rarity}&d!"
+
+tiers:
+  names:
+    "1": "&7Уровень I"
+    "2": "&aУровень II"
+    "3": "&cУровень III"
+    "4": "&5Уровень IV"
+    "5": "&6Уровень V"
+
+  messages:
+    actionbar: "&6Новый уровень! &eТеперь вы &r{new_tier_name}&e."
+    chat: "&6[Theosis] &eНовый уровень: &r{old_tier_name} &f-> &r{new_tier_name}"
+
+gems:
+  "theosis:ruby":
+    name_tier_1: "&cРубин I"
+    name_tier_2: "&cРубин II"
+    name_tier_3: "&cРубин III"
+    lore: |-
+      &7Больше урона ночью.
+      &c+{night_bonus_damage_pct}% урона &8(ночь)
+      &8Для: Предмет в основной руке,
+      &8лук, арбалет или трезубец
+
+  "theosis:onyx":
+    name_tier_1: "&8Оникс I"
+    name_tier_2: "&8Оникс II"
+    name_tier_3: "&8Оникс III"
+    lore: |-
+      &7Казнь ослабленных врагов.
+      &8+{execute_bonus_damage_pct}% урона &7если у цели ≤ &f{execute_threshold_pct}% &7HP
+      &8Для: Предмет в основной руке,
+      &8лук, арбалет или трезубец
+
+  "theosis:amber":
+    name_tier_1: "&6Янтарь I"
+    name_tier_2: "&6Янтарь II"
+    name_tier_3: "&6Янтарь III"
+    lore: |-
+      &7Серия ударов увеличивает урон.
+      &6+{combo_bonus_per_stack_pct}% за заряд &7(макс. {combo_max_stacks})
+      &7Сбрасывается при долгой задержке.
+      &8Для: Предмет в основной руке
+
+  "theosis:garnet":
+    name_tier_1: "&4Гранат I"
+    name_tier_2: "&4Гранат II"
+    name_tier_3: "&4Гранат III"
+    lore: |-
+      &7Доп. урон по бронированным целям.
+      &4+{bonus_pct_per_armor_point}%&7 за каждое очко брони
+      &7Лимит: &f{max_bonus_pct}%&7
+      &8Для: Предмет в основной руке,
+      &8лук, арбалет или трезубец
+
+  "theosis:jade":
+    name_tier_1: "&aНефрит I"
+    name_tier_2: "&aНефрит II"
+    name_tier_3: "&aНефрит III"
+    lore: |-
+      &7Лучшее сопротивление при ранении.
+      &a-{damage_reduction_pct}% урона &7если HP ≤ &f{tenacity_threshold_pct}%&7
+      &8Для: Броня
+
+  "theosis:sapphire":
+    name_tier_1: "&9Сапфир I"
+    name_tier_2: "&9Сапфир II"
+    name_tier_3: "&9Сапфир III"
+    lore: |-
+      &9Стихийное сопротивление.
+      &9-{element_reduction_pct}% &7Огонь/Взрыв
+      &8Для: Броня
+
+  "theosis:hematite":
+    name_tier_1: "&7Гематит I"
+    name_tier_2: "&7Гематит II"
+    name_tier_3: "&7Гематит III"
+    lore: |-
+      &7Снижает входящий крит. урон.
+      &7-{crit_damage_reduction_pct}% крит. урона
+      &8Для: Броня
+
+  "theosis:aquamarine":
+    name_tier_1: "&bАквамарин I"
+    name_tier_2: "&bАквамарин II"
+    name_tier_3: "&bАквамарин III"
+    lore: |-
+      &7Бег расходует меньше голода.
+      &b-{sprint_hunger_reduction_pct}% голода при беге
+      &8Для: Ботинки
+
+  "theosis:peridot":
+    name_tier_1: "&2Перидот I"
+    name_tier_2: "&2Перидот II"
+    name_tier_3: "&2Перидот III"
+    lore: |-
+      &7Мягкое приземление.
+      &2-{fall_damage_reduction_pct}% урона от падения
+      &7PvE Удар: &f{stomp_radius}м &7/ &f{stomp_damage}&7 урона
+      &8Для: Ботинки
+
+  "theosis:quartz":
+    name_tier_1: "&fКварц I"
+    name_tier_2: "&fКварц II"
+    name_tier_3: "&fКварц III"
+    lore: |-
+      &7Точный шахтер.
+      &f{double_drop_chance_pct}%&7 шанс двойного дропа руды
+      &8Для: Кирка
+
+  "theosis:obsidian":
+    name_tier_1: "&5Обсидиан I"
+    name_tier_2: "&5Обсидиан II"
+    name_tier_3: "&5Обсидиан III"
+    lore: |-
+      &7Отражает снаряды при блокировании щитом.
+      &5{reflect_chance_pct}%&7 шанс отражения
+      &8Для: Щит
+
+  "theosis:topaz":
+    name_tier_1: "&eТопаз I"
+    name_tier_2: "&eTopacio II"
+    name_tier_3: "&eTopacio III"
+    lore: |-
+      &7Меткий выстрел при полном заряде.
+      &e+{charged_bonus_damage_pct}% урона &7если сила ≥ &f{full_charge_threshold}
+      &8Для: Лук, арбалет или трезубец
+
+  "theosis:emerald":
+    name_tier_1: "&aИзумруд I"
+    name_tier_2: "&aИзумруд II"
+    name_tier_3: "&aИзумруд III"
+    lore: |-
+      &7Выгодные сделки.
+      &aГерой деревни &7на &f{merchant_buff_seconds}сек
+      &8Для: Нагрудник
+
+  "theosis:socket_core":
+    name_tier_1: "&dЯдро слотов"
+    lore_tier_1: |
+      &7Используйте на наковальне с предметом,
+      &7чтобы добавить &a+1 слот&7.
+
+  "theosis:magnetite":
+    name_tier_1: "&6Магнетит I"
+    name_tier_2: "&6Магнетит II"
+    name_tier_3: "&6Магнетит III"
+    lore_tier_1: |
+      &7Телекинез:
+      &7При убийстве мобов их дроп
+      &7идет сразу в инвентарь.
+      &8Шанс: {telekinesis_chance_pct}%
+      &8Для: Предмет в основной руке
+    lore_tier_2: |
+      &7Телекинез:
+      &7При убийстве мобов их дроп
+      &7идет сразу в инвентарь.
+      &8Шанс: {telekinesis_chance_pct}%
+      &8Для: Предмет в основной руке
+    lore_tier_3: |
+      &7Телекинез:
+      &7При убийстве мобов их дроп
+      &7идет сразу в инвентарь.
+      &8Шанс: {telekinesis_chance_pct}%
+      &8Для: Предмет в основной руке
+
+  "theosis:cryonite":
+    name_tier_1: "&bКрионит I"
+    name_tier_2: "&bКрионит II"
+    name_tier_3: "&bКрионит III"
+    lore_tier_1: |
+      &7При получении удара:
+      &f{freeze_chance_pct}% &7шанс заморозить и
+      &7нанести &f{freeze_damage}❤ &7атакующему.
+      &8Для: Броня
+    lore_tier_2: |
+      &7При получении удара:
+      &f{freeze_chance_pct}% &7шанс заморозить и
+      &7нанести &f{freeze_damage}❤ &7атакующему.
+      &8Для: Броня
+    lore_tier_3: |
+      &7При получении удара:
+      &f{freeze_chance_pct}% &7шанс заморозить и
+      &7нанести &f{freeze_damage}❤ &7атакующему.
+      &8Для: Броня
+
+  "theosis:pyrite":
+    name_tier_1: "&6Пирит I"
+    name_tier_2: "&6Пирит II"
+    name_tier_3: "&6Пирит III"
+    lore_tier_1: |
+      &7При блокировании щитом:
+      &7исцеляет вас на &f{heal_amount}❤&7.
+      &8Перезарядка: {cooldown_seconds}с
+      &8Для: Броня или щит
+    lore_tier_2: |
+      &7При блокировании щитом:
+      &7исцеляет вас на &f{heal_amount}❤&7.
+      &8Перезарядка: {cooldown_seconds}с
+      &8Для: Броня или щит
+    lore_tier_3: |
+      &7При блокировании щитом:
+      &7исцеляет вас на &f{heal_amount}❤&7.
+      &8Перезарядка: {cooldown_seconds}с
+      &8Для: Броня или щит
+
+  "theosis:lapis_core":
+    name_tier_1: "&9Лазуритовое ядро I"
+    name_tier_2: "&9Лазуритовое ядро II"
+    name_tier_3: "&9Лазуритовое ядро III"
+    lore_tier_1: |
+      &7Если вы должны умереть, выживите с &c1❤
+      &7и получите Регенерацию II на
+      &f{buff_seconds}с&7.
+      &8Перезарядка: {cooldown_minutes} мин
+      &8Для: Броня
+    lore_tier_2: |
+      &7Если вы должны умереть, выживите с &c1❤
+      &7и получите Регенерацию II на
+      &f{buff_seconds}с&7.
+      &8Перезарядка: {cooldown_minutes} мин
+      &8Для: Броня
+    lore_tier_3: |
+      &7Если вы должны умереть, выживите с &c1❤
+      &7и получите Регенерацию II на
+      &f{buff_seconds}с&7.
+      &8Перезарядка: {cooldown_minutes} мин
+      &8Для: Броня
+
+  "theosis:amethyst":
+    name_tier_1: "&dАметист I"
+    name_tier_2: "&dАметист II"
+    name_tier_3: "&dАметист III"
+    lore_tier_1: |
+      &7При получении урона:
+      &f{discharge_chance_pct}% &7шанс выпустить
+      &7арканную молнию в радиусе &f{discharge_radius}
+      &7на &f{discharge_damage}❤.
+      &8Для: Броня
+    lore_tier_2: |
+      &7При получении урона:
+      &f{discharge_chance_pct}% &7шанс выпустить
+      &7арканную молнию в радиусе &f{discharge_radius}
+      &7на &f{discharge_damage}❤.
+      &8Для: Броня
+    lore_tier_3: |
+      &7При получении урона:
+      &f{discharge_chance_pct}% &7шанс выпустить
+      &7арканную молнию в радиусе &f{discharge_radius}
+      &7на &f{discharge_damage}❤.
+      &8Для: Броня
+
+  "theosis:citrine":
+    name_tier_1: "&eЦитрин I"
+    name_tier_2: "&eЦитрин II"
+    name_tier_3: "&eЦитрин III"
+    lore_tier_1: |
+      &7Пока здоровье полное:
+      &7+&f{speed_bonus_pct}% &7к скорости.
+      &8Для: Броня
+    lore_tier_2: |
+      &7Пока здоровье полное:
+      &7+&f{speed_bonus_pct}% &7к скорости.
+      &8Для: Броня
+    lore_tier_3: |
+      &7Пока здоровье полное:
+      &7+&f{speed_bonus_pct}% &7к скорости.
+      &8Для: Броня
+
+  "theosis:malachite":
+    name_tier_1: "&aМалахит I"
+    name_tier_2: "&aМалахит II"
+    name_tier_3: "&aМалахит III"
+    lore_tier_1: |
+      &7Снижает длительность дебаффов на
+      &f{debuff_duration_reduction_pct}%&7.
+      &8Для: Броня
+    lore_tier_2: |
+      &7Снижает длительность дебаффов на
+      &f{debuff_duration_reduction_pct}%&7.
+      &8Для: Броня
+    lore_tier_3: |
+      &7Снижает длительность дебаффов на
+      &f{debuff_duration_reduction_pct}%&7.
+      &8Для: Броня
+
+  "theosis:smoky_quartz":
+    name_tier_1: "&8Дымчатый кварц I"
+    name_tier_2: "&8Дымчатый кварц II"
+    name_tier_3: "&8Дымчатый кварц III"
+    lore_tier_1: |
+      &7Если здоровье падает ниже &f{stealth_threshold_pct}%&7:
+      &7невидимость на &f{stealth_seconds}с&7,
+      &7мобы теряют цель.
+      &8Перезарядка: {cooldown_seconds}с
+      &8Для: Броня
+    lore_tier_2: |
+      &7Если здоровье падает ниже &f{stealth_threshold_pct}%&7:
+      &7невидимость на &f{stealth_seconds}с&7,
+      &7мобы теряют цель.
+      &8Перезарядка: {cooldown_seconds}с
+      &8Для: Броня
+    lore_tier_3: |
+      &7Если здоровье падает ниже &f{stealth_threshold_pct}%&7:
+      &7невидимость на &f{stealth_seconds}с&7,
+      &7мобы теряют цель.
+      &8Перезарядка: {cooldown_seconds}с
+      &8Для: Броня
+
+  "theosis:sunstone":
+    name_tier_1: "&6Солнечный камень I"
+    name_tier_2: "&6Солнечный камень II"
+    name_tier_3: "&6Солнечный камень III"
+    lore_tier_1: |
+      &7При еде восстанавливает
+      &f{heal_per_food_point}❤ &7за каждое очко сытости.
+      &8Для: Броня
+    lore_tier_2: |
+      &7При еде восстанавливает
+      &f{heal_per_food_point}❤ &7за каждое очко сытости.
+      &8Для: Броня
+    lore_tier_3: |
+      &7При еде восстанавливает
+      &f{heal_per_food_point}❤ &7за каждое очко сытости.
+      &8Для: Броня
+
+  "theosis:beryl":
+    name_tier_1: "&2Берилл I"
+    name_tier_2: "&2Берилл II"
+    name_tier_3: "&2Берилл III"
+    lore_tier_1: |
+      &7Аура слабости в радиусе &f{aura_radius}
+      &7на &f{duration_seconds}с для мобов.
+      &8Шанс: {aura_chance_pct}%
+      &8Для: Броня
+    lore_tier_2: |
+      &7Аура слабости в радиусе &f{aura_radius}
+      &7на &f{duration_seconds}с для мобов.
+      &8Шанс: {aura_chance_pct}%
+      &8Для: Броня
+    lore_tier_3: |
+      &7Аура слабости в радиусе &f{aura_radius}
+      &7на &f{duration_seconds}с для мобов.
+      &8Шанс: {aura_chance_pct}%
+      &8Для: Броня
+
+  "theosis:fluorite":
+    name_tier_1: "&fФлюорит I"
+    name_tier_2: "&fФлюорит II"
+    name_tier_3: "&fФлюорит III"
+    lore_tier_1: |
+      &7Выпитые вами зелья длятся на
+      &f{potion_duration_bonus_pct}% &7дольше.
+      &8Для: Броня
+    lore_tier_2: |
+      &7Выпитые вами зелья длятся на
+      &f{potion_duration_bonus_pct}% &7дольше.
+      &8Для: Броня
+    lore_tier_3: |
+      &7Выпитые вами зелья длятся на
+      &f{potion_duration_bonus_pct}% &7дольше.    
+      &8Для: Броня
+
+
+  "theosis:spinel":
+    name_tier_1: "&cШпинель I"
+    name_tier_2: "&cШпинель II"
+    name_tier_3: "&cШпинель III"
+    lore: |-
+      &f+{value}% &7урона врагам
+      &7с &f90% &7здоровья и выше.
+      &8Для: Меч или топор
+    lore_tier_1: |-
+      &f+{value}% &7урона врагам
+      &7с &f90% &7здоровья и выше.
+      &8Для: Меч или топор
+    lore_tier_2: |-
+      &f+{value}% &7урона врагам
+      &7с &f90% &7здоровья и выше.
+      &8Для: Меч или топор
+    lore_tier_3: |-
+      &f+{value}% &7урона врагам
+      &7с &f90% &7здоровья и выше.
+      &8Для: Меч или топор
+
+  "theosis:iolite":
+    name_tier_1: "&9Иолит I"
+    name_tier_2: "&9Иолит II"
+    name_tier_3: "&9Иолит III"
+    lore: |-
+      &f+{value}% &7урона снарядами
+      &7с расстояния от &f16 &7блоков.
+      &8Для: Лук или арбалет
+    lore_tier_1: |-
+      &f+{value}% &7урона снарядами
+      &7с расстояния от &f16 &7блоков.
+      &8Для: Лук или арбалет
+    lore_tier_2: |-
+      &f+{value}% &7урона снарядами
+      &7с расстояния от &f16 &7блоков.
+      &8Для: Лук или арбалет
+    lore_tier_3: |-
+      &f+{value}% &7урона снарядами
+      &7с расстояния от &f16 &7блоков.
+      &8Для: Лук или арбалет
+
+  "theosis:heliotrope":
+    name_tier_1: "&4Гелиотроп I"
+    name_tier_2: "&4Гелиотроп II"
+    name_tier_3: "&4Гелиотроп III"
+    lore: |-
+      &7Убийство монстра в ближнем бою
+      &7лечит &f{hearts}♥&7. &8Откат: 8 с.
+      &8Для: Меч или топор
+    lore_tier_1: |-
+      &7Убийство монстра в ближнем бою
+      &7лечит &f{hearts}♥&7. &8Откат: 8 с.
+      &8Для: Меч или топор
+    lore_tier_2: |-
+      &7Убийство монстра в ближнем бою
+      &7лечит &f{hearts}♥&7. &8Откат: 8 с.
+      &8Для: Меч или топор
+    lore_tier_3: |-
+      &7Убийство монстра в ближнем бою
+      &7лечит &f{hearts}♥&7. &8Откат: 8 с.
+      &8Для: Меч или топор
+
+  "theosis:alexandrite":
+    name_tier_1: "&fАлександрит I"
+    name_tier_2: "&fАлександрит II"
+    name_tier_3: "&fАлександрит III"
+    lore: |-
+      &f+{value}% &7урона существам
+      &7с вдвое большим запасом здоровья.
+      &8Для: Меч или топор
+    lore_tier_1: |-
+      &f+{value}% &7урона существам
+      &7с вдвое большим запасом здоровья.
+      &8Для: Меч или топор
+    lore_tier_2: |-
+      &f+{value}% &7урона существам
+      &7с вдвое большим запасом здоровья.
+      &8Для: Меч или топор
+    lore_tier_3: |-
+      &f+{value}% &7урона существам
+      &7с вдвое большим запасом здоровья.
+      &8Для: Меч или топор
+
+  "theosis:tanzanite":
+    name_tier_1: "&dТанзанит I"
+    name_tier_2: "&dТанзанит II"
+    name_tier_3: "&dТанзанит III"
+    lore: |-
+      &f+{value}% &7урона
+      &7нежити.
+      &8Для: Меч, топор, булава, трезубец,
+      &8лук или арбалет
+    lore_tier_1: |-
+      &f+{value}% &7урона
+      &7нежити.
+      &8Для: Меч, топор, булава, трезубец,
+      &8лук или арбалет
+    lore_tier_2: |-
+      &f+{value}% &7урона
+      &7нежити.
+      &8Для: Меч, топор, булава, трезубец,
+      &8лук или арбалет
+    lore_tier_3: |-
+      &f+{value}% &7урона
+      &7нежити.
+      &8Для: Меч, топор, булава, трезубец,
+      &8лук или арбалет
+
+  "theosis:tourmaline":
+    name_tier_1: "&aТурмалин I"
+    name_tier_2: "&aТурмалин II"
+    name_tier_3: "&aТурмалин III"
+    lore: |-
+      &f+{value}% &7урона паукам,
+      &7чешуйницам и эндермитам.
+      &8Для: Меч, топор, булава, трезубец,
+      &8лук или арбалет
+    lore_tier_1: |-
+      &f+{value}% &7урона паукам,
+      &7чешуйницам и эндермитам.
+      &8Для: Меч, топор, булава, трезубец,
+      &8лук или арбалет
+    lore_tier_2: |-
+      &f+{value}% &7урона паукам,
+      &7чешуйницам и эндермитам.
+      &8Для: Меч, топор, булава, трезубец,
+      &8лук или арбалет
+    lore_tier_3: |-
+      &f+{value}% &7урона паукам,
+      &7чешуйницам и эндермитам.
+      &8Для: Меч, топор, булава, трезубец,
+      &8лук или арбалет
+
+  "theosis:carnelian":
+    name_tier_1: "&6Сердолик I"
+    name_tier_2: "&6Сердолик II"
+    name_tier_3: "&6Сердолик III"
+    lore: |-
+      &f+{value}% &7урона
+      &7горящим врагам.
+      &8Для: Меч, топор, булава, трезубец,
+      &8лук или арбалет
+    lore_tier_1: |-
+      &f+{value}% &7урона
+      &7горящим врагам.
+      &8Для: Меч, топор, булава, трезубец,
+      &8лук или арбалет
+    lore_tier_2: |-
+      &f+{value}% &7урона
+      &7горящим врагам.
+      &8Для: Меч, топор, булава, трезубец,
+      &8лук или арбалет
+    lore_tier_3: |-
+      &f+{value}% &7урона
+      &7горящим врагам.
+      &8Для: Меч, топор, булава, трезубец,
+      &8лук или арбалет
+
+  "theosis:rhodolite":
+    name_tier_1: "&cРодолит I"
+    name_tier_2: "&cРодолит II"
+    name_tier_3: "&cРодолит III"
+    lore: |-
+      &f+{value}% &7урона в ближнем бою
+      &7при &f35% &7здоровья и ниже.
+      &8Для: Меч или топор
+    lore_tier_1: |-
+      &f+{value}% &7урона в ближнем бою
+      &7при &f35% &7здоровья и ниже.
+      &8Для: Меч или топор
+    lore_tier_2: |-
+      &f+{value}% &7урона в ближнем бою
+      &7при &f35% &7здоровья и ниже.
+      &8Для: Меч или топор
+    lore_tier_3: |-
+      &f+{value}% &7урона в ближнем бою
+      &7при &f35% &7здоровья и ниже.
+      &8Для: Меч или топор
+
+  "theosis:diamond":
+    name_tier_1: "&fАлмаз I"
+    name_tier_2: "&fАлмаз II"
+    name_tier_3: "&fАлмаз III"
+    lore: |-
+      &7На &f{value}% &7меньше урона
+      &7от снарядов.
+      &8Для: Нагрудник
+    lore_tier_1: |-
+      &7На &f{value}% &7меньше урона
+      &7от снарядов.
+      &8Для: Нагрудник
+    lore_tier_2: |-
+      &7На &f{value}% &7меньше урона
+      &7от снарядов.
+      &8Для: Нагрудник
+    lore_tier_3: |-
+      &7На &f{value}% &7меньше урона
+      &7от снарядов.
+      &8Для: Нагрудник
+
+  "theosis:agate":
+    name_tier_1: "&7Агат I"
+    name_tier_2: "&7Агат II"
+    name_tier_3: "&7Агат III"
+    lore: |-
+      &f+{value}% &7сопротивления
+      &7отбрасыванию.
+      &8Для: Ботинки
+    lore_tier_1: |-
+      &f+{value}% &7сопротивления
+      &7отбрасыванию.
+      &8Для: Ботинки
+    lore_tier_2: |-
+      &f+{value}% &7сопротивления
+      &7отбрасыванию.
+      &8Для: Ботинки
+    lore_tier_3: |-
+      &f+{value}% &7сопротивления
+      &7отбрасыванию.
+      &8Для: Ботинки
+
+  "theosis:moonstone":
+    name_tier_1: "&fЛунный камень I"
+    name_tier_2: "&fЛунный камень II"
+    name_tier_3: "&fЛунный камень III"
+    lore: |-
+      &7Регенерация от сытости
+      &7лечит на &f{value}% &7больше.
+      &8Для: Нагрудник
+    lore_tier_1: |-
+      &7Регенерация от сытости
+      &7лечит на &f{value}% &7больше.
+      &8Для: Нагрудник
+    lore_tier_2: |-
+      &7Регенерация от сытости
+      &7лечит на &f{value}% &7больше.
+      &8Для: Нагрудник
+    lore_tier_3: |-
+      &7Регенерация от сытости
+      &7лечит на &f{value}% &7больше.
+      &8Для: Нагрудник
+
+  "theosis:serpentine":
+    name_tier_1: "&2Серпентин I"
+    name_tier_2: "&2Серпентин II"
+    name_tier_3: "&2Серпентин III"
+    lore: |-
+      &7На &f{value}% &7меньше урона
+      &7от яда.
+      &8Для: Броня
+    lore_tier_1: |-
+      &7На &f{value}% &7меньше урона
+      &7от яда.
+      &8Для: Броня
+    lore_tier_2: |-
+      &7На &f{value}% &7меньше урона
+      &7от яда.
+      &8Для: Броня
+    lore_tier_3: |-
+      &7На &f{value}% &7меньше урона
+      &7от яда.
+      &8Для: Броня
+
+  "theosis:celestine":
+    name_tier_1: "&bЦелестин I"
+    name_tier_2: "&bЦелестин II"
+    name_tier_3: "&bЦелестин III"
+    lore: |-
+      &7На &f{value}% &7меньше урона
+      &7от иссушения.
+      &8Для: Броня
+    lore_tier_1: |-
+      &7На &f{value}% &7меньше урона
+      &7от иссушения.
+      &8Для: Броня
+    lore_tier_2: |-
+      &7На &f{value}% &7меньше урона
+      &7от иссушения.
+      &8Для: Броня
+    lore_tier_3: |-
+      &7На &f{value}% &7меньше урона
+      &7от иссушения.
+      &8Для: Броня
+
+  "theosis:shungite":
+    name_tier_1: "&5Шунгит I"
+    name_tier_2: "&5Шунгит II"
+    name_tier_3: "&5Шунгит III"
+    lore: |-
+      &7Звуковая атака хранителя
+      &7наносит на &f{value}% &7меньше урона.
+      &8Для: Нагрудник
+    lore_tier_1: |-
+      &7Звуковая атака хранителя
+      &7наносит на &f{value}% &7меньше урона.
+      &8Для: Нагрудник
+    lore_tier_2: |-
+      &7Звуковая атака хранителя
+      &7наносит на &f{value}% &7меньше урона.
+      &8Для: Нагрудник
+    lore_tier_3: |-
+      &7Звуковая атака хранителя
+      &7наносит на &f{value}% &7меньше урона.
+      &8Для: Нагрудник
+
+  "theosis:kunzite":
+    name_tier_1: "&fКунцит I"
+    name_tier_2: "&fКунцит II"
+    name_tier_3: "&fКунцит III"
+    lore: |-
+      &7Увеличивает запас здоровья
+      &7на &f{hearts}♥&7.
+      &8Для: Нагрудник
+    lore_tier_1: |-
+      &7Увеличивает запас здоровья
+      &7на &f{hearts}♥&7.
+      &8Для: Нагрудник
+    lore_tier_2: |-
+      &7Увеличивает запас здоровья
+      &7на &f{hearts}♥&7.
+      &8Для: Нагрудник
+    lore_tier_3: |-
+      &7Увеличивает запас здоровья
+      &7на &f{hearts}♥&7.
+      &8Для: Нагрудник
+
+  "theosis:pearl":
+    name_tier_1: "&bЖемчуг I"
+    name_tier_2: "&bЖемчуг II"
+    name_tier_3: "&bЖемчуг III"
+    lore: |-
+      &f{value}% &7шанс сохранить
+      &7воздух под водой.
+      &8Для: Шлем
+    lore_tier_1: |-
+      &f{value}% &7шанс сохранить
+      &7воздух под водой.
+      &8Для: Шлем
+    lore_tier_2: |-
+      &f{value}% &7шанс сохранить
+      &7воздух под водой.
+      &8Для: Шлем
+    lore_tier_3: |-
+      &f{value}% &7шанс сохранить
+      &7воздух под водой.
+      &8Для: Шлем
+
+  "theosis:apatite":
+    name_tier_1: "&9Апатит I"
+    name_tier_2: "&9Апатит II"
+    name_tier_3: "&9Апатит III"
+    lore: |-
+      &f+{value}% &7опыта при добыче руды.
+      &8Без Шёлкового касания.
+      &8Для: Кирка
+    lore_tier_1: |-
+      &f+{value}% &7опыта при добыче руды.
+      &8Без Шёлкового касания.
+      &8Для: Кирка
+    lore_tier_2: |-
+      &f+{value}% &7опыта при добыче руды.
+      &8Без Шёлкового касания.
+      &8Для: Кирка
+    lore_tier_3: |-
+      &f+{value}% &7опыта при добыче руды.
+      &8Без Шёлкового касания.
+      &8Для: Кирка
+
+  "theosis:zircon":
+    name_tier_1: "&7Циркон I"
+    name_tier_2: "&7Циркон II"
+    name_tier_3: "&7Циркон III"
+    lore: |-
+      &7Уменьшает износ
+      &7на &f{value}%&7.
+      &8Для: Снаряжение с прочностью
+    lore_tier_1: |-
+      &7Уменьшает износ
+      &7на &f{value}%&7.
+      &8Для: Снаряжение с прочностью
+    lore_tier_2: |-
+      &7Уменьшает износ
+      &7на &f{value}%&7.
+      &8Для: Снаряжение с прочностью
+    lore_tier_3: |-
+      &7Уменьшает износ
+      &7на &f{value}%&7.
+      &8Для: Снаряжение с прочностью
+
+  "theosis:andalusite":
+    name_tier_1: "&6Андалузит I"
+    name_tier_2: "&6Андалузит II"
+    name_tier_3: "&6Андалузит III"
+    lore: |-
+      &f{value}% &7шанс переплавить железо
+      &7и золото при добыче. &8Без Шёлкового касания.
+      &8Для: Кирка
+    lore_tier_1: |-
+      &f{value}% &7шанс переплавить железо
+      &7и золото при добыче. &8Без Шёлкового касания.
+      &8Для: Кирка
+    lore_tier_2: |-
+      &f{value}% &7шанс переплавить железо
+      &7и золото при добыче. &8Без Шёлкового касания.
+      &8Для: Кирка
+    lore_tier_3: |-
+      &f{value}% &7шанс переплавить железо
+      &7и золото при добыче. &8Без Шёлкового касания.
+      &8Для: Кирка
+
+  "theosis:aventurine":
+    name_tier_1: "&aАвантюрин I"
+    name_tier_2: "&aАвантюрин II"
+    name_tier_3: "&aАвантюрин III"
+    lore: |-
+      &f{value}% &7шанс получить
+      &7дополнительный урожай.
+      &8Для: Мотыга
+    lore_tier_1: |-
+      &f{value}% &7шанс получить
+      &7дополнительный урожай.
+      &8Для: Мотыга
+    lore_tier_2: |-
+      &f{value}% &7шанс получить
+      &7дополнительный урожай.
+      &8Для: Мотыга
+    lore_tier_3: |-
+      &f{value}% &7шанс получить
+      &7дополнительный урожай.
+      &8Для: Мотыга
+
+  "theosis:moss_agate":
+    name_tier_1: "&aМоховой агат I"
+    name_tier_2: "&aМоховой агат II"
+    name_tier_3: "&aМоховой агат III"
+    lore: |-
+      &f{value}% &7шанс посадить культуру
+      &7после сбора. Расходует семя.
+      &8Для: Мотыга
+    lore_tier_1: |-
+      &f{value}% &7шанс посадить культуру
+      &7после сбора. Расходует семя.
+      &8Для: Мотыга
+    lore_tier_2: |-
+      &f{value}% &7шанс посадить культуру
+      &7после сбора. Расходует семя.
+      &8Для: Мотыга
+    lore_tier_3: |-
+      &f{value}% &7шанс посадить культуру
+      &7после сбора. Расходует семя.
+      &8Для: Мотыга
+
+  "theosis:chrysocolla":
+    name_tier_1: "&2Хризоколла I"
+    name_tier_2: "&2Хризоколла II"
+    name_tier_3: "&2Хризоколла III"
+    lore: |-
+      &f{value}% &7шанс поймать
+      &7дополнительную рыбу.
+      &8Для: Удочка
+    lore_tier_1: |-
+      &f{value}% &7шанс поймать
+      &7дополнительную рыбу.
+      &8Для: Удочка
+    lore_tier_2: |-
+      &f{value}% &7шанс поймать
+      &7дополнительную рыбу.
+      &8Для: Удочка
+    lore_tier_3: |-
+      &f{value}% &7шанс поймать
+      &7дополнительную рыбу.
+      &8Для: Удочка
+
+  "theosis:ametrine":
+    name_tier_1: "&dАметрин I"
+    name_tier_2: "&dАметрин II"
+    name_tier_3: "&dАметрин III"
+    lore: |-
+      &7Починка даёт на &f{value}% &7больше
+      &7прочности за тот же опыт.
+      &8Для: Снаряжение с прочностью
+    lore_tier_1: |-
+      &7Починка даёт на &f{value}% &7больше
+      &7прочности за тот же опыт.
+      &8Для: Снаряжение с прочностью
+    lore_tier_2: |-
+      &7Починка даёт на &f{value}% &7больше
+      &7прочности за тот же опыт.
+      &8Для: Снаряжение с прочностью
+    lore_tier_3: |-
+      &7Починка даёт на &f{value}% &7больше
+      &7прочности за тот же опыт.
+      &8Для: Снаряжение с прочностью
+
+  "theosis:selenite":
+    name_tier_1: "&fСеленит I"
+    name_tier_2: "&fСеленит II"
+    name_tier_3: "&fСеленит III"
+    lore: |-
+      &7Разрушение блоков расходует
+      &7на &f{value}% &7меньше сытости.
+      &8Для: Кирка, топор, лопата, мотыга, ножницы
+    lore_tier_1: |-
+      &7Разрушение блоков расходует
+      &7на &f{value}% &7меньше сытости.
+      &8Для: Кирка, топор, лопата, мотыга, ножницы
+    lore_tier_2: |-
+      &7Разрушение блоков расходует
+      &7на &f{value}% &7меньше сытости.
+      &8Для: Кирка, топор, лопата, мотыга, ножницы
+    lore_tier_3: |-
+      &7Разрушение блоков расходует
+      &7на &f{value}% &7меньше сытости.
+      &8Для: Кирка, топор, лопата, мотыга, ножницы
+
+  "theosis:amazonite":
+    name_tier_1: "&bАмазонит I"
+    name_tier_2: "&bАмазонит II"
+    name_tier_3: "&bАмазонит III"
+    lore: |-
+      &7Еда даёт на &f{value}%
+      &7больше насыщения.
+      &8Для: Нагрудник
+    lore_tier_1: |-
+      &7Еда даёт на &f{value}%
+      &7больше насыщения.
+      &8Для: Нагрудник
+    lore_tier_2: |-
+      &7Еда даёт на &f{value}%
+      &7больше насыщения.
+      &8Для: Нагрудник
+    lore_tier_3: |-
+      &7Еда даёт на &f{value}%
+      &7больше насыщения.
+      &8Для: Нагрудник
+
+perks:
+  theosis:storm_javelin:
+    desc_level_1: "&f◆ &eShift + ПКМ запускает электрический заряд &c(I)"
+    desc_level_2: "&f◆ &eShift + ПКМ запускает электрический заряд &c(II)"
+    desc_level_3: "&f◆ &9Shift + ПКМ запускает электрический заряд &c(III)"
+    actionbar_cooldown: "&cШтормовой дротик &7Перезарядка: &f{seconds}с"
+
+  # Nuevos perks / New perks
+  theosis:hell_rift:
+    name: "Адский разлом"
+    desc_level_1: '&f◆ &e&9[10%]&e при поджигании: разлом на &9[30]&e с между\n&eНезером и обычным миром. ПКМ рядом с огнивом\n&eили пустой рукой. Перк исчезает после перехода.'
+    actionbar_cooldown: "&eАдский разлом&7: подождите {seconds} с."
+    actionbar_hunger: "&cДля этой способности не хватает сытости."
+    actionbar_unsafe: "&cБезопасное место не найдено."
+    actionbar_failed: "&cНе удалось завершить перемещение."
+    actionbar_open: '&5Разлом открыт на 30 с. ПКМ рядом с огнивом или пустой рукой, чтобы пройти.'
+    actionbar_searching: '&5Подготовка безопасного места по ту сторону разлома...'
+    actionbar_proc: "&5Вы прошли через адский разлом."
+    actionbar_consumed: '&5Вы прошли через разлом. &cПерк израсходован.'
+
+  theosis:extended_fuse:
+    name: "Долгое пламя"
+    desc_level_1: '&f◆ &eПКМ по врагу: поджигает на &9[5]&e с.'
+    desc_level_2: '&f◆ &eПКМ по врагу: поджигает на &9[6]&e с.'
+    desc_level_3: '&f◆ &eПКМ по врагу: поджигает на &9[7]&e с.'
+    actionbar_cooldown: "&eДолгое пламя&7: подождите {seconds} с."
+    actionbar_hunger: "&cДля этой способности не хватает сытости."
+    actionbar_unsafe: "&cБезопасное место не найдено."
+    actionbar_failed: "&cНе удалось завершить перемещение."
+
+  theosis:kinetic_spark:
+    name: "Кинетическая искра"
+    desc_level_1: '&f◆ &eПКМ поджигает врага; &9[10%]&e шанс искры по\n&eсоседнему врагу с уроном &9[1]&e.'
+    desc_level_2: '&f◆ &eПКМ поджигает врага; &9[15%]&e шанс искры по\n&eсоседнему врагу с уроном &9[2]&e.'
+    desc_level_3: '&f◆ &eПКМ поджигает врага; &9[20%]&e шанс искры по\n&eсоседнему врагу с уроном &9[3]&e.'
+    actionbar_cooldown: "&eКинетическая искра&7: подождите {seconds} с."
+    actionbar_hunger: "&cДля этой способности не хватает сытости."
+    actionbar_unsafe: "&cБезопасное место не найдено."
+    actionbar_failed: "&cНе удалось завершить перемещение."
+
+  theosis:gunpowder_touch:
+    name: "Пороховое касание"
+    desc_level_1: '&f◆ &eПри ударе: &9[3%]&e шанс вспышки и +&9[25%]&e урона.'
+    desc_level_2: '&f◆ &eПри ударе: &9[5%]&e шанс вспышки и +&9[40%]&e урона.'
+    desc_level_3: '&f◆ &eПри ударе: &9[7%]&e шанс вспышки и +&9[55%]&e урона.'
+    actionbar_cooldown: "&eПороховое касание&7: подождите {seconds} с."
+    actionbar_hunger: "&cДля этой способности не хватает сытости."
+    actionbar_unsafe: "&cБезопасное место не найдено."
+    actionbar_failed: "&cНе удалось завершить перемещение."
+
+  theosis:furnace_heat:
+    name: "Жар печи"
+    desc_level_1: '&f◆ &eПри наличии угля в инвентаре: &9[25%]&e шанс\n&eсохранить прочность.'
+    desc_level_2: '&f◆ &eПри наличии угля в инвентаре: &9[50%]&e шанс\n&eсохранить прочность.'
+    desc_level_3: '&f◆ &eПри наличии угля в инвентаре: &9[100%]&e шанс\n&eсохранить прочность.'
+    actionbar_cooldown: "&eЖар печи&7: подождите {seconds} с."
+    actionbar_hunger: "&cДля этой способности не хватает сытости."
+    actionbar_unsafe: "&cБезопасное место не найдено."
+    actionbar_failed: "&cНе удалось завершить перемещение."
+
+  theosis:precision_silk:
+    name: "Точный срез"
+    desc_level_1: '&f◆ &eПри сборе: &9[15%]&e шанс сохранить прочность;\n&eпри стрижке: &9[20%]&e шанс дополнительной\n&eшерсти.'
+    actionbar_cooldown: "&eТочный срез&7: подождите {seconds} с."
+    actionbar_hunger: "&cДля этой способности не хватает сытости."
+    actionbar_unsafe: "&cБезопасное место не найдено."
+    actionbar_failed: "&cНе удалось завершить перемещение."
+
+  theosis:lightweight_snipper:
+    name: "Лёгкие ножницы"
+    desc_level_1: '&f◆ &eНожницы в основной руке повышают скорость\n&eдобычи на &9[10%]&e.'
+    desc_level_2: '&f◆ &eНожницы в основной руке повышают скорость\n&eдобычи на &9[18%]&e.'
+    desc_level_3: '&f◆ &eНожницы в основной руке повышают скорость\n&eдобычи на &9[25%]&e.'
+    actionbar_cooldown: "&eЛёгкие ножницы&7: подождите {seconds} с."
+    actionbar_hunger: "&cДля этой способности не хватает сытости."
+    actionbar_unsafe: "&cБезопасное место не найдено."
+    actionbar_failed: "&cНе удалось завершить перемещение."
+
+  theosis:shearing_strike:
+    name: "Режущий удар"
+    desc_level_1: '&f◆ &e&9[5%]&e при ударе снизить броню врага на &9[10%]&e\n&eна &9[5]&e с.'
+    desc_level_2: '&f◆ &e&9[8%]&e при ударе снизить броню врага на &9[20%]&e\n&eна &9[5]&e с.'
+    desc_level_3: '&f◆ &e&9[12%]&e при ударе снизить броню врага на &9[30%]&e\n&eна &9[5]&e с.'
+    actionbar_cooldown: "&eРежущий удар&7: подождите {seconds} с."
+    actionbar_hunger: "&cДля этой способности не хватает сытости."
+    actionbar_unsafe: "&cБезопасное место не найдено."
+    actionbar_failed: "&cНе удалось завершить перемещение."
+
+  theosis:string_weaver:
+    name: "Сборщик нитей"
+    desc_level_1: '&f◆ &e&9[10%]&e шанс нити из листвы; &9[5%]&e при стрижке\n&eовец.'
+    desc_level_2: '&f◆ &e&9[15%]&e шанс нити из листвы; &9[10%]&e при стрижке\n&eовец.'
+    desc_level_3: '&f◆ &e&9[20%]&e шанс нити из листвы; &9[15%]&e при стрижке\n&eовец.'
+    actionbar_cooldown: "&eСборщик нитей&7: подождите {seconds} с."
+    actionbar_hunger: "&cДля этой способности не хватает сытости."
+    actionbar_unsafe: "&cБезопасное место не найдено."
+    actionbar_failed: "&cНе удалось завершить перемещение."
+
+  theosis:blood_blade:
+    name: "Кровавый клинок"
+    desc_level_1: '&f◆ &e&9[5%]&e шанс кровотечения: четыре импульса по\n&e&9[0.5]&e урона.'
+    desc_level_2: '&f◆ &e&9[10%]&e шанс кровотечения: четыре импульса по\n&e&9[0.75]&e урона.'
+    desc_level_3: '&f◆ &e&9[15%]&e шанс кровотечения: четыре импульса по\n&e&9[1]&e урона.'
+    actionbar_cooldown: "&eКровавый клинок&7: подождите {seconds} с."
+    actionbar_hunger: "&cДля этой способности не хватает сытости."
+    actionbar_unsafe: "&cБезопасное место не найдено."
+    actionbar_failed: "&cНе удалось завершить перемещение."
+
+  theosis:hawks_sight:
+    name: "Соколиный взгляд"
+    desc_level_1: '&f◆ &eПрицеливание &9[1.5]&e с подсвечивает врага на\n&e&9[8]&e с; видно всем.'
+    actionbar_cooldown: "&eСоколиный взгляд&7: подождите {seconds} с."
+    actionbar_hunger: "&cДля этой способности не хватает сытости."
+    actionbar_unsafe: "&cБезопасное место не найдено."
+    actionbar_failed: "&cНе удалось завершить перемещение."
+
+  theosis:focused_shot:
+    name: "Молот рассвета"
+    desc_level_1: '&f◆ &eСмотрите на врага с Shift &9[3]&e с:\n&eпадают &9[%arrow_count%]&e горящих стрел;\n&eCD &c[%cooldown_s%s]&e.'
+    desc_level_2: '&f◆ &eСмотрите на врага с Shift &9[3]&e с:\n&eпадают &9[%arrow_count%]&e горящих стрел;\n&eCD &c[%cooldown_s%s]&e.'
+    desc_level_3: '&f◆ &eСмотрите на врага с Shift &9[3]&e с:\n&eпадают &9[%arrow_count%]&e горящих стрел;\n&eCD &c[%cooldown_s%s]&e.'
+    actionbar_cooldown: "&eМолот рассвета&7: подождите {seconds} с."
+    actionbar_hunger: "&cДля этой способности не хватает сытости."
+    actionbar_unsafe: "&cБезопасное место не найдено."
+    actionbar_failed: "&cНе удалось завершить перемещение."
+    actionbar_countdown: "&6Молот рассвета: {seconds}..."
+    actionbar_proc: "&6Дождь стрел начался!"
+    actionbar_busy: '&eПодождите немного перед новым залпом.'
+
+  theosis:weakness_scanner:
+    name: "Сканер слабостей"
+    desc_level_1: '&f◆ &eПоказывает здоровье, эффекты, варианты и\n&eредкость босса; сохраняет данные на &9[5]&e с.'
+    desc_level_2: '&f◆ &eПоказывает здоровье, эффекты, варианты и\n&eредкость босса; сохраняет данные на &9[8]&e с.'
+    desc_level_3: '&f◆ &eПоказывает здоровье, эффекты, варианты и\n&eредкость босса; сохраняет данные на &9[12]&e с.'
+    actionbar_cooldown: "&eСканер слабостей&7: подождите {seconds} с."
+    actionbar_hunger: "&cДля этой способности не хватает сытости."
+    actionbar_unsafe: "&cБезопасное место не найдено."
+    actionbar_failed: "&cНе удалось завершить перемещение."
+    actionbar_scan: "&b{kind} &f{health}/{max_health} &7| {effects}"
+    kind_normal: "Обычный"
+    variant_unknown: 'Неизвестный'
+    kind_variant: "Вариант: {variant}"
+    kind_boss: "Босс {rarity}"
+    effects_none: "Без эффектов"
+    effect_unknown: "Эффект"
+    effect_entry: "{effect} {level}"
+    separator: ", "
+    rarity_common: "Обычный"
+    rarity_uncommon: "Необычный"
+    rarity_rare: "Редкий"
+    rarity_epic: "Эпический"
+    rarity_mythic: "Мифический"
+    rarity_unknown: "Неизвестный"
+    effects:
+      speed: "Скорость"
+      slowness: "Замедление"
+      haste: "Спешка"
+      mining_fatigue: "Усталость"
+      strength: "Сила"
+      instant_health: "Мгновенное лечение"
+      instant_damage: "Мгновенный урон"
+      jump_boost: "Прыгучесть"
+      nausea: "Тошнота"
+      regeneration: "Регенерация"
+      resistance: "Сопротивление"
+      fire_resistance: "Огнестойкость"
+      water_breathing: "Подводное дыхание"
+      invisibility: "Невидимость"
+      blindness: "Слепота"
+      night_vision: "Ночное зрение"
+      hunger: "Голод"
+      weakness: "Слабость"
+      poison: "Отравление"
+      wither: "Иссушение"
+      health_boost: "Прилив здоровья"
+      absorption: "Поглощение"
+      saturation: "Насыщение"
+      glowing: "Свечение"
+      levitation: "Левитация"
+      luck: "Удача"
+      unluck: "Невезение"
+      slow_falling: "Медленное падение"
+      conduit_power: "Сила проводника"
+      dolphins_grace: "Грация дельфина"
+      bad_omen: "Дурное знамение"
+      hero_of_the_village: "Герой деревни"
+      darkness: "Тьма"
+      trial_omen: "Зловещее испытание"
+      raid_omen: "Зловещий рейд"
+      wind_charged: "Заряд ветра"
+      weaving: "Плетение"
+      oozing: "Слизистость"
+      infested: "Заражение"
+    variants:
+      brute_creeper: "Свирепый крипер"
+      enderman_warp: "Блуждающий эндермен"
+      zombie_venom: "Ядовитый зомби"
+      phantom_grabber: "Фантом-хвататель"
+      spider_web_trapper: "Паук-ловушечник"
+      spider_brood: "Паук-матка"
+      arcane_archer: "Магический лучник"
+      mummified_leader: "Мумифицированный вождь"
+      wither_knight: "Рыцарь-иссушитель"
+
+  theosis:motion_tracker:
+    name: "Отслеживание движения"
+    desc_level_1: '&f◆ &eПри наведении на движущегося врага: &9[15%]&e в\n&eсекунду подсветить его на &9[5]&e с.'
+    desc_level_2: '&f◆ &eПри наведении на движущегося врага: &9[25%]&e в\n&eсекунду подсветить его на &9[5]&e с.'
+    desc_level_3: '&f◆ &eПри наведении на движущегося врага: &9[35%]&e в\n&eсекунду подсветить его на &9[5]&e с.'
+    actionbar_cooldown: "&eОтслеживание движения&7: подождите {seconds} с."
+    actionbar_hunger: "&cДля этой способности не хватает сытости."
+    actionbar_unsafe: "&cБезопасное место не найдено."
+    actionbar_failed: "&cНе удалось завершить перемещение."
+
+  theosis:far_sighted:
+    name: "Дальнозоркость"
+    desc_level_1: '&f◆ &eПовышает дальность сканирования на &9[10%]&e и\n&eдаёт ночное зрение при использовании\n&eподзорной трубы.'
+    desc_level_2: '&f◆ &eПовышает дальность сканирования на &9[20%]&e и\n&eдаёт ночное зрение при использовании\n&eподзорной трубы.'
+    desc_level_3: '&f◆ &eПовышает дальность сканирования на &9[30%]&e и\n&eдаёт ночное зрение при использовании\n&eподзорной трубы.'
+    actionbar_cooldown: "&eДальнозоркость&7: подождите {seconds} с."
+    actionbar_hunger: "&cДля этой способности не хватает сытости."
+    actionbar_unsafe: "&cБезопасное место не найдено."
+    actionbar_failed: "&cНе удалось завершить перемещение."
+
+  theosis:void_satchel:
+    name: "Сумка пустоты"
+    desc_level_1: '&f◆ &e&9[25%]&e шанс сохранить мешок и его содержимое\n&eпосле смерти.'
+    actionbar_cooldown: "&eСумка пустоты&7: подождите {seconds} с."
+    actionbar_hunger: "&cДля этой способности не хватает сытости."
+    actionbar_unsafe: "&cБезопасное место не найдено."
+    actionbar_failed: "&cНе удалось завершить перемещение."
+    actionbar_proc: "&5Сумка пустоты вернулась с содержимым."
+
+  theosis:deep_pockets:
+    name: "Глубокие карманы"
+    desc_level_1: '&f◆ &eВместимость: &9[72]&e единиц; ПКМ в инвентаре,\n&eчтобы добавить предметы; Shift + ПКМ:\n&eдобавить из другой руки.'
+    desc_level_2: '&f◆ &eВместимость: &9[88]&e единиц; ПКМ в инвентаре,\n&eчтобы добавить предметы; Shift + ПКМ:\n&eдобавить из другой руки.'
+    desc_level_3: '&f◆ &eВместимость: &9[100]&e единиц; ПКМ в инвентаре,\n&eчтобы добавить предметы; Shift + ПКМ:\n&eдобавить из другой руки.'
+    actionbar_cooldown: "&eГлубокие карманы&7: подождите {seconds} с."
+    actionbar_hunger: "&cДля этой способности не хватает сытости."
+    actionbar_unsafe: "&cБезопасное место не найдено."
+    actionbar_failed: "&cНе удалось завершить перемещение."
+    actionbar_packed: '&aДобавлено предметов: {amount}. Содержимое: {used}/{capacity} единиц.'
+    actionbar_full: "&eМешок полон или предмет нельзя положить."
+
+  theosis:swift_pickup:
+    name: "Быстрый сбор"
+    desc_level_1: '&f◆ &eМешок в руке: &9[5%]&e шанс подобрать предметы,\n&eсовпадающие с содержимым.'
+    desc_level_2: '&f◆ &eМешок в руке: &9[10%]&e шанс подобрать предметы,\n&eсовпадающие с содержимым.'
+    desc_level_3: '&f◆ &eМешок в руке: &9[15%]&e шанс подобрать предметы,\n&eсовпадающие с содержимым.'
+    actionbar_cooldown: "&eБыстрый сбор&7: подождите {seconds} с."
+    actionbar_hunger: "&cДля этой способности не хватает сытости."
+    actionbar_unsafe: "&cБезопасное место не найдено."
+    actionbar_failed: "&cНе удалось завершить перемещение."
+
+  theosis:feather_weight:
+    name: "Лёгкая ноша"
+    desc_level_1: '&f◆ &eМешок в руке: ест сохранённую еду при голоде;\n&eинтервал &9[2.5]&e с.'
+    desc_level_2: '&f◆ &eМешок в руке: ест сохранённую еду при голоде;\n&eинтервал &9[2]&e с.'
+    desc_level_3: '&f◆ &eМешок в руке: ест сохранённую еду при голоде;\n&eинтервал &9[1.5]&e с.'
+    actionbar_cooldown: "&eЛёгкая ноша&7: подождите {seconds} с."
+    actionbar_hunger: "&cДля этой способности не хватает сытости."
+    actionbar_unsafe: "&cБезопасное место не найдено."
+    actionbar_failed: "&cНе удалось завершить перемещение."
+    actionbar_proc: "&aВы поели из мешка."
+
+  theosis:gluttonys_bag:
+    name: "Сумка обжоры"
+    desc_level_1: '&f◆ &e+&9[10%]&e насыщения от еды из мешка; Shift +\n&eЛКМ, чтобы поесть.'
+    desc_level_2: '&f◆ &e+&9[15%]&e насыщения от еды из мешка; Shift +\n&eЛКМ, чтобы поесть.'
+    desc_level_3: '&f◆ &e+&9[20%]&e насыщения от еды из мешка; Shift +\n&eЛКМ, чтобы поесть.'
+    actionbar_cooldown: "&eСумка обжоры&7: подождите {seconds} с."
+    actionbar_hunger: "&cДля этой способности не хватает сытости."
+    actionbar_unsafe: "&cБезопасное место не найдено."
+    actionbar_failed: "&cНе удалось завершить перемещение."
+
+  theosis:guardians_soul:
+    name: "Душа хранителя"
+    desc_level_1: '&f◆ &eПредотвращает смертельный удар, исцеляет\n&eволка и даёт Сопротивление II на &9[15]&e с; КД5\n&eмин.'
+    actionbar_cooldown: "&eДуша хранителя&7: подождите {seconds} с."
+    actionbar_hunger: "&cДля этой способности не хватает сытости."
+    actionbar_unsafe: "&cБезопасное место не найдено."
+    actionbar_failed: "&cНе удалось завершить перемещение."
+    actionbar_proc: "&aВаш волк пережил смертельный удар!"
+
+  theosis:toxic_bite:
+    name: "Ядовитый укус"
+    desc_level_1: '&f◆ &eАтаки волка имеют &9[10%]&e шанс отравить на &9[3]&e\n&eс.'
+    desc_level_2: '&f◆ &eАтаки волка имеют &9[15%]&e шанс отравить на &9[4]&e\n&eс.'
+    desc_level_3: '&f◆ &eАтаки волка имеют &9[20%]&e шанс отравить на &9[5]&e\n&eс.'
+    actionbar_cooldown: "&eЯдовитый укус&7: подождите {seconds} с."
+    actionbar_hunger: "&cДля этой способности не хватает сытости."
+    actionbar_unsafe: "&cБезопасное место не найдено."
+    actionbar_failed: "&cНе удалось завершить перемещение."
+
+  theosis:loyal_sentry:
+    name: "Верный спутник"
+    desc_level_1: '&f◆ &eВне боя волк восстанавливает &9[1]&e здоровья\n&eкаждые &9[15]&e с.'
+    desc_level_2: '&f◆ &eВне боя волк восстанавливает &9[1]&e здоровья\n&eкаждые &9[10]&e с.'
+    desc_level_3: '&f◆ &eВне боя волк восстанавливает &9[1]&e здоровья\n&eкаждые &9[8]&e с.'
+    actionbar_cooldown: "&eВерный спутник&7: подождите {seconds} с."
+    actionbar_hunger: "&cДля этой способности не хватает сытости."
+    actionbar_unsafe: "&cБезопасное место не найдено."
+    actionbar_failed: "&cНе удалось завершить перемещение."
+
+  theosis:hunters_fang:
+    name: "Клык охотника"
+    desc_level_1: '&f◆ &e&9[5%]&e шанс нанести атакой волка &9[150%]&e урона.'
+    desc_level_2: '&f◆ &e&9[8%]&e шанс нанести атакой волка &9[150%]&e урона.'
+    desc_level_3: '&f◆ &e&9[12%]&e шанс нанести атакой волка &9[150%]&e урона.'
+    actionbar_cooldown: "&eКлык охотника&7: подождите {seconds} с."
+    actionbar_hunger: "&cДля этой способности не хватает сытости."
+    actionbar_unsafe: "&cБезопасное место не найдено."
+    actionbar_failed: "&cНе удалось завершить перемещение."
+
+  theosis:fur_padding:
+    name: "Меховая подкладка"
+    desc_level_1: '&f◆ &eСнижает урон волку от взрывов на &9[5%]&e.'
+    desc_level_2: '&f◆ &eСнижает урон волку от взрывов на &9[10%]&e.'
+    desc_level_3: '&f◆ &eСнижает урон волку от взрывов на &9[15%]&e.'
+    actionbar_cooldown: "&eМеховая подкладка&7: подождите {seconds} с."
+    actionbar_hunger: "&cДля этой способности не хватает сытости."
+    actionbar_unsafe: "&cБезопасное место не найдено."
+    actionbar_failed: "&cНе удалось завершить перемещение."
+
+  theosis:arrow_travel:
+    name: "Стрела путешествия"
+    desc_level_1: '&f◆ &eShift + ПКМ меняет бой/путешествие; переход к\n&eместу попадания за &9[6]&e голода; КД45 с.'
+    desc_level_2: '&f◆ &eShift + ПКМ меняет бой/путешествие; переход к\n&eместу попадания за &9[5]&e голода; КД40 с.'
+    desc_level_3: '&f◆ &eShift + ПКМ меняет бой/путешествие; переход к\n&eместу попадания за &9[4]&e голода; КД35 с.'
+    actionbar_cooldown: "&eСтрела путешествия&7: подождите {seconds} с."
+    actionbar_hunger: "&cДля этой способности не хватает сытости."
+    actionbar_unsafe: "&cБезопасное место не найдено."
+    actionbar_failed: "&cНе удалось завершить перемещение."
+    actionbar_travel_mode: "&bСтрела путешествия: режим перемещения. Выстрелите для перехода."
+    actionbar_combat_mode: "&aСтрела путешествия: боевой режим."
+    actionbar_draw: "&eДля перемещения сильнее натяните лук."
+    actionbar_arrived: "&bВы достигли места попадания стрелы."
+
+  theosis:grapple_bolt:
+    name: "Болт-крюк"
+    desc_level_1: '&f◆ &eВыстрелите в блок, удерживая Shift, чтобы\n&eпритянуться к нему; дальность &9[20]&e блоков.'
+    desc_level_2: '&f◆ &eВыстрелите в блок, удерживая Shift, чтобы\n&eпритянуться к нему; дальность &9[28]&e блоков.'
+    desc_level_3: '&f◆ &eВыстрелите в блок, удерживая Shift, чтобы\n&eпритянуться к нему; дальность &9[36]&e блоков.'
+    actionbar_cooldown: "&eБолт-крюк&7: подождите {seconds} с."
+    actionbar_hunger: "&cДля этой способности не хватает сытости."
+    actionbar_unsafe: "&cБезопасное место не найдено."
+    actionbar_failed: "&cНе удалось завершить перемещение."
+    actionbar_proc: "&bКрюк тянет вас к месту попадания!"
+
+  theosis:survey_bolt:
+    name: "Разведывательный болт"
+    desc_level_1: '&f◆ &eПри попадании подсвечивает монстров в радиусе\n&e&9[6]&e блоков на &9[5]&e с.'
+    desc_level_2: '&f◆ &eПри попадании подсвечивает монстров в радиусе\n&e&9[8]&e блоков на &9[7]&e с.'
+    desc_level_3: '&f◆ &eПри попадании подсвечивает монстров в радиусе\n&e&9[10]&e блоков на &9[9]&e с.'
+    actionbar_cooldown: "&eРазведывательный болт&7: подождите {seconds} с."
+    actionbar_hunger: "&cДля этой способности не хватает сытости."
+    actionbar_unsafe: "&cБезопасное место не найдено."
+    actionbar_failed: "&cНе удалось завершить перемещение."
+
+  theosis:recall_bolt:
+    name: "Спасательный болт"
+    desc_level_1: '&f◆ &eВыстрелите в своего приручённого питомца,\n&eчтобы вернуть его к себе; КД45 с.'
+    actionbar_cooldown: "&eСпасательный болт&7: подождите {seconds} с."
+    actionbar_hunger: "&cДля этой способности не хватает сытости."
+    actionbar_unsafe: "&cБезопасное место не найдено."
+    actionbar_failed: "&cНе удалось завершить перемещение."
+    actionbar_proc: "&aВаш питомец вернулся к вам."
+
+  theosis:snare_bolt:
+    name: "Сковывающий болт"
+    desc_level_1: '&f◆ &eПопадания замедляют врага на &9[2]&e с и\n&eослабляют его.'
+    desc_level_2: '&f◆ &eПопадания замедляют врага на &9[3]&e с и\n&eослабляют его.'
+    desc_level_3: '&f◆ &eПопадания замедляют врага на &9[4]&e с и\n&eослабляют его.'
+    actionbar_cooldown: "&eСковывающий болт&7: подождите {seconds} с."
+    actionbar_hunger: "&cДля этой способности не хватает сытости."
+    actionbar_unsafe: "&cБезопасное место не найдено."
+    actionbar_failed: "&cНе удалось завершить перемещение."
+
+  theosis:shrapnel_bolt:
+    name: "Осколочный болт"
+    desc_level_1: '&f◆ &e&9[15%]&e шанс нанести &9[2]&e урона соседним врагам\n&eбез разрушения блоков.'
+    desc_level_2: '&f◆ &e&9[20%]&e шанс нанести &9[3]&e урона соседним врагам\n&eбез разрушения блоков.'
+    desc_level_3: '&f◆ &e&9[25%]&e шанс нанести &9[4]&e урона соседним врагам\n&eбез разрушения блоков.'
+    actionbar_cooldown: "&eОсколочный болт&7: подождите {seconds} с."
+    actionbar_hunger: "&cДля этой способности не хватает сытости."
+    actionbar_unsafe: "&cБезопасное место не найдено."
+    actionbar_failed: "&cНе удалось завершить перемещение."
+
+  theosis:safe_landing:
+    name: "Безопасное приземление"
+    desc_level_1: '&f◆ &eПри падении с поднятым щитом урон снижается\n&eна &9[40%]&e; КД20 с.'
+    desc_level_2: '&f◆ &eПри падении с поднятым щитом урон снижается\n&eна &9[65%]&e; КД20 с.'
+    desc_level_3: '&f◆ &eПри падении с поднятым щитом урон снижается\n&eна &9[100%]&e; КД20 с.'
+    actionbar_cooldown: "&eБезопасное приземление&7: подождите {seconds} с."
+    actionbar_hunger: "&cДля этой способности не хватает сытости."
+    actionbar_unsafe: "&cБезопасное место не найдено."
+    actionbar_failed: "&cНе удалось завершить перемещение."
+
+  theosis:purifying_guard:
+    name: "Очищающая защита"
+    desc_level_1: '&f◆ &eБлокирование удара снимает один отрицательный\n&eэффект; КД20 с.'
+    desc_level_2: '&f◆ &eБлокирование удара снимает один отрицательный\n&eэффект; КД15 с.'
+    desc_level_3: '&f◆ &eБлокирование удара снимает один отрицательный\n&eэффект; КД10 с.'
+    actionbar_cooldown: "&eОчищающая защита&7: подождите {seconds} с."
+    actionbar_hunger: "&cДля этой способности не хватает сытости."
+    actionbar_unsafe: "&cБезопасное место не найдено."
+    actionbar_failed: "&cНе удалось завершить перемещение."
+    actionbar_proc: "&aВаш щит снял отрицательный эффект."
+
+  theosis:provision_guard:
+    name: "Питающая защита"
+    desc_level_1: '&f◆ &eБлокирование удара восстанавливает &9[1]&e\n&eголода; КД12 с.'
+    desc_level_2: '&f◆ &eБлокирование удара восстанавливает &9[2]&e\n&eголода; КД12 с.'
+    desc_level_3: '&f◆ &eБлокирование удара восстанавливает &9[3]&e\n&eголода; КД12 с.'
+    actionbar_cooldown: "&eПитающая защита&7: подождите {seconds} с."
+    actionbar_hunger: "&cДля этой способности не хватает сытости."
+    actionbar_unsafe: "&cБезопасное место не найдено."
+    actionbar_failed: "&cНе удалось завершить перемещение."
+
+  theosis:repulsion_guard:
+    name: "Отталкивающая защита"
+    desc_level_1: '&f◆ &eБлокирование с Shift отталкивает и ослабляет\n&eатакующего; КД10 с.'
+    desc_level_2: '&f◆ &eБлокирование с Shift отталкивает и ослабляет\n&eатакующего; КД10 с.'
+    desc_level_3: '&f◆ &eБлокирование с Shift отталкивает и ослабляет\n&eатакующего; КД10 с.'
+    actionbar_cooldown: "&eОтталкивающая защита&7: подождите {seconds} с."
+    actionbar_hunger: "&cДля этой способности не хватает сытости."
+    actionbar_unsafe: "&cБезопасное место не найдено."
+    actionbar_failed: "&cНе удалось завершить перемещение."
+
+  theosis:shelter_dome:
+    name: "Убежище хранителя"
+    desc_level_1: '&f◆ &eShift + ПКМ: убежище на &9[6]&e с лечит, тушит\n&eогонь и останавливает снаряды монстров; стоит\n&e&9[4]&e голода.'
+    actionbar_cooldown: "&eУбежище хранителя&7: подождите {seconds} с."
+    actionbar_hunger: "&cДля этой способности не хватает сытости."
+    actionbar_unsafe: "&cБезопасное место не найдено."
+    actionbar_failed: "&cНе удалось завершить перемещение."
+    actionbar_proc: "&bУбежище активно: защищает вас и питомцев на 6 с."
+
+  #Вы можете использовать \n для создания переноса строки.
+  #пример: '&f◆ &eHunter''s Feast; the prey may drop extra loot. \n&9Looting
+  #improves the result.'
+
+  theosis:lava_walk:
+    desc_level_1: "&f◆ &eLava Walk &cI&c: &eходьба по небольшой площади лавы.&e"
+    desc_level_2: "&f◆ &eLava Walk &cII&c: &eходьба по средней площади лавы.&e"
+    desc_level_3: "&f◆ &eLava Walk &cIII&c: &eходьба по большой площади лавы.&e"
+
+  theosis:step_high:
+    desc_level_1: '&f◆ &eШаг вверх, поднимайтесь на 1 блок без прыжка.'
+    desc_level_2: '&f◆ &eШаг вверх II - поднимайтесь на 2 блока без прыжка.'
+    desc_level_3: '&f◆ &eШаг вверх III - поднимайтесь на 3 блока без прыжка.'
+    desc_level_4: '&f◆ &eШаг вверх IV - поднимайтесь на 4 блока без прыжка.'
+    desc_level_5: '&f◆ &eШаг вверх V - поднимайтесь на 5 блоков без прыжка.'
+
+  theosis:torch_placer:
+    desc_level_1: "&f◆ &eРазмещает факелы &7Расход прочности: %s"
+
+  theosis:aqua_gills:
+    desc_level_1: "&f◆ &eВодное дыхание &cI.&c"
+    desc_level_2: "&f◆ &eВодное дыхание &cII.&c"
+    desc_level_3: "&f◆ &eВодное дыхание &cIII.&c"
+
+  theosis:area_miner:
+    desc_combo: "&f◆ &eРаскопки: (&9{width}×{depth}&e) (&7SHIFT=&f1×1&e)"
+
+  theosis:auto_feed:
+    desc_level_1: "&f◆ &eАвто-кормление при достижении 4 единиц сытости."
+
+  theosis:chest_elytra:
+    desc_level_1: "&f◆ &eПланирование как на Элитрах &7(без самих Элитр)"
+
+  theosis:nightwatch:
+    desc_level_1: "&f◆ &eДает ночное зрение, пока предмет надет."
+
+  theosis:berserker_haste:
+    desc_level_1: "&f◆ &eЛегкая ярость: &fСпешка I + Сила I &c(4с, КД 12с)"
+    desc_level_2: "&f◆ &eЯрость берсерка: &fСпешка II + Сила II &c(4с, КД 10с)"
+    desc_level_3: "&f◆ &eМакс. ярость: &fСпешка III + Сила III &c(4с, КД 8с)"
+
+  theosis:enemy_sense:
+    desc_level_1: "&f◆ &eПрисядьте на &f3с&e, чтобы подсветить врагов на &f5с&e. &7КД: &f3с"
+
+  theosis:flight_boots:
+    desc_level_1: "&f◆ &eПозволяет летать, но расходует голод."
+
+  theosis:thorns_lite:
+    desc_level_1: "&f◆ &c10% &eшанс отразить урон"
+    desc_level_2: "&f◆ &c15% &eшанс отразить урон."
+    desc_level_3: "&f◆ &c20% &eшанс отразить урон."
+
+  theosis:soulbound:
+    desc_level_1: "&f◆ &dВозвращается к вам после смерти."
+
+  theosis:flame_touch:
+    desc_level_1: "&f◆ &eПереплавляет блоки при добыче."
+
+  theosis:fire_ward:
+    desc_level_1: "&f◆ &eЗащита от огня &cI"
+    desc_level_2: "&f◆ &eЗащита от огня &cII"
+    desc_level_3: "&f◆ &eЗащита от огня &cIII"
+
+  theosis:clarity:
+    desc_level_1: "&f◆ &eАннулирование урона &cI"
+    desc_level_2: "&f◆ &eАннулирование урона &cII"
+    desc_level_3: "&f◆ &eАннулирование урона &cIII"
+
+  theosis:crit_axe:
+    desc_level_1: "&f◆ &9[%crit_chance%%] &eшанс нанести &c[%crit_damage%%] &eкрит. урона"
+    desc_level_2: "&f◆ &9[%crit_chance%%] &eшанс нанести &c[%crit_damage%%] &eкрит. урона"
+    desc_level_3: "&f◆ &9[%crit_chance%%] &eшанс нанести &c[%crit_damage%%] &eкрит. урона"
+
+  theosis:max_health:
+    desc_level_1: "&f◆ &c+%extra_hearts% ❤ &eмакс. здоровья, пока предмет надет."
+    desc_level_2: "&f◆ &c+%extra_hearts% ❤ &eмакс. здоровья, пока предмет надет."
+    desc_level_3: "&f◆ &c+%extra_hearts% ❤ &eмакс. здоровья, пока предмет надет."
+
+  theosis:harvester:
+    desc_level_1: "&f◆ &aСобирает урожай в области &7(R%radius%, макс %max_break%)&a и пересаживает."
+    desc_level_2: "&f◆ &aСобирает урожай в большой области &7(R%radius%, макс %max_break%)&a и пересаживает."
+
+  theosis:lifesteal_absorb:
+    desc_level_1: "&f◆ &c%proc_chance%% &eшанс украсть &a%steal_pct%% &eздоровья."
+    desc_level_2: "&f◆ &c%proc_chance%% &eшанс украсть &a%steal_pct%% &eздоровья."
+    desc_level_3: "&f◆ &c%proc_chance%% &eшанс украсть &a%steal_pct%% &eздоровья."
+    desc_level_4: "&f◆ &c%proc_chance%% &eшанс украсть &a%steal_pct%% &eздоровья."
+
+  theosis:lightweight:
+    desc_level_1: "&f◆ &2%chance%% &eшанс не потратить прочность при использовании."
+    desc_level_2: "&f◆ &2%chance%% &eшанс не потратить прочность при использовании."
+
+  theosis:reflect_projectiles:
+    desc_level_1: "&f◆ &eБлокирование позволяет &bотражать снаряды&e."
+
+  theosis:shield_bash:
+    desc_level_1: "&f◆ &eБегите и используйте щит, чтобы &6отталкивать врагов&e."
+
+  theosis:ward_aura:
+    desc_level_1: "&f◆ &eПока вы блокируете, союзники рядом получают &9Сопротивление&e."
+
+  theosis:fortress_step:
+    desc_level_1: "&f◆ &eВо время блока вы получаете &bсопротивление отбрасыванию&e."
+    desc_level_2: "&f◆ &eВо время блока: &bсильное сопр. отбрасыванию &eи немного скорости."
+
+  theosis:last_stand:
+    desc_level_1: "&f◆ &eБлок сильного/летального удара может активировать &cПоследний Рубеж&e."
+    desc_level_2: "&f◆ &e&cПоследний Рубеж &eэффективнее, с большим снижением урона."
+
+  theosis:pegasus_mount:
+    desc_level_1: "&f◆ &dПозволяет маунтам летать, но полет истощает здоровье лошади."
+
+  pegasus_mount:
+    runtime:
+      exhausted_min_health: '&cПегас истощен &7(мин. здоровье)'
+      recharging: '&7Пегас восстанавливается: &e%.1fс'
+      too_tired: '&cЛошадь слишком устала для полета'
+      double_jump_prompt: '&dПегас &7• прыгните еще раз для активации'
+      activated: '&dПегас активирован &7✦'
+      deactivated: '&7Пегас деактивирован'
+      deactivated_exhausted: '&cПегас деактивирован &7• истощен'
+
+      fatigue_low: '&aУсталость низкая'
+      fatigue_medium: '&eУсталость средняя'
+      fatigue_high: '&6Усталость высокая'
+      fatigue_critical: '&cУсталость критическая'
+
+      fatigue_bar: '&dПегас &7• %s &c(-%s❤)'
+
+  theosis:war_mount:
+    desc_level_1: "&f◆ &eУлучшает скорость/защиту лошади и силу всадника."
+
+  theosis:endurance_mount:
+    desc_level_1: "&f◆ &aДоп. здоровье, регенерация и защита от падения для маунта."
+
+  theosis:gravity_crush:
+    desc_level_1: "&f◆ &eКрит. удары булавой создают &5гравитационный импульс&e, притягивающий врагов."
+
+  theosis:guard_break:
+    desc_level_1: "&f◆ &eЗаряженные удары булавой накладывают &cЗамедление&e и &9Слабость&e."
+
+  theosis:overheat:
+    desc_level_1: "&f◆ &eБыстрые удары булавой накапливают тепло и дают &6временный рывок&e."
+
+  theosis:hemorrhage:
+    desc_level_1: "&f◆ &cСтрелы имеют %chance%% шанс наложить &4Кровотечение I&e."
+    desc_level_2: "&f◆ &cСтрелы имеют %chance%% шанс наложить &4Кровотечение II&e."
+    desc_level_3: "&f◆ &cСтрелы имеют %chance%% шанс наложить &4Кровотечение III&e."
+
+  theosis:splitshot:
+    desc_level_1: "&f◆ &eВыпускает &62 стрелы&e веером."
+    desc_level_2: "&f◆ &eВыпускает &63 стрелы&e веером."
+    desc_level_3: "&f◆ &eВыпускает &64 стрелы&e веером."
+
+  theosis:quiver_mastery:
+    desc_level_1: "&f◆ &c%chance%% шанс&e не потратить любую стрелу."
+    desc_level_2: "&f◆ &c%chance%% шанс&e не потратить любую стрелу."
+    desc_level_3: "&f◆ &c%chance%% шанс&e не потратить любую стрелу."
+
+  theosis:hunters_aim:
+    desc_level_1: "&f◆ &eДает &2мистическое выслеживание мобов. &cI"
+    desc_level_2: "&f◆ &eДает &9мистическое выслеживание мобов. &cII"
+
+  theosis:hawk_eye:
+    desc_level_1: "&f◆ &eГлаз ястреба: &eувеличенный обзор &cI"
+    desc_level_2: "&f◆ &eГлаз ястреба: &eувеличенный обзор &cII"
+
+  theosis:swiftstep:
+    desc_level_1: "&f◆ &bСкорость %speed_level% &eпока предмет надет."
+    desc_level_2: "&f◆ &bСкорость %speed_level% &eпока предмет надет."
+
+  theosis:paso_agil:
+    desc_level_1: "&f◆ &eЛегкая походка: бег расходует меньше голода."
+
+  theosis:enderblock:
+    desc_level_1: "&f◆ &9Жемчуг Края больше не наносит урон."
+
+  theosis:light_step:
+    desc_level_1: "&f◆ &eТихий шаг. &c(Скрытность I)"
+    desc_level_2: "&f◆ &eПочти бесшумный шаг. &c(Скрытность II)"
+    desc_level_3: "&f◆ &eСкалка слышит вас меньше. &c(Скрытность III)"
+
+  theosis:herbal_ward:
+    desc_level_1: "&f◆ &eРастения больше не ранят вас &2(ягоды, кактусы, рыхлый снег)."
+
+  theosis:swift_leggings:
+    desc_level_1: "&f◆ &b+5% скорости &7вне боя."
+
+  theosis:sturdy_grip:
+    desc_level_1: "&f◆ &eИнструменты теряют на &a5% меньше &7прочности."
+
+  theosis:campfire_spirit:
+    desc_level_1: "&f◆ &eЛегкая регенерация &6у костра. &8(Суммируется с другими частями)"
+
+  theosis:iron_stomach:
+    desc_level_1: "&f◆ &eЕда восстанавливает &2+0.5 &6насыщения."
+
+  theosis:quick_hands:
+    desc_level_1: "&f◆ &b+10% скорости &7при копании мягких блоков лопатой."
+
+  theosis:spring_legs:
+    desc_level_1: "&f◆ &eДвойной прыжок &7(с перезарядкой)."
+
+  theosis:second_wind:
+    desc_level_1: "&f◆ &eПри низком HP дает &bСкорость&6 и &cРегенерацию&6. &7(Долгое КД)"
+
+  theosis:guard_breaker:
+    desc_level_1: "&f◆ &eВаши удары могут &4пробить защиту&c щитов."
+
+  theosis:vacuum_pop:
+    desc_level_1: "&f◆ &eШанс: &f20% притянуть дроп и опыт. &7КД: 1с"
+
+  theosis:rhythm_miner:
+    desc_level_1: "&f◆ &eПри быстрой добыче блоков дает &6Спешку I &fна 2с. &7КД: 12с"
+    actionbar_proc: "&6Rhythm Miner &7активирован"
+
+  theosis:prospector_ping:
+    desc_level_1: "&f◆ &eОбнаруживает руды при добыче камня, сланца или незерака."
+    actionbar_proc: "&eProspector Ping &7обнаружил руду поблизости"
+
+  theosis:dura_negate:
+    desc_level_1: "&f◆ &9Работает для всех блоков."
+
+  theosis:tool_affinity:
+    desc_level_1: '&f◆ &eДаёт тематический бонус в зависимости от инструмента.'
+    actionbar_axe: '&aМастерство инструмента: {rewards}'
+    actionbar_sapling: '+1 саженец'
+    actionbar_apple: '+1 яблоко'
+    actionbar_shovel: '&eМастерство инструмента: +1 кремень'
+    actionbar_pickaxe: '&bМастерство инструмента: {rewards}'
+
+  theosis:knockback_brace:
+    desc_level_1: "&f◆ &eУвеличивает ваше сопротивление отбрасыванию."
+
+  theosis:threat_ping:
+    desc_level_1: "&f◆ &eПри получении урона подсвечивает атакующего. &cКД: 8с"
+    actionbar_proc: "&eThreat Ping &7отметил атакующего"
+
+  theosis:harpoon_tug:
+    desc_level_1: "&f◆ &eУдар трезубцем может притянуть цель и наложить &6Замедление I. &9КД: 7с"
+
+  theosis:glancing_plate:
+    desc_level_1: "&f◆ &eПервый снаряд наносит меньше урона. &7КД: 10с"
+
+  theosis:adrenal_pulse:
+    desc_level_1: "&f◆ &eПри низком HP дает &bСкорость I &fна 2с. &7КД: 35с"
+    actionbar_proc: "&cАдреналиновый импульс &7дал вам ускорение"
+
+  theosis:cleanse_stitch:
+    desc_level_1: "&f◆ &eПериодически снимает 1 негативный эффект. &7КД: 30с"
+
+  theosis:mark_prey:
+    desc_level_1: "&f◆ &eУдар трезубцем может наложить на цель &6Свечение. &7КД: 10с"
+
+  theosis:wet_work:
+    desc_level_1: "&f◆ &dВ воде или под дождем удары трезубцем дают &bСкорость I&f. &7КД: 8с"
+    actionbar_proc: "&bWet Work &7активирован"
+
+  theosis:tendon_nick:
+    desc_level_1: "&f◆ &eУдар трезубцем может наложить &aСлабость I &bна цель. &7КД: 8с"
+    actionbar_proc: "&eЦель &7ослаблена"
+
+  theosis:ricochet_recall:
+    desc_level_1: "&f◆ &eТрезубец легче вернуть при срабатывании. &7КД: 12с"
+    actionbar_proc: "&dRicochet Recall &7активирован"
+
+  theosis:lunge:
+    desc_level_1: "&f◆ &2Удар во время бега совершает выпад с рывком и доп. уроном. &7КД: 6с"
+    actionbar_proc: "&eLunge &7активирован"
+
+  theosis:keep_distance:
+    desc_level_1: "&f◆ &eЕсли враг слишком близко, удар оттолкнет его. &7КД: 3с"
+    actionbar_proc: "&eВы &7оттолкнули цель"
+
+  theosis:precise_strike:
+    desc_level_1: "&f◆ &eЕсли вы недавно не получали урон, следующий выпад нанесет доп. урон. &7КД: 8с"
+    actionbar_proc: "&eВы нанесли больше &7урона"
+
+  theosis:piercing_tip:
+    desc_level_1: "&f◆ &eКаждые несколько ударов трезубцем лучше пробивают броню."
+
+  theosis:parry_step:
+    desc_level_1: "&f◆ &eЕсли вас ударят сразу после вашей атаки, вы снизите урон и оттолкнете врага."
+
+  theosis:impale:
+    desc_level_1: "&f◆ &cВызывает легкое кровотечение на несколько секунд."
+
+  theosis:aqua_lance:
+    desc_level_1: "&f◆ &9В воде или под дождем удары трезубцем наносят доп. урон."
+
+  theosis:hunters_mark:
+    desc_level_1: "&f◆ &eПир охотника: добыча с жертвы может быть увеличена. &9Удача улучшает результат."
+
+  theosis:reel_step:
+    desc_level_1: "&f◆ &eИногда выпад меняет дистанцию, притягивая цель и заставляя вас отступить."
+
+  theosis:anchor_plate:
+    desc_level_1: "&f◆ &6Снаряды шалкера больше не могут заставить вас левитировать."
+
+  theosis:seismic_slam:
+    desc_level_1: "&f◆ &eПри сокрушительном ударе булавой создается ударная волна."
+
+  theosis:abyssal_ward:
+    desc_level_1: "&f◆ &6Стражи больше не пугают вас, а эффект усталости от добычи рассеивается."
+
+  theosis:pressure_point:
+    desc_level_1: "&f◆ &eВыпады трезубцем наносят больше урона по уже ослабленным целям."
+
+  theosis:windstep:
+    desc_level_1: "&f◆ &eСмягчает падение и дает импульс скорости."
+
+  theosis:deep_focus:
+    desc_level_1: "&f◆ &9Глубокая тьма рассеивается, а урон от Вардена снижается."
+
+  theosis:martial_whirlwind:
+    name: "&cБоевой вихрь"
+    desc_level_1: "&f◆ &9Shift + ПКМ, наносит урон по площади."
+    actionbar_cooldown: "&cБоевой вихрь &7КД: &f{seconds}сек"
+
+  theosis:warsteed:
+    name: "&bБоевой конь"
+    desc_level_1: "&f◆ &9Shift + ПКМ, призывает союзника в бой."
+    entity_name: "&bБоевой конь"
+    actionbar_cooldown: "&cБоевой конь &7КД: &f{seconds}сек"
+
+  heosis:storm_javelin:
+    desc_level_1: "&f◆ &eShift + ПКМ выпускает электрический разряд &c(I)"
+    desc_level_2: "&f◆ &eShift + ПКМ выпускает электрический разряд &c(II)"
+    desc_level_3: "&f◆ &9Shift + ПКМ выпускает электрический разряд &c(III)"
+    actionbar_cooldown: "&cГрозовое копьё &7КД: &f{seconds}с"
+
+  theosis:piercing_gale:
+    name: "&aПронзающий шквал"
+    desc_level_1: "&f◆ &eЛезвие рассекает воздух и поражает врагов, прячущихся позади."
+    desc_level_2: "&f◆ &eЛезвие рассекает воздух с большей силой, поражая врагов позади цели."
+    desc_level_3: "&f◆ &9Лезвие рассекает воздух и карает тех, кто пытается скрыться позади."
+
+  theosis:thunder_charge:
+    name: "&bГрозовой заряд"
+    desc_level_1: "&f◆ &eКаждые 5 атак ваше копье выпускает молнию с электрическим уроном по площади."
+    desc_level_2: "&f◆ &eКаждые 5 атак гром бьет сильнее и по большей площади."
+    desc_level_3: "&f◆ &9Гром проходит сквозь ваше оружие, карая врагов яростью небес."
+    actionbar_charge: "&eГрозовой заряд &7{current}/{required}"
+
+  theosis:foragers_spear:
+    name: "&aКопье собирателя"
+    desc_level_1: "&f◆ &eПри охоте может удвоить еду и обычный дроп &c(I)"
+    desc_level_2: "&f◆ &eПри охоте шанс удвоить обычный дроп выше &c(II)"
+    desc_level_3: "&f◆ &9При охоте шанс удвоить обычный дроп выше &c(III)"
+
+  theosis:guardian_thrust:
+    name: "&bЗащитный выпад"
+    desc_level_1: "&f◆ &eПри получении урона создает барьер из частиц и отбрасывает врагов &c(I)"
+    desc_level_2: "&f◆ &eБарьер поглощает больше урона и отбрасывает с большей силой &c(II)"
+    desc_level_3: "&f◆ &9Крепкое копье может защитить не хуже щита &c(III)"
+
+  theosis:beacon_point:
+    name: "&dТочка возврата"
+    desc_level_1: "&f◆ &eShift + ПКМ сохраняет временную точку. Используйте снова, чтобы вернуться &c(I)"
+    desc_level_2: "&f◆ &9Shift + ПКМ сохраняет временную точку. Используйте снова, чтобы вернуться &c(II)"
+    actionbar_cooldown: "&dТочка возврата &7КД: &f{seconds}сек"
+    actionbar_set: "&dТочка возврата &7сохранена на &f{seconds}сек&7."
+    actionbar_returned: "&dТочка возврата &7вернула вас к метке."
+    actionbar_expired: "&cВремя действия Точки возврата истекло."
+    actionbar_wrong_world: "&cВы не можете перемещаться между мирами."
+    actionbar_combat_blocked: "&cНельзя использовать Точку возврата в бою."
+
+  theosis:cave_light:
+    name: "&eПещерный свет"
+    desc_level_1: "&f◆ &eКогда вы держите копье в руке, оно мягко освещает тьму."
+
+  theosis:voidpiercer:
+    name: "&5Пронзатель Бездны"
+    desc_level_1: "&f◆ &9В Энде: Shift + ЛКМ бросает жемчуг Края"
+    actionbar_cooldown: "&5Пронзатель Бездны &7КД: &f{seconds}сек"
+    actionbar_end_only: "&cПронзатель Бездны реагирует только в Энде."
+    actionbar_dash: "&5Пронзатель Бездны &7открыл невидимую тропу."
+
+  theosis:reapers_harvest:
+    desc_level_1: "&f◆ &eКритические удары могут приносить &aдополнительный опыт &e(I)"
+    desc_level_2: "&f◆ &eКритические удары могут приносить &aдополнительный опыт &e(II)"
+    desc_level_3: "&f◆ &eКритические удары могут приносить &aдополнительный опыт &e(III)"
+
+  theosis:executors_bounty:
+    desc_level_1: "&f◆ &6Если вы начнете бой против нетронутой цели, вы можете удвоить добычу с нее."
+
+  theosis:blind_spot:
+    desc_level_1: "&f◆ &eАтака со спины может наложить &7Слепоту &eи &8Тошноту&e."
+
+  theosis:venomous_veins:
+    desc_level_1: "&f◆ &2Ваши рубящие удары могут отравить и замедлить цель &e(I)"
+    desc_level_2: "&f◆ &2Ваши рубящие удары могут отравить и замедлить цель &e(II)"
+    desc_level_3: "&f◆ &2Ваши рубящие удары могут отравить и замедлить цель &e(III)"
+
+  theosis:shattering_thrust:
+    desc_level_1: "&f◆ &eВаши колющие удары наносят больше урона бронированным врагам &c(I)"
+    desc_level_2: "&f◆ &eВаши колющие удары наносят больше урона бронированным врагам &c(II)"
+
+  theosis:echo_strike:
+    desc_level_1: "&f◆ &bВаши удары могут вызвать эхо и повторить половину урона &e(I)"
+    desc_level_2: "&f◆ &bВаши удары могут вызвать эхо и повторить половину урона &e(II)"
+
+  theosis:gravity_well:
+    desc_level_1: "&f◆ &5Каждые несколько ударов вы разрываете своих врагов на части."
+
+  theosis:gale_force:
+    desc_level_1: "&f◆ &fУдерживание левой кнопки мыши вызывает рассекающий порыв ветра &e(I)"
+    desc_level_2: "&f◆ &fУдерживание левой кнопки мыши вызывает рассекающий порыв ветра &e(II)"
+    desc_level_3: "&f◆ &fУдерживание левой кнопки мыши вызывает рассекающий порыв ветра &e(III)"
+    actionbar_cooldown: "&bСила шторма &7Перезарядка: &f{seconds}с"
+
+  theosis:kinetic_parry:
+    desc_level_1: "&f◆ &eЕсли вы контратакуете сразу после получения урона, вы получите скорость и спешку."
+    actionbar_proc: "&aКинетическое парирование &7активировано"
+
+  theosis:void_tether:
+    desc_level_1: "&f◆ &5Shift + ПКМ связывает врагов или притягивает вас к блоку."
+    actionbar_cooldown: "&5Пустотная привязь &7Перезарядка: &f{seconds}с"
+
+
+  # Expansion 200: efectos breves / concise effects
+
+  theosis:path_memory:
+    name: 'Память тропы'
+    desc_level_1: '&f◆ &eShows your last &9[%range%]&e steps. Sneak to\n&erecall your path.'
+    actionbar_proc: '&aActivated.'
+    actionbar_materials: '&cMissing materials.'
+    actionbar_empty: '&7Nothing found.'
+    actionbar_unsafe: '&cUnsafe destination.'
+    actionbar_changed: '&cThe item changed.'
+    actionbar_channel: '&ePreparing...'
+    actionbar_on: '&aMode enabled.'
+    actionbar_off: '&7Mode disabled.'
+    actionbar_hunger: '&cYou need food.'
+    actionbar_cooldown: '&eCD: &c[{seconds}s]'
+    actionbar_data: '&e{value}'
+
+  theosis:collapse_instinct:
+    name: 'Чутьё обвала'
+    desc_level_1: '&f◆ &eWarns of falling blocks and TNT within\n&e&9[%range%]&e blocks.'
+    actionbar_proc: '&cFalling blocks or TNT nearby!'
+    actionbar_materials: '&cMissing materials.'
+    actionbar_empty: '&7Nothing found.'
+    actionbar_unsafe: '&cUnsafe destination.'
+    actionbar_changed: '&cThe item changed.'
+    actionbar_channel: '&ePreparing...'
+    actionbar_on: '&aMode enabled.'
+    actionbar_off: '&7Mode disabled.'
+    actionbar_hunger: '&cYou need food.'
+    actionbar_cooldown: '&eCD: &c[{seconds}s]'
+    actionbar_data: '&e{value}'
+
+  theosis:restful_vigil:
+    name: 'Отдых на страже'
+    desc_level_1: '&f◆ &eПрисядь у кровати на &9[%rest_s%]&eс:\n&eотпугивает фантомов на &9[%protection_s%]&eс.'
+    actionbar_proc: '&aОтдых завершён. Фантомы оставят тебя в покое.'
+    actionbar_materials: '&cMissing materials.'
+    actionbar_empty: '&7Nothing found.'
+    actionbar_unsafe: '&cUnsafe destination.'
+    actionbar_changed: '&cThe item changed.'
+    actionbar_channel: '&ePreparing...'
+    actionbar_on: '&aMode enabled.'
+    actionbar_off: '&7Mode disabled.'
+    actionbar_hunger: '&cYou need food.'
+    actionbar_cooldown: '&eCD: &c[{seconds}s]'
+    actionbar_data: '&e{value}'
+    actionbar_resting: '&eОтдых: &9[{seconds}с]'
+
+  theosis:emergency_stitch:
+    name: 'Аварийный шов'
+    desc_level_1: '&f◆ &eBefore breaking, spends repair materials to\n&erestore &9[%repair%]&e durability.'
+    actionbar_proc: '&aActivated.'
+    actionbar_materials: '&cMissing materials.'
+    actionbar_empty: '&7Nothing found.'
+    actionbar_unsafe: '&cUnsafe destination.'
+    actionbar_changed: '&cThe item changed.'
+    actionbar_channel: '&ePreparing...'
+    actionbar_on: '&aMode enabled.'
+    actionbar_off: '&7Mode disabled.'
+    actionbar_hunger: '&cYou need food.'
+    actionbar_cooldown: '&eCD: &c[{seconds}s]'
+    actionbar_data: '&e{value}'
+
+  theosis:rural_camouflage:
+    name: 'Сельский камуфляж'
+    desc_level_1: '&f◆ &eНе двигайся в приседе &9[%rest_s%]&eс: обычные\n&eмобы игнорируют тебя &9[%duration_s%]&eс до атаки.'
+    actionbar_proc: '&aМаскировка активна. Оставайся в приседе; атака отменит её.'
+    actionbar_materials: '&cMissing materials.'
+    actionbar_empty: '&7Nothing found.'
+    actionbar_unsafe: '&cUnsafe destination.'
+    actionbar_changed: '&cThe item changed.'
+    actionbar_channel: '&ePreparing...'
+    actionbar_on: '&aMode enabled.'
+    actionbar_off: '&7Mode disabled.'
+    actionbar_hunger: '&cYou need food.'
+    actionbar_cooldown: '&eCD: &c[{seconds}s]'
+    actionbar_data: '&e{value}'
+
+  theosis:beekeeper_vest:
+    name: 'Жилет пчеловода'
+    desc_level_1: '&f◆ &eHarvest honey without angering bees.\n&eProtection: &9[%duration_s%]&es.'
+    actionbar_proc: '&aActivated.'
+    actionbar_materials: '&cMissing materials.'
+    actionbar_empty: '&7Nothing found.'
+    actionbar_unsafe: '&cUnsafe destination.'
+    actionbar_changed: '&cThe item changed.'
+    actionbar_channel: '&ePreparing...'
+    actionbar_on: '&aMode enabled.'
+    actionbar_off: '&7Mode disabled.'
+    actionbar_hunger: '&cYou need food.'
+    actionbar_cooldown: '&eCD: &c[{seconds}s]'
+    actionbar_data: '&e{value}'
+
+  theosis:artisans_posture:
+    name: 'Стойка мастера'
+    desc_level_1: '&f◆ &e+&9[%reach%]&e block interaction range while\n&esneaking out of combat.'
+    desc_level_2: '&f◆ &e+&9[%reach%]&e block interaction range while\n&esneaking out of combat.'
+    desc_level_3: '&f◆ &e+&9[%reach%]&e block interaction range while\n&esneaking out of combat.'
+    actionbar_proc: '&aActivated.'
+    actionbar_materials: '&cMissing materials.'
+    actionbar_empty: '&7Nothing found.'
+    actionbar_unsafe: '&cUnsafe destination.'
+    actionbar_changed: '&cThe item changed.'
+    actionbar_channel: '&ePreparing...'
+    actionbar_on: '&aMode enabled.'
+    actionbar_off: '&7Mode disabled.'
+    actionbar_hunger: '&cYou need food.'
+    actionbar_cooldown: '&eCD: &c[{seconds}s]'
+    actionbar_data: '&e{value}'
+
+  theosis:gentle_soil:
+    name: 'Бережная почва'
+    desc_level_1: '&f◆ &eYour footsteps preserve farmland.'
+    actionbar_proc: '&aActivated.'
+    actionbar_materials: '&cMissing materials.'
+    actionbar_empty: '&7Nothing found.'
+    actionbar_unsafe: '&cUnsafe destination.'
+    actionbar_changed: '&cThe item changed.'
+    actionbar_channel: '&ePreparing...'
+    actionbar_on: '&aMode enabled.'
+    actionbar_off: '&7Mode disabled.'
+    actionbar_hunger: '&cYou need food.'
+    actionbar_cooldown: '&eCD: &c[{seconds}s]'
+    actionbar_data: '&e{value}'
+
+  theosis:web_escape:
+    name: 'Выход из паутины'
+    desc_level_1: '&f◆ &eПрисядь, чтобы мгновенно разорвать паутину.\n&eРасходует &c[%durability_cost%]&e прочности.'
+    actionbar_proc: '&aПаутина удалена.'
+    actionbar_materials: '&cMissing materials.'
+    actionbar_empty: '&7Nothing found.'
+    actionbar_unsafe: '&cUnsafe destination.'
+    actionbar_changed: '&cThe item changed.'
+    actionbar_channel: '&ePreparing...'
+    actionbar_on: '&aMode enabled.'
+    actionbar_off: '&7Mode disabled.'
+    actionbar_hunger: '&cYou need food.'
+    actionbar_cooldown: '&eCD: &c[{seconds}s]'
+    actionbar_data: '&e{value}'
+
+  theosis:ice_grip:
+    name: 'Ледоступы'
+    desc_level_1: '&f◆ &eShift + F, пустые руки: сцепление на льду\n&eи снегу. Тормозит при отпускании клавиш.'
+    actionbar_proc: '&aActivated.'
+    actionbar_materials: '&cMissing materials.'
+    actionbar_empty: '&7Nothing found.'
+    actionbar_unsafe: '&cUnsafe destination.'
+    actionbar_changed: '&cThe item changed.'
+    actionbar_channel: '&ePreparing...'
+    actionbar_on: '&aСцепление на льду и снегу включено.'
+    actionbar_off: '&7Сцепление на льду и снегу выключено.'
+    actionbar_hunger: '&cYou need food.'
+    actionbar_cooldown: '&eCD: &c[{seconds}s]'
+    actionbar_data: '&e{value}'
+
+  theosis:trappers_step:
+    name: 'Шаг ловчего'
+    desc_level_1: '&f◆ &eYour steps do not activate pressure plates.'
+    actionbar_proc: '&aActivated.'
+    actionbar_materials: '&cMissing materials.'
+    actionbar_empty: '&7Nothing found.'
+    actionbar_unsafe: '&cUnsafe destination.'
+    actionbar_changed: '&cThe item changed.'
+    actionbar_channel: '&ePreparing...'
+    actionbar_on: '&aMode enabled.'
+    actionbar_off: '&7Mode disabled.'
+    actionbar_hunger: '&cYou need food.'
+    actionbar_cooldown: '&eCD: &c[{seconds}s]'
+    actionbar_data: '&e{value}'
+
+  theosis:last_foothold:
+    name: 'Последняя опора'
+    desc_level_1: '&f◆ &eFalling into the void returns you to safety.\n&eCosts &9[%hunger_cost%]&e hunger. (CD\n&e&c[%cooldown_s%]&es)'
+    actionbar_proc: '&aActivated.'
+    actionbar_materials: '&cMissing materials.'
+    actionbar_empty: '&7Nothing found.'
+    actionbar_unsafe: '&cUnsafe destination.'
+    actionbar_changed: '&cThe item changed.'
+    actionbar_channel: '&ePreparing...'
+    actionbar_on: '&aMode enabled.'
+    actionbar_off: '&7Mode disabled.'
+    actionbar_hunger: '&cYou need food.'
+    actionbar_cooldown: '&eCD: &c[{seconds}s]'
+    actionbar_data: '&e{value}'
+
+  theosis:precise_chisel:
+    name: 'Точное зубило'
+    desc_level_1: '&f◆ &eShift + клик: перебирает варианты декора.\n&eЦикл всегда возвращает исходный блок.'
+    actionbar_proc: '&aActivated.'
+    actionbar_materials: '&cMissing materials.'
+    actionbar_empty: '&7Nothing found.'
+    actionbar_unsafe: '&cUnsafe destination.'
+    actionbar_changed: '&cThe item changed.'
+    actionbar_channel: '&ePreparing...'
+    actionbar_on: '&aMode enabled.'
+    actionbar_off: '&7Mode disabled.'
+    actionbar_hunger: '&cYou need food.'
+    actionbar_cooldown: '&eCD: &c[{seconds}s]'
+    actionbar_data: '&e{value}'
+
+  theosis:leak_seal:
+    name: 'Заделка течи'
+    desc_level_1: '&f◆ &eSeals water and lava leaks using up to\n&e&9[%max_blocks%]&e inventory blocks.'
+    actionbar_proc: '&aActivated.'
+    actionbar_materials: '&cMissing materials.'
+    actionbar_empty: '&7Nothing found.'
+    actionbar_unsafe: '&cUnsafe destination.'
+    actionbar_changed: '&cThe item changed.'
+    actionbar_channel: '&ePreparing...'
+    actionbar_on: '&aMode enabled.'
+    actionbar_off: '&7Mode disabled.'
+    actionbar_hunger: '&cYou need food.'
+    actionbar_cooldown: '&eCD: &c[{seconds}s]'
+    actionbar_data: '&e{value}'
+
+  theosis:cavity_echo:
+    name: 'Эхо пустот'
+    desc_level_1: '&f◆ &eShift + left click: detects cavities and lava\n&e&9[%range%]&e blocks behind a wall.'
+    actionbar_proc: '&aActivated.'
+    actionbar_materials: '&cMissing materials.'
+    actionbar_empty: '&7Nothing found.'
+    actionbar_unsafe: '&cUnsafe destination.'
+    actionbar_changed: '&cThe item changed.'
+    actionbar_channel: '&ePreparing...'
+    actionbar_on: '&aMode enabled.'
+    actionbar_off: '&7Mode disabled.'
+    actionbar_hunger: '&cYou need food.'
+    actionbar_cooldown: '&eCD: &c[{seconds}s]'
+    actionbar_data: '&e{value}: &9[{number}]&e blocks away.'
+
+  theosis:directed_felling:
+    name: 'Направленная рубка'
+    desc_level_1: '&f◆ &eРубит до &9[%max_blocks%]&e брёвен живого дерева.\n&eНе рубит брёвна рядом с постройками.'
+    desc_level_2: '&f◆ &eРубит до &9[%max_blocks%]&e брёвен живого дерева.\n&eНе рубит брёвна рядом с постройками.'
+    desc_level_3: '&f◆ &eРубит до &9[%max_blocks%]&e брёвен живого дерева.\n&eНе рубит брёвна рядом с постройками.'
+    actionbar_proc: '&aActivated.'
+    actionbar_materials: '&cMissing materials.'
+    actionbar_empty: '&7Nothing found.'
+    actionbar_unsafe: '&cUnsafe destination.'
+    actionbar_changed: '&cThe item changed.'
+    actionbar_channel: '&ePreparing...'
+    actionbar_on: '&aMode enabled.'
+    actionbar_off: '&7Mode disabled.'
+    actionbar_hunger: '&cYou need food.'
+    actionbar_cooldown: '&eCD: &c[{seconds}s]'
+    actionbar_data: '&e{value}'
+
+  theosis:forest_renewal:
+    name: 'Лесовосстановление'
+    desc_level_1: '&f◆ &eAfter felling, replants using a matching\n&einventory sapling.'
+    actionbar_proc: '&aActivated.'
+    actionbar_materials: '&cMissing materials.'
+    actionbar_empty: '&7Nothing found.'
+    actionbar_unsafe: '&cUnsafe destination.'
+    actionbar_changed: '&cThe item changed.'
+    actionbar_channel: '&ePreparing...'
+    actionbar_on: '&aMode enabled.'
+    actionbar_off: '&7Mode disabled.'
+    actionbar_hunger: '&cYou need food.'
+    actionbar_cooldown: '&eCD: &c[{seconds}s]'
+    actionbar_data: '&e{value}'
+
+  theosis:builders_debarking:
+    name: 'Снятие коры'
+    desc_level_1: '&f◆ &eShift + right click: strips up to\n&e&9[%max_blocks%]&e connected logs.'
+    actionbar_proc: '&aActivated.'
+    actionbar_materials: '&cMissing materials.'
+    actionbar_empty: '&7Nothing found.'
+    actionbar_unsafe: '&cUnsafe destination.'
+    actionbar_changed: '&cThe item changed.'
+    actionbar_channel: '&ePreparing...'
+    actionbar_on: '&aMode enabled.'
+    actionbar_off: '&7Mode disabled.'
+    actionbar_hunger: '&cYou need food.'
+    actionbar_cooldown: '&eCD: &c[{seconds}s]'
+    actionbar_data: '&e{value}'
+
+  theosis:travelers_path:
+    name: 'Путь странника'
+    desc_level_1: '&f◆ &eShift + right click: makes a path up to\n&e&9[%max_blocks%]&e blocks long.'
+    actionbar_proc: '&aActivated.'
+    actionbar_materials: '&cMissing materials.'
+    actionbar_empty: '&7Nothing found.'
+    actionbar_unsafe: '&cUnsafe destination.'
+    actionbar_changed: '&cThe item changed.'
+    actionbar_channel: '&ePreparing...'
+    actionbar_on: '&aMode enabled.'
+    actionbar_off: '&7Mode disabled.'
+    actionbar_hunger: '&cYou need food.'
+    actionbar_cooldown: '&eCD: &c[{seconds}s]'
+    actionbar_data: '&e{value}'
+
+  theosis:crop_transplant:
+    name: 'Пересадка'
+    desc_level_1: '&f◆ &eShift + left click: moves a crop while\n&ekeeping its growth.'
+    actionbar_proc: '&aActivated.'
+    actionbar_materials: '&cMissing materials.'
+    actionbar_empty: '&7Nothing found.'
+    actionbar_unsafe: '&cUnsafe destination.'
+    actionbar_changed: '&cThe item changed.'
+    actionbar_channel: '&ePreparing...'
+    actionbar_on: '&aMode enabled.'
+    actionbar_off: '&7Mode disabled.'
+    actionbar_hunger: '&cYou need food.'
+    actionbar_cooldown: '&eCD: &c[{seconds}s]'
+    actionbar_data: '&e{value}'
+
+  theosis:ruins_probe:
+    name: 'Поиск руин'
+    desc_level_1: '&f◆ &eShift + left click: probes for relics within\n&e&9[%range%]&e blocks.'
+    actionbar_proc: '&aActivated.'
+    actionbar_materials: '&cMissing materials.'
+    actionbar_empty: '&7Nothing found.'
+    actionbar_unsafe: '&cUnsafe destination.'
+    actionbar_changed: '&cThe item changed.'
+    actionbar_channel: '&ePreparing...'
+    actionbar_on: '&aMode enabled.'
+    actionbar_off: '&7Mode disabled.'
+    actionbar_hunger: '&cYou need food.'
+    actionbar_cooldown: '&eCD: &c[{seconds}s]'
+    actionbar_data: '&eRelic: &9[{number}]&e blocks away.'
+
+  theosis:ordered_sowing:
+    name: 'Ровный посев'
+    desc_level_1: '&f◆ &eShift + right click: sows up to\n&e&9[%max_blocks%]&e offhand seeds in a line.'
+    desc_level_2: '&f◆ &eShift + right click: sows up to\n&e&9[%max_blocks%]&e offhand seeds in a line.'
+    desc_level_3: '&f◆ &eShift + right click: sows up to\n&e&9[%max_blocks%]&e offhand seeds in a line.'
+    actionbar_proc: '&aActivated.'
+    actionbar_materials: '&cMissing materials.'
+    actionbar_empty: '&7Nothing found.'
+    actionbar_unsafe: '&cUnsafe destination.'
+    actionbar_changed: '&cThe item changed.'
+    actionbar_channel: '&ePreparing...'
+    actionbar_on: '&aMode enabled.'
+    actionbar_off: '&7Mode disabled.'
+    actionbar_hunger: '&cYou need food.'
+    actionbar_cooldown: '&eCD: &c[{seconds}s]'
+    actionbar_data: '&e{value}'
+
+  theosis:pocket_irrigation:
+    name: 'Карманный полив'
+    desc_level_1: '&f◆ &eShift + F: поливает &9[%max_blocks%]&e грядок, растит\n&eпосевы на шаг. Расходует ведро воды.'
+    actionbar_proc: '&aActivated.'
+    actionbar_materials: '&cНужно ведро воды.'
+    actionbar_empty: '&eНаведи на пашню.'
+    actionbar_unsafe: '&cUnsafe destination.'
+    actionbar_changed: '&cThe item changed.'
+    actionbar_channel: '&ePreparing...'
+    actionbar_on: '&aMode enabled.'
+    actionbar_off: '&7Mode disabled.'
+    actionbar_hunger: '&cYou need food.'
+    actionbar_cooldown: '&eCD: &c[{seconds}s]'
+    actionbar_data: '&aПолито &9[{number}]&a грядок. Посевы выросли на шаг.'
+
+  theosis:expert_composter:
+    name: 'Мастер компоста'
+    desc_level_1: '&f◆ &e+&9[%bonus_pct%%]&e compost success. Maximum:\n&e&9[%max_chance_pct%%]&e.'
+    actionbar_proc: '&aActivated.'
+    actionbar_materials: '&cMissing materials.'
+    actionbar_empty: '&7Nothing found.'
+    actionbar_unsafe: '&cUnsafe destination.'
+    actionbar_changed: '&cThe item changed.'
+    actionbar_channel: '&ePreparing...'
+    actionbar_on: '&aMode enabled.'
+    actionbar_off: '&7Mode disabled.'
+    actionbar_hunger: '&cYou need food.'
+    actionbar_cooldown: '&eCD: &c[{seconds}s]'
+    actionbar_data: '&e{value}'
+
+  theosis:sustainable_pruning:
+    name: 'Бережная обрезка'
+    desc_level_1: '&f◆ &eShift + right click: trims tall plants while\n&ekeeping their base.'
+    actionbar_proc: '&aActivated.'
+    actionbar_materials: '&cMissing materials.'
+    actionbar_empty: '&7Nothing found.'
+    actionbar_unsafe: '&cUnsafe destination.'
+    actionbar_changed: '&cThe item changed.'
+    actionbar_channel: '&ePreparing...'
+    actionbar_on: '&aMode enabled.'
+    actionbar_off: '&7Mode disabled.'
+    actionbar_hunger: '&cYou need food.'
+    actionbar_cooldown: '&eCD: &c[{seconds}s]'
+    actionbar_data: '&e{value}'
+
+  theosis:gentle_molting:
+    name: 'Бережная линька'
+    desc_level_1: '&f◆ &eGets a feather without killing a chicken.\n&eOnce per chicken every\n&e&c[%entity_cooldown_s%]&es.'
+    actionbar_proc: '&aActivated.'
+    actionbar_materials: '&cMissing materials.'
+    actionbar_empty: '&7Nothing found.'
+    actionbar_unsafe: '&cUnsafe destination.'
+    actionbar_changed: '&cThe item changed.'
+    actionbar_channel: '&ePreparing...'
+    actionbar_on: '&aMode enabled.'
+    actionbar_off: '&7Mode disabled.'
+    actionbar_hunger: '&cYou need food.'
+    actionbar_cooldown: '&eCD: &c[{seconds}s]'
+    actionbar_data: '&e{value}'
+
+  theosis:field_rope:
+    name: 'Походная лиана'
+    desc_level_1: '&f◆ &eShift + клик: ставит лиану длиной\n&e&9[%max_blocks%]&e блоков на &9[%duration_s%]&eс. Расходует нить.'
+    actionbar_proc: '&aActivated.'
+    actionbar_materials: '&cMissing materials.'
+    actionbar_empty: '&7Nothing found.'
+    actionbar_unsafe: '&cUnsafe destination.'
+    actionbar_changed: '&cThe item changed.'
+    actionbar_channel: '&ePreparing...'
+    actionbar_on: '&aMode enabled.'
+    actionbar_off: '&7Mode disabled.'
+    actionbar_hunger: '&cYou need food.'
+    actionbar_cooldown: '&eCD: &c[{seconds}s]'
+    actionbar_data: '&e{value}'
+
+  theosis:wandering_forge:
+    name: 'Походная кузница'
+    desc_level_1: '&f◆ &eShift + клик: открывает походную печь.\n&eПлавит &9[%max_items%]&e предметов с обычным топливом.'
+    actionbar_proc: '&aПоходная печь открыта.'
+    actionbar_materials: '&cMissing materials.'
+    actionbar_empty: '&7Nothing found.'
+    actionbar_unsafe: '&cUnsafe destination.'
+    actionbar_changed: '&cThe item changed.'
+    actionbar_channel: '&ePreparing...'
+    actionbar_on: '&aMode enabled.'
+    actionbar_off: '&7Mode disabled.'
+    actionbar_hunger: '&cYou need food.'
+    actionbar_cooldown: '&eCD: &c[{seconds}s]'
+    actionbar_data: '&e{value}'
+    title: 'Wandering Forge'
+
+  theosis:embers_pact:
+    name: 'Договор углей'
+    desc_level_1: '&f◆ &eShift + клик по костру: предотвращает\n&eспавн врагов в &9[%range%]&e блоках на &9[%duration_s%]&eс.'
+    actionbar_proc: '&aЛагерь защищён. Частицы отмечают область.'
+    actionbar_materials: '&cMissing materials.'
+    actionbar_empty: '&7Nothing found.'
+    actionbar_unsafe: '&cНельзя защитить этот костёр. Проверь воду и права.'
+    actionbar_changed: '&cThe item changed.'
+    actionbar_channel: '&ePreparing...'
+    actionbar_on: '&aMode enabled.'
+    actionbar_off: '&7Mode disabled.'
+    actionbar_hunger: '&cYou need food.'
+    actionbar_cooldown: '&eCD: &c[{seconds}s]'
+    actionbar_data: '&e{value}'
+
+  theosis:rally_flare:
+    name: 'Сигнал сбора'
+    desc_level_1: '&f◆ &eShift + click air: a visible rally signal\n&elasting &9[%duration_s%]&es.'
+    actionbar_proc: '&aActivated.'
+    actionbar_materials: '&cMissing materials.'
+    actionbar_empty: '&7Nothing found.'
+    actionbar_unsafe: '&cUnsafe destination.'
+    actionbar_changed: '&cThe item changed.'
+    actionbar_channel: '&ePreparing...'
+    actionbar_on: '&aMode enabled.'
+    actionbar_off: '&7Mode disabled.'
+    actionbar_hunger: '&cYou need food.'
+    actionbar_cooldown: '&eCD: &c[{seconds}s]'
+    actionbar_data: '&e{value}'
+
+  theosis:builders_eye:
+    name: 'Глаз строителя'
+    desc_level_1: '&f◆ &eShift + F: mark a point; look to measure\n&edistance and dimensions.'
+    actionbar_proc: '&aActivated.'
+    actionbar_materials: '&cMissing materials.'
+    actionbar_empty: '&7Nothing found.'
+    actionbar_unsafe: '&cUnsafe destination.'
+    actionbar_changed: '&cThe item changed.'
+    actionbar_channel: '&ePreparing...'
+    actionbar_on: '&aMode enabled.'
+    actionbar_off: '&7Mode disabled.'
+    actionbar_hunger: '&cYou need food.'
+    actionbar_cooldown: '&eCD: &c[{seconds}s]'
+    actionbar_data: '&eDistance: &9[{number}]&e | &9[{x}]&e × &9[{y}]&e × &9[{z}]&e'
+
+  theosis:naturalists_guide:
+    name: 'Справочник натуралиста'
+    desc_level_1: '&f◆ &eObserving shows breeding food and time until\n&ebreeding.'
+    actionbar_proc: '&aActivated.'
+    actionbar_materials: '&cMissing materials.'
+    actionbar_empty: '&7Nothing found.'
+    actionbar_unsafe: '&cUnsafe destination.'
+    actionbar_changed: '&cThe item changed.'
+    actionbar_channel: '&ePreparing...'
+    actionbar_on: '&aMode enabled.'
+    actionbar_off: '&7Mode disabled.'
+    actionbar_hunger: '&cYou need food.'
+    actionbar_cooldown: '&eCD: &c[{seconds}s]'
+    actionbar_data: '&e{state} | {value} | Breeding: &9[{number}]&es'
+
+  theosis:light_reading:
+    name: 'Замер света'
+    desc_level_1: '&f◆ &eLook while sneaking to measure light and mark\n&edark ground.'
+    actionbar_proc: '&aActivated.'
+    actionbar_materials: '&cMissing materials.'
+    actionbar_empty: '&7Nothing found.'
+    actionbar_unsafe: '&cUnsafe destination.'
+    actionbar_changed: '&cThe item changed.'
+    actionbar_channel: '&ePreparing...'
+    actionbar_on: '&aMode enabled.'
+    actionbar_off: '&7Mode disabled.'
+    actionbar_hunger: '&cYou need food.'
+    actionbar_cooldown: '&eCD: &c[{seconds}s]'
+    actionbar_data: '&eLight: &9[{number}]&e'
+
+  theosis:ordered_unloading:
+    name: 'Упорядоченная разгрузка'
+    desc_level_1: '&f◆ &eShift + клик по сундуку: выгружает мешок.\n&eТо, что не поместилось, остаётся в мешке.'
+    actionbar_proc: '&aActivated.'
+    actionbar_materials: '&cMissing materials.'
+    actionbar_empty: '&eМешок пуст или контейнер полон.'
+    actionbar_unsafe: '&cИспользуй сундук, бочку или другой контейнер хранения.'
+    actionbar_changed: '&cThe item changed.'
+    actionbar_channel: '&ePreparing...'
+    actionbar_on: '&aMode enabled.'
+    actionbar_off: '&7Mode disabled.'
+    actionbar_hunger: '&cYou need food.'
+    actionbar_cooldown: '&eCD: &c[{seconds}s]'
+    actionbar_data: '&aВ контейнер сложено &9[{number}]&a предметов.'
+
+  theosis:pocket_alchemy:
+    name: 'Карманная алхимия'
+    desc_level_1: '&f◆ &eShift + click air: drinks a bundle potion\n&eafter &9[%rest_s%]&es.'
+    actionbar_proc: '&aActivated.'
+    actionbar_materials: '&cMissing materials.'
+    actionbar_empty: '&7Nothing found.'
+    actionbar_unsafe: '&cUnsafe destination.'
+    actionbar_changed: '&cThe item changed.'
+    actionbar_channel: '&ePreparing...'
+    actionbar_on: '&aMode enabled.'
+    actionbar_off: '&7Mode disabled.'
+    actionbar_hunger: '&cYou need food.'
+    actionbar_cooldown: '&eCD: &c[{seconds}s]'
+    actionbar_data: '&e{value}'
+
+  theosis:fireproof_wrapping:
+    name: 'Огнестойкая обёртка'
+    desc_level_1: '&f◆ &eThe dropped bundle and its contents resist\n&efire and lava.'
+    actionbar_proc: '&aActivated.'
+    actionbar_materials: '&cMissing materials.'
+    actionbar_empty: '&7Nothing found.'
+    actionbar_unsafe: '&cUnsafe destination.'
+    actionbar_changed: '&cThe item changed.'
+    actionbar_channel: '&ePreparing...'
+    actionbar_on: '&aMode enabled.'
+    actionbar_off: '&7Mode disabled.'
+    actionbar_hunger: '&cYou need food.'
+    actionbar_cooldown: '&eCD: &c[{seconds}s]'
+    actionbar_data: '&e{value}'
+
+  theosis:containment_wall:
+    name: 'Защитная стена'
+    desc_level_1: '&f◆ &eБлокирование защищает блоки от взрывов\n&eв радиусе &9[%range%]&e блоков. Существам наносится\n&eурон.'
+    actionbar_proc: '&aБлоки защищены от взрыва.'
+    actionbar_materials: '&cMissing materials.'
+    actionbar_empty: '&7Nothing found.'
+    actionbar_unsafe: '&cUnsafe destination.'
+    actionbar_changed: '&cThe item changed.'
+    actionbar_channel: '&ePreparing...'
+    actionbar_on: '&aMode enabled.'
+    actionbar_off: '&7Mode disabled.'
+    actionbar_hunger: '&cYou need food.'
+    actionbar_cooldown: '&eCD: &c[{seconds}s]'
+    actionbar_data: '&e{value}'
+
+  theosis:undead_parasol:
+    name: 'Зонт для нежити'
+    desc_level_1: '&f◆ &eBlock to shade nearby undead for\n&e&9[%duration_s%]&es.'
+    actionbar_proc: '&aActivated.'
+    actionbar_materials: '&cMissing materials.'
+    actionbar_empty: '&7Nothing found.'
+    actionbar_unsafe: '&cUnsafe destination.'
+    actionbar_changed: '&cThe item changed.'
+    actionbar_channel: '&ePreparing...'
+    actionbar_on: '&aMode enabled.'
+    actionbar_off: '&7Mode disabled.'
+    actionbar_hunger: '&cYou need food.'
+    actionbar_cooldown: '&eCD: &c[{seconds}s]'
+    actionbar_data: '&e{value}'
+
+  theosis:arrow_catcher:
+    name: 'Ловец стрел'
+    desc_level_1: '&f◆ &eBlocking recovers one spent arrow every\n&e&c[%cooldown_s%]&es.'
+    actionbar_proc: '&aActivated.'
+    actionbar_materials: '&cMissing materials.'
+    actionbar_empty: '&7Nothing found.'
+    actionbar_unsafe: '&cUnsafe destination.'
+    actionbar_changed: '&cThe item changed.'
+    actionbar_channel: '&ePreparing...'
+    actionbar_on: '&aMode enabled.'
+    actionbar_off: '&7Mode disabled.'
+    actionbar_hunger: '&cYou need food.'
+    actionbar_cooldown: '&eCD: &c[{seconds}s]'
+    actionbar_data: '&e{value}'
+
+  theosis:escort_bond:
+    name: 'Связь сопровождения'
+    desc_level_1: '&f◆ &eShift + click ally: select an escort.\n&eBlocking transfers &9[%transfer_pct%%]&e of their\n&edamage to you.'
+    actionbar_proc: '&aActivated.'
+    actionbar_materials: '&cMissing materials.'
+    actionbar_empty: '&7Nothing found.'
+    actionbar_unsafe: '&cUnsafe destination.'
+    actionbar_changed: '&cThe item changed.'
+    actionbar_channel: '&ePreparing...'
+    actionbar_on: '&aMode enabled.'
+    actionbar_off: '&7Mode disabled.'
+    actionbar_hunger: '&cYou need food.'
+    actionbar_cooldown: '&eCD: &c[{seconds}s]'
+    actionbar_data: '&e{value}'
+
+  theosis:supply_arrow:
+    name: 'Стрела снабжения'
+    desc_level_1: '&f◆ &eShift + F: отправляет до &9[%max_items%]&e предметов\n&eиз второй руки каждым выстрелом.\n&e(Перезарядка &c[%cooldown_s%]&eс)'
+    actionbar_proc: '&aActivated.'
+    actionbar_materials: '&cMissing materials.'
+    actionbar_empty: '&7Nothing found.'
+    actionbar_unsafe: '&cUnsafe destination.'
+    actionbar_changed: '&cThe item changed.'
+    actionbar_channel: '&ePreparing...'
+    actionbar_on: '&aMode enabled.'
+    actionbar_off: '&7Mode disabled.'
+    actionbar_hunger: '&cYou need food.'
+    actionbar_cooldown: '&eCD: &c[{seconds}s]'
+    actionbar_data: '&e{value}'
+
+  theosis:rescue_arrow:
+    name: 'Стрела спасения'
+    desc_level_1: '&f◆ &eShift + F: rescue arrows give Slow Falling\n&efor &9[%duration_s%]&es and spend a feather.'
+    actionbar_proc: '&aActivated.'
+    actionbar_materials: '&cMissing materials.'
+    actionbar_empty: '&7Nothing found.'
+    actionbar_unsafe: '&cUnsafe destination.'
+    actionbar_changed: '&cThe item changed.'
+    actionbar_channel: '&ePreparing...'
+    actionbar_on: '&aMode enabled.'
+    actionbar_off: '&7Mode disabled.'
+    actionbar_hunger: '&cYou need food.'
+    actionbar_cooldown: '&eCD: &c[{seconds}s]'
+    actionbar_data: '&e{value}'
+
+  theosis:angled_shot:
+    name: 'Угловой выстрел'
+    desc_level_1: '&f◆ &eYour arrows bounce once, keeping\n&e&c[%damage_multiplier_pct%%]&e of their damage.'
+    actionbar_proc: '&aActivated.'
+    actionbar_materials: '&cMissing materials.'
+    actionbar_empty: '&7Nothing found.'
+    actionbar_unsafe: '&cUnsafe destination.'
+    actionbar_changed: '&cThe item changed.'
+    actionbar_channel: '&ePreparing...'
+    actionbar_on: '&aMode enabled.'
+    actionbar_off: '&7Mode disabled.'
+    actionbar_hunger: '&cYou need food.'
+    actionbar_cooldown: '&eCD: &c[{seconds}s]'
+    actionbar_data: '&e{value}'
+
+  theosis:switch_bolt:
+    name: 'Переключающий болт'
+    desc_level_1: '&f◆ &eБолты включают кнопки и рычаги.\n&eShift + F: переключает пользу и бой.'
+    actionbar_proc: '&aМеханизм активирован.'
+    actionbar_materials: '&cMissing materials.'
+    actionbar_empty: '&eНаведи на кнопку или рычаг.'
+    actionbar_unsafe: '&cUnsafe destination.'
+    actionbar_changed: '&cThe item changed.'
+    actionbar_channel: '&ePreparing...'
+    actionbar_on: '&aMode enabled.'
+    actionbar_off: '&7Mode disabled.'
+    actionbar_hunger: '&cYou need food.'
+    actionbar_cooldown: '&eCD: &c[{seconds}s]'
+    actionbar_data: '&e{value}'
+
+  theosis:bucket_bolt:
+    name: 'Болт с ведром'
+    desc_level_1: '&f◆ &eСтреляй с ведром во второй руке:\n&eразливает жидкость или собирает источник.'
+    actionbar_proc: '&aЖидкость перенесена. Ведро обновлено.'
+    actionbar_materials: '&cДержи пустое ведро, воду или лаву во второй руке.'
+    actionbar_empty: '&eИсточник воды или лавы не найден.'
+    actionbar_unsafe: '&cUnsafe destination.'
+    actionbar_changed: '&cThe item changed.'
+    actionbar_channel: '&ePreparing...'
+    actionbar_on: '&aMode enabled.'
+    actionbar_off: '&7Mode disabled.'
+    actionbar_hunger: '&cYou need food.'
+    actionbar_cooldown: '&eCD: &c[{seconds}s]'
+    actionbar_data: '&e{value}'
+
+  theosis:destination_seal:
+    name: 'Печать назначения'
+    desc_level_1: '&f◆ &eБолты блокируют телепорт на &9[%duration_s%]&eс.\n&eЛичная метка подтверждает печать.'
+    actionbar_proc: '&aПечать наложена: телепорт заблокирован.'
+    actionbar_materials: '&cMissing materials.'
+    actionbar_empty: '&7Nothing found.'
+    actionbar_unsafe: '&cUnsafe destination.'
+    actionbar_changed: '&cThe item changed.'
+    actionbar_channel: '&ePreparing...'
+    actionbar_on: '&aMode enabled.'
+    actionbar_off: '&7Mode disabled.'
+    actionbar_hunger: '&cYou need food.'
+    actionbar_cooldown: '&eCD: &c[{seconds}s]'
+    actionbar_data: '&e{value}'
+
+  theosis:dispelling_edge:
+    name: 'Рассеивающее лезвие'
+    desc_level_1: '&f◆ &eHits dispel one beneficial monster effect.\n&e(CD &c[%cooldown_s%]&es)'
+    actionbar_proc: '&aActivated.'
+    actionbar_materials: '&cMissing materials.'
+    actionbar_empty: '&7Nothing found.'
+    actionbar_unsafe: '&cUnsafe destination.'
+    actionbar_changed: '&cThe item changed.'
+    actionbar_channel: '&ePreparing...'
+    actionbar_on: '&aMode enabled.'
+    actionbar_off: '&7Mode disabled.'
+    actionbar_hunger: '&cYou need food.'
+    actionbar_cooldown: '&eCD: &c[{seconds}s]'
+    actionbar_data: '&e{value}'
+
+  theosis:merciful_scabbard:
+    name: 'Милосердные ножны'
+    desc_level_1: '&f◆ &eShift + F: prevents accidental hits on\n&evillagers and your pets.'
+    actionbar_proc: '&aActivated.'
+    actionbar_materials: '&cMissing materials.'
+    actionbar_empty: '&7Nothing found.'
+    actionbar_unsafe: '&cUnsafe destination.'
+    actionbar_changed: '&cThe item changed.'
+    actionbar_channel: '&ePreparing...'
+    actionbar_on: '&aMode enabled.'
+    actionbar_off: '&7Mode disabled.'
+    actionbar_hunger: '&cYou need food.'
+    actionbar_cooldown: '&eCD: &c[{seconds}s]'
+    actionbar_data: '&e{value}'
+
+  theosis:challengers_bell:
+    name: 'Звон вызова'
+    desc_level_1: '&f◆ &eShift + left click: challenges up to\n&e&9[%max_entities%]&e monsters for\n&e&9[%duration_s%]&es.'
+    actionbar_proc: '&aActivated.'
+    actionbar_materials: '&cMissing materials.'
+    actionbar_empty: '&7Nothing found.'
+    actionbar_unsafe: '&cUnsafe destination.'
+    actionbar_changed: '&cThe item changed.'
+    actionbar_channel: '&ePreparing...'
+    actionbar_on: '&aMode enabled.'
+    actionbar_off: '&7Mode disabled.'
+    actionbar_hunger: '&cYou need food.'
+    actionbar_cooldown: '&eCD: &c[{seconds}s]'
+    actionbar_data: '&e{value}'
+
+  theosis:fuse_delayer:
+    name: 'Задержка взрывателя'
+    desc_level_1: '&f◆ &eHitting a creeper delays its explosion once\n&eper creature. (CD &c[%cooldown_s%]&es)'
+    actionbar_proc: '&aActivated.'
+    actionbar_materials: '&cMissing materials.'
+    actionbar_empty: '&7Nothing found.'
+    actionbar_unsafe: '&cUnsafe destination.'
+    actionbar_changed: '&cThe item changed.'
+    actionbar_channel: '&ePreparing...'
+    actionbar_on: '&aMode enabled.'
+    actionbar_off: '&7Mode disabled.'
+    actionbar_hunger: '&cYou need food.'
+    actionbar_cooldown: '&eCD: &c[{seconds}s]'
+    actionbar_data: '&e{value}'
+
+  theosis:tide_helm:
+    name: 'Руль приливов'
+    desc_level_1: '&f◆ &eПравый клик в лодке: ускорение на &9[%duration_s%]&eс.\n&eРасходует &c[%hunger_cost%]&e голода.'
+    actionbar_proc: '&aУскорение лодки включено.'
+    actionbar_materials: '&cMissing materials.'
+    actionbar_empty: '&7Nothing found.'
+    actionbar_unsafe: '&cUnsafe destination.'
+    actionbar_changed: '&cThe item changed.'
+    actionbar_channel: '&ePreparing...'
+    actionbar_on: '&aMode enabled.'
+    actionbar_off: '&7Mode disabled.'
+    actionbar_hunger: '&cYou need food.'
+    actionbar_cooldown: '&eCD: &c[{seconds}s]'
+    actionbar_data: '&e{value}'
+
+  theosis:tactical_exchange:
+    name: 'Тактический обмен'
+    desc_level_1: '&f◆ &eShift + click monster: swaps positions. Costs\n&e&9[%hunger_cost%]&e hunger.'
+    actionbar_proc: '&aActivated.'
+    actionbar_materials: '&cMissing materials.'
+    actionbar_empty: '&7Nothing found.'
+    actionbar_unsafe: '&cUnsafe destination.'
+    actionbar_changed: '&cThe item changed.'
+    actionbar_channel: '&ePreparing...'
+    actionbar_on: '&aMode enabled.'
+    actionbar_off: '&7Mode disabled.'
+    actionbar_hunger: '&cYou need food.'
+    actionbar_cooldown: '&eCD: &c[{seconds}s]'
+    actionbar_data: '&e{value}'
+
+  theosis:sure_hoof:
+    name: 'Твёрдое копыто'
+    desc_level_1: '&f◆ &eКонь тормозит перед лавой и обрывами.\n&eВерхом открой свой инвентарь и нажми F\n&eнад пустой ячейкой, чтобы переключить защиту.'
+    actionbar_proc: '&aАктивировано.'
+    actionbar_materials: '&cНе хватает материалов.'
+    actionbar_empty: '&7Ничего не найдено.'
+    actionbar_unsafe: '&cОпасное место назначения.'
+    actionbar_changed: '&cПредмет изменился.'
+    actionbar_channel: '&eПодготовка...'
+    actionbar_on: '&aЗащита включена.'
+    actionbar_off: '&7Защита выключена.'
+    actionbar_hunger: '&cНужно поесть.'
+    actionbar_cooldown: '&eПерезарядка: &c[{seconds}с]'
+    actionbar_data: '&e{value}'
+
+  theosis:expedition_caravan:
+    name: 'Походный караван'
+    desc_level_1: '&f◆ &eВерхом: за тобой идут &9[%max_entities%]&e фермерских\n&eили твоих животных. Сено каждые &c[%fuel_s%]&eс.'
+    actionbar_proc: '&aActivated.'
+    actionbar_materials: '&cДля каравана нужен блок сена.'
+    actionbar_empty: '&eПодведи фермерских или своих животных к лошади.'
+    actionbar_unsafe: '&cUnsafe destination.'
+    actionbar_changed: '&cThe item changed.'
+    actionbar_channel: '&ePreparing...'
+    actionbar_on: '&aMode enabled.'
+    actionbar_off: '&7Mode disabled.'
+    actionbar_hunger: '&cYou need food.'
+    actionbar_cooldown: '&eCD: &c[{seconds}s]'
+    actionbar_data: '&aКараван следует: &9[{number}]&a животных. Сено потрачено.'
+
+  theosis:return_scent:
+    name: 'След возвращения'
+    desc_level_1: '&f◆ &eSneak near your wolf to locate your last\n&edeath within &9[%range%]&e blocks.'
+    actionbar_proc: '&aActivated.'
+    actionbar_materials: '&cMissing materials.'
+    actionbar_empty: '&7Nothing found.'
+    actionbar_unsafe: '&cUnsafe destination.'
+    actionbar_changed: '&cThe item changed.'
+    actionbar_channel: '&ePreparing...'
+    actionbar_on: '&aMode enabled.'
+    actionbar_off: '&7Mode disabled.'
+    actionbar_hunger: '&cYou need food.'
+    actionbar_cooldown: '&eCD: &c[{seconds}s]'
+    actionbar_data: '&eDeath: &9[{number}]&e blocks | X &9[{x}]&e, Z &9[{z}]&e'
+
+  theosis:pack_discipline:
+    name: 'Дисциплина стаи'
+    desc_level_1: '&f◆ &eShift + click wolf: toggle exploration. Your\n&ehits stop ordering it to attack.'
+    actionbar_proc: '&aActivated.'
+    actionbar_materials: '&cMissing materials.'
+    actionbar_empty: '&7Nothing found.'
+    actionbar_unsafe: '&cUnsafe destination.'
+    actionbar_changed: '&cThe item changed.'
+    actionbar_channel: '&ePreparing...'
+    actionbar_on: '&aMode enabled.'
+    actionbar_off: '&7Mode disabled.'
+    actionbar_hunger: '&cYou need food.'
+    actionbar_cooldown: '&eCD: &c[{seconds}s]'
+    actionbar_data: '&e{value}'
+
+  theosis:live_fishing:
+    name: 'Живой улов'
+    desc_level_1: '&f◆ &eWith a water bucket, caught fish can be kept\n&ealive in the bucket.'
+    actionbar_proc: '&aActivated.'
+    actionbar_materials: '&cMissing materials.'
+    actionbar_empty: '&7Nothing found.'
+    actionbar_unsafe: '&cUnsafe destination.'
+    actionbar_changed: '&cThe item changed.'
+    actionbar_channel: '&ePreparing...'
+    actionbar_on: '&aMode enabled.'
+    actionbar_off: '&7Mode disabled.'
+    actionbar_hunger: '&cYou need food.'
+    actionbar_cooldown: '&eCD: &c[{seconds}s]'
+    actionbar_data: '&e{value}'
+
+  theosis:water_sounding:
+    name: 'Замер глубины'
+    desc_level_1: '&f◆ &eThe bobber measures depth and warns of magma\n&edown to &9[%range%]&e blocks.'
+    actionbar_proc: '&aActivated.'
+    actionbar_materials: '&cMissing materials.'
+    actionbar_empty: '&7Nothing found.'
+    actionbar_unsafe: '&cUnsafe destination.'
+    actionbar_changed: '&cThe item changed.'
+    actionbar_channel: '&ePreparing...'
+    actionbar_on: '&aMode enabled.'
+    actionbar_off: '&7Mode disabled.'
+    actionbar_hunger: '&cYou need food.'
+    actionbar_cooldown: '&eCD: &c[{seconds}s]'
+    actionbar_data: '&eDepth: &9[{number}]&e | {value}'
+
+  theosis:wreck_echo:
+    name: 'Эхо кораблекрушения'
+    desc_level_1: '&f◆ &eThe bobber locates submerged chests within\n&e&9[%range%]&e blocks. (CD &c[%cooldown_s%]&es)'
+    actionbar_proc: '&aActivated.'
+    actionbar_materials: '&cMissing materials.'
+    actionbar_empty: '&7Nothing found.'
+    actionbar_unsafe: '&cUnsafe destination.'
+    actionbar_changed: '&cThe item changed.'
+    actionbar_channel: '&ePreparing...'
+    actionbar_on: '&aMode enabled.'
+    actionbar_off: '&7Mode disabled.'
+    actionbar_hunger: '&cYou need food.'
+    actionbar_cooldown: '&eCD: &c[{seconds}s]'
+    actionbar_data: '&eChest: &9[{number}]&e blocks away.'
+
+  theosis:explorers_bait:
+    name: 'Приманка исследователя'
+    desc_level_1: '&f◆ &eCast while sneaking: spends bread to lure up\n&eto &9[%max_entities%]&e fish to the bobber.'
+    actionbar_proc: '&aActivated.'
+    actionbar_materials: '&cMissing materials.'
+    actionbar_empty: '&7Nothing found.'
+    actionbar_unsafe: '&cUnsafe destination.'
+    actionbar_changed: '&cThe item changed.'
+    actionbar_channel: '&ePreparing...'
+    actionbar_on: '&aMode enabled.'
+    actionbar_off: '&7Mode disabled.'
+    actionbar_hunger: '&cYou need food.'
+    actionbar_cooldown: '&eCD: &c[{seconds}s]'
+    actionbar_data: '&e{value}'
+
+  theosis:relic_conservation:
+    name: 'Сохранение реликвий'
+    desc_level_1: '&f◆ &eBrushing protects the relic from falls and\n&eexplosions for &9[%duration_s%]&es.'
+    actionbar_proc: '&aActivated.'
+    actionbar_materials: '&cMissing materials.'
+    actionbar_empty: '&7Nothing found.'
+    actionbar_unsafe: '&cUnsafe destination.'
+    actionbar_changed: '&cThe item changed.'
+    actionbar_channel: '&ePreparing...'
+    actionbar_on: '&aMode enabled.'
+    actionbar_off: '&7Mode disabled.'
+    actionbar_hunger: '&cYou need food.'
+    actionbar_cooldown: '&eCD: &c[{seconds}s]'
+    actionbar_data: '&e{value}'
+
+  theosis:fragment_reading:
+    name: 'Чтение фрагментов'
+    desc_level_1: '&f◆ &eAfter &9[%rest_s%]&es of brushing, reveals a clue\n&eabout the hidden item.'
+    actionbar_proc: '&aActivated.'
+    actionbar_materials: '&cMissing materials.'
+    actionbar_empty: '&7Nothing found.'
+    actionbar_unsafe: '&cUnsafe destination.'
+    actionbar_changed: '&cThe item changed.'
+    actionbar_channel: '&ePreparing...'
+    actionbar_on: '&aMode enabled.'
+    actionbar_off: '&7Mode disabled.'
+    actionbar_hunger: '&cYou need food.'
+    actionbar_cooldown: '&eCD: &c[{seconds}s]'
+    actionbar_data: '&eClue: {value}'
+
+  theosis:potters_pattern:
+    name: 'Узор гончара'
+    desc_level_1: '&f◆ &eShift + click pot: changes one design using\n&eyour offhand pottery sherd.'
+    actionbar_proc: '&aActivated.'
+    actionbar_materials: '&cMissing materials.'
+    actionbar_empty: '&7Nothing found.'
+    actionbar_unsafe: '&cUnsafe destination.'
+    actionbar_changed: '&cThe item changed.'
+    actionbar_channel: '&ePreparing...'
+    actionbar_on: '&aMode enabled.'
+    actionbar_off: '&7Mode disabled.'
+    actionbar_hunger: '&cYou need food.'
+    actionbar_cooldown: '&eCD: &c[{seconds}s]'
+    actionbar_data: '&e{value}'
+
+  theosis:builders_memory:
+    name: 'Память строителя'
+    desc_level_1: '&f◆ &eShift + left click: copies &9[%max_blocks%]&e\n&eblocks. Shift + right click: builds using\n&ematerials.'
+    actionbar_proc: '&aActivated.'
+    actionbar_materials: '&cMissing materials.'
+    actionbar_empty: '&7Nothing found.'
+    actionbar_unsafe: '&cUnsafe destination.'
+    actionbar_changed: '&cThe item changed.'
+    actionbar_channel: '&ePreparing...'
+    actionbar_on: '&aMode enabled.'
+    actionbar_off: '&7Mode disabled.'
+    actionbar_hunger: '&cYou need food.'
+    actionbar_cooldown: '&eCD: &c[{seconds}s]'
+    actionbar_data: '&ePattern saved: &9[{number}]&e blocks.'
+
+  expedition:
+    adult: 'Adult'
+    baby: 'Baby'
+    magma: 'Magma'
+    clear: 'Clear'
+    material_unknown: 'Unknown item'
+    food_unknown: 'Unknown food'
+    materials:
+      AIR: 'Air'
+      WATER: 'Water'
+      LAVA: 'Lava'
+      WHEAT: 'Wheat'
+      WHEAT_SEEDS: 'Wheat seeds'
+      CARROT: 'Carrot'
+      GOLDEN_CARROT: 'Golden carrot'
+      BEEF: 'Raw beef'
+      COD: 'Cod'
+      SALMON: 'Salmon'
+      SWEET_BERRIES: 'Sweet berries'
+      BAMBOO: 'Bamboo'
+      SEAGRASS: 'Seagrass'
+      DANDELION: 'Dandelion'
+      WARPED_FUNGUS: 'Warped fungus'
+      CRIMSON_FUNGUS: 'Crimson fungus'
+      TROPICAL_FISH_BUCKET: 'Tropical fish bucket'
+      SLIME_BALL: 'Slimeball'
+      TORCHFLOWER_SEEDS: 'Torchflower seeds'
+      CACTUS: 'Cactus'
+      DIAMOND: 'Diamond'
+      EMERALD: 'Emerald'
+      COAL: 'Coal'
+      GOLD_NUGGET: 'Gold nugget'
+      STICK: 'Stick'
+      BRICK: 'Brick'
+      SNIFFER_EGG: 'Sniffer egg'
+      TNT: 'TNT'
+      WOODEN_HOE: 'Wooden hoe'
+      IRON_AXE: 'Iron axe'
+      GLASS_PANE: 'Glass pane'
+      SUSPICIOUS_STEW: 'Suspicious stew'
+      ANGLER_POTTERY_SHERD: 'Sherd: Angler'
+      ARCHER_POTTERY_SHERD: 'Sherd: Archer'
+      ARMS_UP_POTTERY_SHERD: 'Sherd: Arms up'
+      BLADE_POTTERY_SHERD: 'Sherd: Blade'
+      BREWER_POTTERY_SHERD: 'Sherd: Brewer'
+      BURN_POTTERY_SHERD: 'Sherd: Burn'
+      DANGER_POTTERY_SHERD: 'Sherd: Danger'
+      EXPLORER_POTTERY_SHERD: 'Sherd: Explorer'
+      FRIEND_POTTERY_SHERD: 'Sherd: Friend'
+      HEART_POTTERY_SHERD: 'Sherd: Heart'
+      HEARTBREAK_POTTERY_SHERD: 'Sherd: Heartbreak'
+      HOWL_POTTERY_SHERD: 'Sherd: Howl'
+      MINER_POTTERY_SHERD: 'Sherd: Miner'
+      MOURNER_POTTERY_SHERD: 'Sherd: Mourner'
+      PLENTY_POTTERY_SHERD: 'Sherd: Plenty'
+      PRIZE_POTTERY_SHERD: 'Sherd: Prize'
+      SHEAF_POTTERY_SHERD: 'Sherd: Sheaf'
+      SHELTER_POTTERY_SHERD: 'Sherd: Shelter'
+      SKULL_POTTERY_SHERD: 'Sherd: Skull'
+      SNORT_POTTERY_SHERD: 'Sherd: Snort'
+      FLOW_POTTERY_SHERD: 'Sherd: Flow'
+      GUSTER_POTTERY_SHERD: 'Sherd: Guster'
+      SCRAPE_POTTERY_SHERD: 'Sherd: Scrape'
+
+enchant_library:
+  item:
+    name: "&dБочка тайной библиотеки"
+    lore: |
+      &7Разместите и соберите эту структуру:
+      &f[ E ] [ E ] [ E ]
+      &f[ E ] [ B ] [ E ]
+      &7E = Резная книжная полка / Полка
+      &7B = Эта бочка
+      
+      &7Хранит силу зачарований.
+      &7ПКМ, чтобы открыть библиотеку.
+  gui:
+    main_title: "&5Тайная библиотека"
+    access_title: "&5Доступ к библиотеке"
+    level_title: "&5Выберите уровень"
+    info_name: "&dСтатус библиотеки"
+    info_capacity: "&7Вместимость: &f{used}&7/&f{max}"
+    info_mode: "&7Режим: {value}"
+    deposit_hint: "&eНажмите, чтобы сохранить книги из инвентаря."
+    access_name: "&bНастройка доступа"
+    access_hint: "&7Управление публичным/приватным режимом и игроками."
+    access_owner: "&aВы владелец."
+    access_not_owner: "&cТолько владелец может управлять доступом."
+    access_mode_name: "&bРежим доступа"
+    access_toggle_hint: "&eНажмите, чтобы переключить публичный/приватный."
+    previous: "&eНазад"
+    next: "&eДалее"
+    close: "&cЗакрыть"
+    back: "&eВернуться"
+    public: "&aПубличный"
+    private: "&cПриватный"
+    points: "&7Очки: &f{value}"
+    max_level: "&7Макс. уровень: &f{value}"
+    left_click_highest: "&aЛКМ: забрать макс. доступный уровень"
+    right_click_levels: "&eПКМ: выбрать уровень"
+    bedrock_choose_level: "&eВыберите книгу, чтобы выбрать уровень."
+    cost: "&7Цена: &f{value} очк."
+    level_available: "&aДоступно"
+    level_unavailable: "&cНедостаточно очков"
+    allowed: "&aРазрешено"
+    not_allowed: "&cЗапрещено"
+    click_toggle_player: "&eНажмите, чтобы добавить/удалить игрока."
+  messages:
+    placed: "&aТайная библиотека установлена."
+    invalid_structure: "&cЭтой бочке нужна структура из книжных полок для работы."
+    missing_library: "&cНе удалось загрузить эту библиотеку."
+    no_access: "&cУ вас нет доступа к этой библиотеке."
+    only_owner_break: "&cТолько владелец может сломать или переместить эту бочку."
+    only_owner_manage: "&cТолько владелец может управлять доступом."
+    only_single_enchanted_book: "&cМожно хранить только книги с ровно одним зачарованием."
+    capacity_full: "&cБиблиотека переполнена."
+    invalid_enchant: "&cНевалидное зачарование."
+    not_enough_points: "&cНедостаточно очков для этого уровня."
+    inventory_full: "&cВаш инвентарь полон."
+    deposit_success: "&aВы сохранили &e{enchant} &7ур.&f{level}&a."
+    withdraw_success: "&aВы забрали &e{enchant} &7ур.&f{level} &a(цена: &f{cost}&a)."
+    level_too_high: "&cУровень этой книги превышает максимальный, разрешенный Арканной Библиотекой."
+
+hub:
+  main:
+    title: "&0Theosis HUB"
+    perks:
+      name: "&dПерки"
+      lore: "&7Посмотреть совместимые перки для предмета в руке"
+    remove_perks:
+      name: "&cУдалить перки"
+      lore: "&7Удалить перки с предмета в руке"
+    gems:
+      name: "&aСамоцветы"
+      lore: "&7Посмотреть доступные самоцветы"
+
+  nav:
+    previous: "&7Назад"
+    next: "&7Вперед"
+    return: "&cВернуться"
+    back: "&cНазад"
+
+  perks:
+    title: "&0Theosis: Перки (&7{item}&0)"
+    icon_name: "&b{perk}"
+    icon_lore_choose: "&7Нажмите, чтобы выбрать уровень"
+    icon_lore_id: "&8ID: {perk}"
+
+  perk_level:
+    title: "&0Перк: &b{perk}"
+    decrease: "&c-1 Уровень"
+    increase: "&a+1 Уровень"
+    current: "&eТекущий уровень: &f{level}"
+    apply: "&aПрименить к предмету в руке"
+
+  remove:
+    title: "&0Theosis: Удаление (&7{item}&0)"
+    remove_all: "&cУдалить ВСЕ перки"
+    icon_name: "&cУдалить &f{perk}"
+    icon_lore_level: "&7Уровень: &f{level}"
+    icon_lore_click: "&7Нажмите, чтобы удалить этот перк"
+    icon_lore_id: "&8ID: {perk}"
+
+  gems:
+    title: "&0Theosis: Самоцветы"
+    icon_name: "&a{gem}"
+    icon_lore: "&7Нажмите, чтобы выбрать тир"
+
+  gem_tier:
+    title: "&0Тир: &a{gem}"
+    cracked: "&7ПОТРЕСКАННЫЙ &8(1)"
+    regular: "&fОБЫЧНЫЙ &8(2)"
+    flawless: "&bБЕЗУПРЕЧНЫЙ &8(3)"
+
+  messages:
+    perks_disabled: "&cМодуль перков отключен."
+    gems_disabled: "&cМодуль самоцветов отключен."
+    hold_item: "&cВозьмите предмет в главную руку."
+    invalid_item: "&cЭтот предмет некорректен."
+    no_categories: "&eЭтот предмет не имеет совместимых категорий перков."
+    no_compatible_perks: "&eНет совместимых перков для этого предмета."
+    no_perks_to_remove: "&eНа этом предмете нет перков для удаления."
+    unknown_perk: "&cНеизвестный перк: {perk}"
+    unknown_gem: "&cНеизвестный самоцвет: {gem}"
+    incompatible_perk: "&cЭтот перк несовместим с текущим предметом."
+    perk_applied: "&aПрименен &b{perk} &aУр.&f{level}"
+    removed_one: "&cУдален перк: &f{perk}"
+    removed_all: "&cС предмета удалены все перки."
+    no_gems: "&eСамоцветы не зарегистрированы."
+    gem_given: "&aПолучен самоцвет &f{gem} &7({tier} тир)"
+
+arcane_decomposition:
+  extraction:
+    title: "&5Извлечение самоцветов"
+    socket: "&7Гнездо: &f{slot}"
+    selected: "&aСамоцвет выбран"
+    select: "&eВыберите самоцвет для извлечения."
+    need_dust: "&eДобавьте арканную пыль для извлечения."
+    duration: "&7Время: &f{seconds} с"
+    instructions: "&7Выберите самоцвет, добавьте одну пыль и подтвердите."
+    dust_slot: "&eПоложите пыль справа"
+    crude: "&7Грубая: 1 пыль, 0 уровней; уничтожает самоцвет."
+    refined: "&9Очищенная: 1 пыль, 3 уровня; сохраняет самоцвет."
+    pure: "&5Чистая: 1 пыль, 0 уровней; сохраняет самоцвет."
+    confirm: "&aПодтвердить извлечение"
+    back: "&eНазад"
+    previous: "&eПредыдущая страница"
+    next: "&eСледующая страница"
+    protected_table: "&cОсвободите бочку и дождитесь окончания обработки, прежде чем ломать стол."
+    save_failed: "&cНе удалось сохранить операцию. Ваши предметы не потрачены; повторите попытку."
+    valid_input: "&eПоместите самоцветы Theosis или снаряжение со вставленными самоцветами."
+    need_levels: "&cДля очищенной пыли нужны 3 уровня опыта."
+    started: "&aОбработка началась. Результаты появятся в арканной бочке."
+    busy: "&eСтол занят обработкой или кто-то использует бочку. Подождите."
+    no_space: "&cВ бочке не хватает места для всех результатов. Сначала освободите место."
+    view_gems: "&eПосмотреть самоцветы"
+    main_help: "&7До 16 самоцветов или снаряжение. Shift + щелчок для переноса."
+    storage_help: "&7Откройте бочку, чтобы забрать результаты."
+    recovered: "&aПредметы, оставленные на арканном столе, восстановлены."
+
+  gui:
+    title: "&5Стол арканного расщепления"
+    barrel_title: "&5Арканная бочка"
+    info_name: "&dАрканное ядро"
+    info_lore: "&7Вставьте только один тип самоцветов\n&7Максимум: &f16 &7одного типа\n&7Результат: пыль в зависимости от ранга"
+    input_name: "&bВход для самоцветов"
+    input_lore: "&7Поместите ваши самоцветы сюда"
+    start_name: "&aНачать расщепление"
+    start_lore: "&7Нажмите, чтобы обработать самоцветы\n&7Пыль появится в бочке снизу"
+    open_storage_lore: "&7Нажмите, чтобы открыть хранилище\n&7пыли этого стола"
+
+  item:
+    dust_crude_name: "&7Грубая пыль"
+    dust_crude_lore: "&7Нестабильный арканный осадок."
+    dust_refined_name: "&9Очищенная пыль"
+    dust_refined_lore: "&7Арканная пыль средней чистоты."
+    dust_pure_name: "&5Чистая пыль"
+    dust_pure_lore: "&7Высококонцентрированная арканная эссенция."
+
+    tome_crude_name: "&7Грубый арканный том"
+    tome_crude_lore: "&7Случайным образом извлекает\n&7около 50% чар."
+    tome_refined_name: "&9Очищенный арканный том"
+    tome_refined_lore: "&7Извлекает 100% чар\n&7и уничтожает исходный предмет."
+    tome_perfect_name: "&5Совершенный арканный том"
+    tome_perfect_lore: "&7Извлекает 100% чар\n&7и очищает предмет без его уничтожения."
+
+  messages:
+    invalid_structure: "&cНеверная структура: поместите якорь возрождения над бочкой."
+    structure_ready: "&aСтол арканного расщепления готов!"
+    structure_broken: "&cСтол арканного расщепления сломался. Соберите ядро + бочку заново."
+    insert_gem: "&eВы должны поместить самоцвет в ячейку ввода."
+    only_gems: "&cСтол принимает только действительные самоцветы Theosis."
+    same_type_only: "&cМожно смешивать только самоцветы одного типа и ранга."
+    single_type_only: "&cЗа один процесс разрешен только один тип самоцветов."
+    max_stack: "&cВходная ячейка вмещает максимум 16 самоцветов."
+    busy: "&cЭтот стол уже занят обработкой."
+    table_busy: "&cАрканный стол сейчас занят."
+    started: "&aРасщепление начато. Пыль будет отправлена в бочку снизу."
+    done: "&aРасщепление завершено."
+    finished: "&aПроцесс завершен, проверьте бочку снизу."
+
+    anvil_success: "&aАрканное извлечение успешно завершено."
+    anvil_crude_success: "&aГрубый том: часть чар была извлечена."
+    anvil_refined_success: "&aОчищенный том: все чары были извлечены."
+    anvil_perfect_success: "&aСовершенный том: все чары были извлечены, а предмет очищен."
+
+chisel_arcane:
+  name: "&5Арканное долото"
+  lore: |
+    &7Благословения, высеченные на древних артефактах,
+    &7можно вырезать, полировать и переписывать
+    &7с помощью Арканного резонанса.
+    &8Нажмите ПКМ, чтобы открыть.
+  gui:
+    title: "&5Арканное долото"
+  resonance: "&dРезонанс: &f{amount}"
+  deposit: "&aПоместить снаряжение"
+  deposit_title: "&5Арканное хранилище"
+  deposit_confirm: "&aПодтвердить размещение"
+  deposit_empty: "&cНет предметов для размещения."
+  deposit_success: "&aВы поместили &f{count} &aпредмет(ов) и получили &d{amount} &aРезонанса."
+  deposit_not_valid: "&cЭтот предмет нельзя поместить в хранилище."
+  remove: "&cУдалить перк"
+  upgrade: "&6Улучшить перк"
+  reroll: "&9Переролить перк"
+  inscribe: "&bНачертать перк"
+  not_enough_resonance: "&cУ вас недостаточно Арканного резонанса."
+  max_level: "&cЭтот перк уже достиг максимального уровня."
+  invalid_perk: "&cНедопустимый перк."
+  success: "&aОперация успешно завершена."
+  processing: "&7Обработка..."
+  no_item: "&cСначала поместите снаряжение в центральный слот."
+  no_perks: "&cУ этого снаряжения нет перков."
+  perk_select_title: "&5Управление перками"
+  inscribe_title: "&5Начертать перк"
+  resonance_gained: "&a+{amount} &dРезонанса."
+  max_perks_reached: "&cЭто снаряжение достигло лимита перков для своей редкости."
+  perk_not_compatible: "&cЭтот перк несовместим со снаряжением или редкостью."
+  item_slot_name: "&7── Слот снаряжения ──"
+  item_slot_lore: "&7Поместите сюда ваше снаряжение,\n&7чтобы изменить его."
+  perk_ops_title: "&5Операции с перками"
+  cost_lore: "&7Стоимость: &d{cost}"
+  confirm: "&aПодтвердить"
+  cancel: "&cНазад"
+  remove_success: "&aПерк удален."
+  upgrade_success: "&aПерк улучшен до следующего уровня."
+  reroll_success: "&aПерк изменен."
+  inscribe_success: "&aПерк начертан на снаряжении."
+  item_no_rarity: "&cВы можете начертать перки только на снаряжение Theosis с редкостью."
+  no_compatible_perks: "&cНет совместимых перков для этого снаряжения."
+  already_has_perk: "&cУ этого снаряжения уже есть этот перк."
+  perk_id_level_lore: "&7ID: &f{id} &7Nív.&f{level}"
+  perk_click_hint_lore: "&7Clique para &6Melhorar &7| Shift-clique para &cRemover"
+  inscribe_id_lore: "&7ID: &f{id}"
+  inscribe_max_level_lore: "&7Nível máx: &f{level}"
+  inscribe_click_lore: "&aClique para inscrever"
+  awakening:
+    title: "&5Пробуждение предмета"
+    button: "&dПробудить предмет"
+    catalyst_empty: "&7Необязательная арканная пыль"
+    catalyst_lore: "&7Добавьте арканную пыль, чтобы снизить стоимость\n&7и повысить возможную редкость."
+    confirm: "&dПробудить"
+    confirm_lore: "&aНажмите, чтобы пробудить этот предмет"
+    cost: "&7Стоимость: &e{cost} уровней"
+    quality: "&7Направление энергии: {quality}"
+    qualities:
+      no_dust: "&fБез пыли"
+      crude: "&7Грубая пыль"
+      refined: "&bОчищенная пыль"
+      pure: "&eЧистая пыль"
+    invalid_item: "&cМожно пробудить только оружие, инструменты или броню без редкости."
+    invalid_catalyst: "&cКатализатор должен быть действительной арканной пылью."
+    not_enough_xp: "&cДля пробуждения предмета требуется &e{cost} уровней&c."
+    success: "&dПредмет пробудился с редкостью &f{rarity}&d."
+    failed: "&cЭнергию пробуждения не удалось стабилизировать. Ничего не израсходовано."
+
+  arcane_anvil:
+    name: "&5Арканная наковальня"
+    lore: "&7Направляет операции наковальни Теозиса, не касаясь ванильной наковальни."
+    gui:
+      title: "&5Арканная наковальня"
+      info_name: "&dАрканный канал"
+      info_lore: "&7Поместите материалы в боковые слоты\n&7и подтвердите, чтобы сковать результат."
+      preview_empty: "&8Просмотр пуст"
+      preview_cost: "&7Стоимость опыта: &e{cost}"
+      confirm_name: "&aКовать"
+      confirm_lore: "&7Потребляет материалы, опыт и прочность."
+      remaining_uses: "&7Оставшаяся прочность: &f{uses}"
+    messages:
+      not_enough_xp: "&cУ вас недостаточно уровней для этой операции."
+      invalid_operation: "&cНеверная комбинация для Арканной наковальни."
+      success: "&aАрканная операция завершена."
+      broken: "&cВаша Арканная наковальня сломалась."
+
+arcane_lantern:
+  item:
+    name: "&5&lЧародейский фонарь"
+    lore: |
+      &7Eго пламя сплетает границу между твоим домом
+      &7и могущественными сущностями Теозиса.
+      &8Защищает этот чанк около высоты фонаря.
+      &dЭтот фонарь защищает эту зону
+      &dот неожиданных гостей.
+  activation:
+    title: "&5✦ &dЧародейское святилище &5✦"
+    subtitle: "&fСвет опечатал эту зону"
+  messages:
+    placed: "&d✦ &fВы защитили эту зону от неожиданных гостей!"
+    removed: "&7Чародейское пламя угасло, и святилище было деактивировано."
+    already_protected: "&cЭтот чанк уже защищён другим Чародейским фонарем."
+    barrier_repelled: "&5✦ &dСвятилище отразило враждебную сущность &5✦"
+  logs:
+    enabled: "Модуль «Чародейский фонарь» включен."
+    invalid_state_entry: "[Чародейский фонарь] Недопустимая запись состояния проигнорирована."
+    save_failed: "[Чародейский фонарь] Не удалось сохранить состояние фонарей."
+
+bedrock_gem_anvil:
+  title: "&5Наковальня самоцветов"
+  select: "&7Выберите два предмета в инвентаре."
+  clear: "&7Выберите бумажную метку, чтобы очистить ячейку."
+  invalid: "&cЭти предметы нельзя объединить."

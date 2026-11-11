@@ -1,0 +1,1681 @@
+###########################################################################################
+
+#                                                                                         #
+
+#      SISTEMA DE NOMBRES / NAMING SYSTEM                                                 #
+
+#                                                                                         #
+
+#  Este archivo controla el renombrado automático de objetos y jefes.                     #
+
+#  This file controls the automatic renaming of items and bosses.                         #
+
+#                                                                                         #
+
+###########################################################################################
+
+
+
+item_names:
+
+  SWORD:
+
+    - "Calamity"
+
+    - "Steel Whisper"
+
+    - "Silver Fang"
+
+    - "Final Eclipse"
+
+    - "Fear Reaper"
+
+    - "Dragon Tooth"
+
+    - "Void Edge"
+
+    - "Light of Agony"
+
+    - "Broken Promise"
+
+    - "Kingslayer"
+
+    - "Blood Trail"
+
+    - "War Chant"
+
+    - "Ebony Shout"
+
+    - "Crystal Tear"
+
+    - "Shadow Scourge"
+
+    - "Stellar Veil"
+
+    - "Fate's Scar"
+
+    - "Exile's Blade"
+
+    - "Eternal Grudge"
+
+    - "Frost Breath"
+
+    - "Ash Path"
+
+    - "Final Judgment"
+
+    - "Flame of Honor"
+
+    - "Sacred Sunset"
+
+    - "Northern Lament"
+
+    - "Abyss Dagger"
+
+    - "Steel of Oblivion"
+
+    - "Lethal Sting"
+
+    - "Sunbeam"
+
+    - "Battle Echo"
+
+    - "Twilight Edge"
+
+    - "Glory Cut"
+
+    - "Warrior's Bliss"
+
+    - "Eternal Night"
+
+    - "Cold Vengeance"
+
+    - "Crimson Glow"
+
+    - "World Spine"
+
+    - "Iron Dawn"
+
+    - "Grey Lightning"
+
+    - "Bloody Bliss"
+
+    - "Death Coda"
+
+    - "Shipwreck Saber"
+
+    - "Sin Blade"
+
+    - "Ivory Grace"
+
+    - "Wrath of the Fallen"
+
+    - "Misery"
+
+    - "Last Breath"
+
+    - "Sun Shard"
+
+    - "Flickering Light"
+
+    - "Absolute Zero"
+
+
+
+  AXE:
+
+    - "Cleaved"
+
+    - "Bonebreaker"
+
+    - "Gaia's Wrath"
+
+    - "Treefaller"
+
+    - "Forest Executioner"
+
+    - "Desert Edge"
+
+    - "Ironbiter"
+
+    - "Chaos Axe"
+
+    - "Forest Roar"
+
+    - "Sacred Schism"
+
+    - "Wolf Tooth"
+
+    - "Fracture"
+
+    - "Ripper"
+
+    - "Ash Axe"
+
+    - "Deep Cut"
+
+    - "Thunderstrike"
+
+    - "Northern Grudge"
+
+    - "Assault Axe"
+
+    - "Obsidian Edge"
+
+    - "War Light"
+
+    - "Oak's Death"
+
+    - "Dread Axe"
+
+    - "Harvester"
+
+    - "Final Impact"
+
+    - "Iron Kiss"
+
+    - "Savage Fury"
+
+    - "Pathfinder"
+
+    - "Barbarian's Blade"
+
+    - "Evil Path"
+
+    - "Wood Echo"
+
+    - "Bear Claw"
+
+    - "Critical Strike"
+
+    - "Hell Axe"
+
+    - "Sap Tear"
+
+    - "Chief's Power"
+
+    - "Broken Branch"
+
+    - "Pine Blood"
+
+    - "Sharpened"
+
+    - "Destruction"
+
+    - "Steel Horizon"
+
+    - "King's Axe"
+
+    - "Arctic Bite"
+
+    - "Moonbeam"
+
+    - "Collapse"
+
+    - "Wanderer's Edge"
+
+    - "Soul Harvest"
+
+    - "Geological Fault"
+
+    - "Axe Song"
+
+    - "War Wind"
+
+    - "Red Wrath"
+
+
+
+  PICKAXE:
+
+    - "Gold Vein"
+
+    - "Rock Heart"
+
+    - "Wallbreaker"
+
+    - "Pick of Destiny"
+
+    - "Mole's Claw"
+
+    - "Gem Seeker"
+
+    - "Diamond Path"
+
+    - "Cave Thunder"
+
+    - "Lucky Strike"
+
+    - "Dark Mine"
+
+    - "Stone Shard"
+
+    - "Abyss Pick"
+
+    - "Tunnel Light"
+
+    - "Mountain Waker"
+
+    - "Earth's Eye"
+
+    - "Voracious Pick"
+
+    - "Lode Hammer"
+
+    - "Iron Kiss"
+
+    - "Voice of the Mine"
+
+    - "Rock Splinter"
+
+    - "Dream Excavator"
+
+    - "Treasure Hunter"
+
+    - "Steel Strike"
+
+    - "Quarry Hand"
+
+    - "Core Strength"
+
+    - "Basalt Pick"
+
+    - "Cave-in"
+
+    - "Metal Root"
+
+    - "Gallery Echo"
+
+    - "Miner's Guide"
+
+    - "Earth Tooth"
+
+    - "Mantle Breaker"
+
+    - "Ash Excavator"
+
+    - "Eternal Vein"
+
+    - "Coal Flame"
+
+    - "Ground Ripper"
+
+    - "Pick of Oblivion"
+
+    - "Tracker"
+
+    - "Cave Breath"
+
+    - "Chipping Mallet"
+
+    - "Excavation Rune"
+
+    - "Deep Iron"
+
+    - "Ruby Path"
+
+    - "Elder's Pick"
+
+    - "Subsoil Strike"
+
+    - "Fissure"
+
+    - "Giant Chisel"
+
+    - "Mine Shadow"
+
+    - "Crimson Pick"
+
+    - "Last Ore"
+
+
+
+  SHOVEL:
+
+    - "Gravedigger"
+
+    - "Faithbury"
+
+    - "Debris Remover"
+
+    - "Sand Shovel"
+
+    - "Mud Furrow"
+
+    - "Blood Shovel"
+
+    - "Underground"
+
+    - "Cleaner"
+
+    - "Dust to Dust"
+
+    - "Secret Unearther"
+
+    - "Mud Path"
+
+    - "Winter Shovel"
+
+    - "Faith Excavator"
+
+    - "Dust Tracker"
+
+    - "Voice of the Desert"
+
+    - "Exile Shovel"
+
+    - "Soil Blade"
+
+    - "Bone Seeker"
+
+    - "Earth Cradle"
+
+    - "Swamp Shovel"
+
+    - "Mud Silence"
+
+    - "Ash Remover"
+
+    - "Fallen's Shovel"
+
+    - "World Digger"
+
+    - "Sand Whisper"
+
+    - "Mud Print"
+
+    - "Earth Shadow"
+
+    - "Snow Shovel"
+
+    - "Clay Hand"
+
+    - "Red Dune"
+
+    - "War Shovel"
+
+    - "Stone Tracker"
+
+    - "River Digger"
+
+    - "End of the Path"
+
+    - "Hermit's Shovel"
+
+    - "Meadow Scar"
+
+    - "Excavation Light"
+
+    - "Gravel Shovel"
+
+    - "Dust Tear"
+
+    - "Soft Digger"
+
+    - "Field Cut"
+
+    - "Trace Tool"
+
+    - "Obsidian Shovel"
+
+    - "Clear Pass"
+
+    - "Earth Veil"
+
+    - "Grass Death"
+
+    - "King's Excavator"
+
+    - "Relic Shovel"
+
+    - "Pit Digger"
+
+    - "Earth Breath"
+
+
+
+  HOE:
+
+    - "Eternal Harvest"
+
+    - "Mother Earth"
+
+    - "Lady of Wheat"
+
+    - "Sun Hoe"
+
+    - "Death Sower"
+
+    - "Soul Reaper"
+
+    - "Vital Furrow"
+
+    - "Farmer's Bliss"
+
+    - "Tillage Blade"
+
+    - "Fate's Root"
+
+    - "Shadow Harvester"
+
+    - "Life Touch"
+
+    - "Frost Hoe"
+
+    - "Winter's End"
+
+    - "Iron Flower"
+
+    - "Dream Sower"
+
+    - "Field Scythe"
+
+    - "Seed Cut"
+
+    - "War Fruit"
+
+    - "Obsidian Hoe"
+
+    - "Green Path"
+
+    - "Rain Tear"
+
+    - "Dawn Hoe"
+
+    - "Garden Blade"
+
+    - "Blood Crop"
+
+    - "Earth Kiss"
+
+    - "Green Tracker"
+
+    - "Forest Hoe"
+
+    - "Light Sower"
+
+    - "Wheat Shadow"
+
+    - "Golden Hoe"
+
+    - "Ice Harvest"
+
+    - "Plant Cut"
+
+    - "Furrow Life"
+
+    - "Wasteland Hoe"
+
+    - "Steel Root"
+
+    - "Harvest Song"
+
+    - "Pain Sower"
+
+    - "Moon Hoe"
+
+    - "Farm Echo"
+
+    - "Cultivation Hand"
+
+    - "King's Furrow"
+
+    - "Desert Hoe"
+
+    - "Autumn Touch"
+
+    - "Abyss Flower"
+
+    - "Pollen Veil"
+
+    - "Wandering Hoe"
+
+    - "Iron Spike"
+
+    - "Grain Path"
+
+    - "Eternal Life"
+
+
+
+  HELMET:
+
+    - "Dread Crown"
+
+    - "Eagle Vision"
+
+    - "Iron Mind"
+
+    - "Steel Skull"
+
+    - "Veil of Silence"
+
+    - "Northern Gaze"
+
+    - "Dragon Helm"
+
+    - "War Shadow"
+
+    - "Crown of Thorns"
+
+    - "Command Light"
+
+    - "Justice Visor"
+
+    - "Golden Crest"
+
+    - "Void Mind"
+
+    - "Helmet's Breath"
+
+    - "Fallen's Helm"
+
+    - "Watcher's Eye"
+
+    - "Idea Guard"
+
+    - "Ash Crown"
+
+    - "Battle Veil"
+
+    - "Soul Mirror"
+
+    - "Titan's Helm"
+
+    - "Glory Helmet"
+
+    - "Ice Visor"
+
+    - "Clear Mind"
+
+    - "King's Shadow"
+
+    - "Fate's Crown"
+
+    - "Blood Crest"
+
+    - "Exile Helm"
+
+    - "Wolf's Gaze"
+
+    - "Abyss Helmet"
+
+    - "Silver Crown"
+
+    - "Sun Visor"
+
+    - "War Mind"
+
+    - "Obsidian Helm"
+
+    - "Stellar Veil"
+
+    - "Fire Crest"
+
+    - "Walker's Helmet"
+
+    - "Thunder Eye"
+
+    - "Honor Helm"
+
+    - "Golden Skull"
+
+    - "Winter Crown"
+
+    - "Shadow Visor"
+
+    - "Eternal Mind"
+
+    - "Lion Helm"
+
+    - "Lightning Helmet"
+
+    - "Dawn Crown"
+
+    - "Night Visor"
+
+    - "God's Eye"
+
+    - "Martyr's Helm"
+
+    - "Sacred Helmet"
+
+
+
+  CHESTPLATE:
+
+    - "Iron Heart"
+
+    - "Wall of Souls"
+
+    - "Glory Breastplate"
+
+    - "Wyvern Scale"
+
+    - "Sun Cuirass"
+
+    - "King's Mantle"
+
+    - "Rock Chestplate"
+
+    - "Chest Guard"
+
+    - "Vital Shield"
+
+    - "War Plate"
+
+    - "Titan's Cuirass"
+
+    - "Steel Soul"
+
+    - "Lead Veil"
+
+    - "Dawn Chestplate"
+
+    - "Eternal Wall"
+
+    - "Fire Heart"
+
+    - "Dragon Scale"
+
+    - "Honor Plate"
+
+    - "Void Cuirass"
+
+    - "Ice Mantle"
+
+    - "Silver Guard"
+
+    - "Forest Heart"
+
+    - "Blood Chestplate"
+
+    - "Northern Wall"
+
+    - "Fish Scale"
+
+    - "Lightning Plate"
+
+    - "Shadow Cuirass"
+
+    - "Light Mantle"
+
+    - "Iron Guard"
+
+    - "Golden Heart"
+
+    - "Exile's Chestplate"
+
+    - "Ash Wall"
+
+    - "Sea Scale"
+
+    - "Obsidian Plate"
+
+    - "Wandering Cuirass"
+
+    - "Mantle of Thorns"
+
+    - "Thunder Guard"
+
+    - "Stone Heart"
+
+    - "Lion Chestplate"
+
+    - "God's Wall"
+
+    - "Ice Scale"
+
+    - "Sun Plate"
+
+    - "Moon Cuirass"
+
+    - "Mantle of Stars"
+
+    - "Martyr's Guard"
+
+    - "Chaos Heart"
+
+    - "Summer Chestplate"
+
+    - "Obsidian Wall"
+
+    - "Red Scale"
+
+    - "Eternal Plate"
+
+
+
+  LEGGINGS:
+
+    - "Giant Steps"
+
+    - "Fate Mail"
+
+    - "Thunder Greaves"
+
+    - "Steel Legs"
+
+    - "Glory Route"
+
+    - "Wind Mail"
+
+    - "Warrior's Path"
+
+    - "Shadow Greaves"
+
+    - "Iron Steps"
+
+    - "Silver Mail"
+
+    - "Fire Greaves"
+
+    - "Light Path"
+
+    - "Titan Legs"
+
+    - "War Mail"
+
+    - "King's Steps"
+
+    - "Exile Greaves"
+
+    - "Ash Path"
+
+    - "Ice Mail"
+
+    - "Lightning Legs"
+
+    - "Blood Steps"
+
+    - "Golden Greaves"
+
+    - "Golden Path"
+
+    - "Obsidian Mail"
+
+    - "Forest Legs"
+
+    - "Moon Steps"
+
+    - "Dawn Greaves"
+
+    - "Night Path"
+
+    - "Stellar Mail"
+
+    - "Rock Legs"
+
+    - "God's Steps"
+
+    - "Martyr Greaves"
+
+    - "Lion Path"
+
+    - "Thunder Mail"
+
+    - "Ice Legs"
+
+    - "Obsidian Steps"
+
+    - "Sea Greaves"
+
+    - "Northern Path"
+
+    - "Fire Mail"
+
+    - "Sun Legs"
+
+    - "Winter Steps"
+
+    - "Lightning Greaves"
+
+    - "Chaos Path"
+
+    - "Summer Mail"
+
+    - "Silver Legs"
+
+    - "Steel Steps"
+
+    - "Void Greaves"
+
+    - "Eternal Path"
+
+    - "Soul Mail"
+
+    - "War Legs"
+
+    - "Light Steps"
+
+
+
+  BOOTS:
+
+    - "Wind Tread"
+
+    - "Skywalker"
+
+    - "Mercury Boots"
+
+    - "Feather Step"
+
+    - "Eternal Route"
+
+    - "Fire Tread"
+
+    - "Icewalker"
+
+    - "Thunder Boots"
+
+    - "Iron Step"
+
+    - "Blood Route"
+
+    - "Shadow Tread"
+
+    - "Lightwalker"
+
+    - "Silver Boots"
+
+    - "Golden Step"
+
+    - "King's Route"
+
+    - "Lightning Tread"
+
+    - "Dawnwalker"
+
+    - "Night Boots"
+
+    - "Star Step"
+
+    - "Sea Route"
+
+    - "Rock Tread"
+
+    - "Northwalker"
+
+    - "Forest Boots"
+
+    - "Winter Step"
+
+    - "Sun Route"
+
+    - "God Tread"
+
+    - "Obsidianwalker"
+
+    - "Exile Boots"
+
+    - "Moon Step"
+
+    - "Ash Route"
+
+    - "Martyr Tread"
+
+    - "Lionwalker"
+
+    - "War Boots"
+
+    - "Void Step"
+
+    - "Lightning Route"
+
+    - "Ice Tread"
+
+    - "Firewalker"
+
+    - "Soul Boots"
+
+    - "Thunder Step"
+
+    - "Iron Route"
+
+    - "Golden Tread"
+
+    - "Silverwalker"
+
+    - "Chaos Boots"
+
+    - "Fate Step"
+
+    - "Glory Route"
+
+    - "Summer Tread"
+
+    - "Autumnwalker"
+
+    - "Spring Boots"
+
+    - "Winter Step"
+
+    - "Pure Speed"
+
+
+
+  BOW:
+
+    - "Wind Whisper"
+
+    - "Fate String"
+
+    - "Hawk Eye"
+
+    - "Rain of Arrows"
+
+    - "Wood Song"
+
+    - "Void Bow"
+
+    - "Moon Shadow"
+
+    - "Sunbeam"
+
+    - "Distant Thunder"
+
+    - "Eagle Shout"
+
+    - "Ash Bow"
+
+    - "Lightning String"
+
+    - "Fire Gaze"
+
+    - "Call of the Forest"
+
+    - "Death Wind"
+
+    - "Silver Bow"
+
+    - "War Shadow"
+
+    - "Ice Beam"
+
+    - "Hunting Thunder"
+
+    - "Northern Shout"
+
+    - "Blood Bow"
+
+    - "Golden String"
+
+    - "King's Gaze"
+
+    - "Call of the Sea"
+
+    - "Exile Wind"
+
+    - "Obsidian Bow"
+
+    - "Light Shadow"
+
+    - "God's Ray"
+
+    - "Dawn Thunder"
+
+    - "Night Shout"
+
+    - "Martyr's Bow"
+
+    - "Star String"
+
+    - "Lion Gaze"
+
+    - "Call of Chaos"
+
+    - "Eternal Wind"
+
+    - "Ice Bow"
+
+    - "Fire Shadow"
+
+    - "Lightning Ray"
+
+    - "War Thunder"
+
+    - "Blood Shout"
+
+    - "Golden Bow"
+
+    - "Silver String"
+
+    - "Shadow Gaze"
+
+    - "Call of Glory"
+
+    - "Thunder Wind"
+
+    - "Summer Bow"
+
+    - "Winter Shadow"
+
+    - "Autumn Ray"
+
+    - "Spring Thunder"
+
+    - "Final Flight"
+
+
+
+  CROSSBOW:
+
+    - "Skybreaker"
+
+    - "Judgment Bolt"
+
+    - "Mechanism of Agony"
+
+    - "Lightning Crossbow"
+
+    - "Void Shot"
+
+    - "Bonebreaker"
+
+    - "Fire Bolt"
+
+    - "Death Mechanism"
+
+    - "Blood Crossbow"
+
+    - "Sun Shot"
+
+    - "Wallbreaker"
+
+    - "Ice Bolt"
+
+    - "War Mechanism"
+
+    - "Silver Crossbow"
+
+    - "Moon Shot"
+
+    - "Defensebreaker"
+
+    - "Lightning Bolt"
+
+    - "King's Mechanism"
+
+    - "Golden Crossbow"
+
+    - "God Shot"
+
+    - "Neckbreaker"
+
+    - "Shadow Bolt"
+
+    - "Ash Mechanism"
+
+    - "Night Crossbow"
+
+    - "Dawn Shot"
+
+    - "Armorbreaker"
+
+    - "Thunder Bolt"
+
+    - "Light Mechanism"
+
+    - "Sea Crossbow"
+
+    - "Northern Shot"
+
+    - "Willbreaker"
+
+    - "Martyr's Bolt"
+
+    - "Chaos Mechanism"
+
+    - "Star Crossbow"
+
+    - "Eternal Shot"
+
+    - "Gravebreaker"
+
+    - "War Bolt"
+
+    - "Blood Mechanism"
+
+    - "Fire Crossbow"
+
+    - "Lightning Shot"
+
+    - "Chainbreaker"
+
+    - "Golden Bolt"
+
+    - "Silver Mechanism"
+
+    - "Shadow Crossbow"
+
+    - "Glory Shot"
+
+    - "Boltbreaker"
+
+    - "Summer Bolt"
+
+    - "Winter Mechanism"
+
+    - "Autumn Crossbow"
+
+    - "Lethal Impact"
+
+
+
+  TRIDENT:
+
+    - "Neptune's Wrath"
+
+    - "Abyss Fang"
+
+    - "Lord of the Tides"
+
+    - "Coral Spear"
+
+    - "Lightning Trident"
+
+    - "Ocean's Wrath"
+
+    - "Shark Fang"
+
+    - "Storm Lord"
+
+    - "Sea Spear"
+
+    - "Ice Trident"
+
+    - "Sea's Wrath"
+
+    - "Triton's Fang"
+
+    - "Water Lord"
+
+    - "Golden Spear"
+
+    - "Silver Trident"
+
+    - "Abyss Wrath"
+
+    - "Blood Fang"
+
+    - "Thunder Lord"
+
+    - "God's Spear"
+
+    - "War Trident"
+
+    - "Storm's Wrath"
+
+    - "Lightning Fang"
+
+    - "Dawn Lord"
+
+    - "Night Spear"
+
+    - "King's Trident"
+
+    - "Thunder's Wrath"
+
+    - "Shadow Fang"
+
+    - "Light Lord"
+
+    - "Sea Spear"
+
+    - "Northern Trident"
+
+    - "Chaos's Wrath"
+
+    - "Martyr's Fang"
+
+    - "Star Lord"
+
+    - "Fire Spear"
+
+    - "Eternal Trident"
+
+    - "Fire's Wrath"
+
+    - "Golden Fang"
+
+    - "Silver Lord"
+
+    - "Shadow Spear"
+
+    - "Glory Trident"
+
+    - "Blood's Wrath"
+
+    - "Ice Fang"
+
+    - "Void Lord"
+
+    - "Lightning Spear"
+
+    - "Sun Trident"
+
+    - "Summer's Wrath"
+
+    - "Winter Fang"
+
+    - "Autumn Lord"
+
+    - "Spring Spear"
+
+    - "Siren's Song"
+
+
+
+  MACE:
+
+    - "War Hammer"
+
+    - "Soul Crusher"
+
+    - "Giant's Strike"
+
+    - "Iron Mace"
+
+    - "Void Impact"
+
+    - "King's Mallet"
+
+    - "Bone Crusher"
+
+    - "Thunderstrike"
+
+    - "Silver Mace"
+
+    - "Blood Impact"
+
+    - "God's Mallet"
+
+    - "Rock Crusher"
+
+    - "Fire Strike"
+
+    - "Golden Mace"
+
+    - "Light Impact"
+
+    - "Chaos Mallet"
+
+    - "Shadow Crusher"
+
+    - "Ice Strike"
+
+    - "Lightning Mace"
+
+    - "Night Impact"
+
+    - "Dawn Mallet"
+
+    - "Sea Crusher"
+
+    - "Northern Strike"
+
+    - "Obsidian Mace"
+
+    - "Dawn Impact"
+
+    - "Martyr's Mallet"
+
+    - "Star Crusher"
+
+    - "War Strike"
+
+    - "Ash Mace"
+
+    - "Eternal Impact"
+
+    - "Fire Mallet"
+
+    - "Blood Crusher"
+
+    - "Golden Strike"
+
+    - "Silver Mace"
+
+    - "Glory Impact"
+
+    - "Ice Mallet"
+
+    - "Golden Crusher"
+
+    - "Silver Strike"
+
+    - "Shadow Mace"
+
+    - "Sun Impact"
+
+    - "Golden Mallet"
+
+    - "Silver Crusher"
+
+    - "Shadow Strike"
+
+    - "Glory Mace"
+
+    - "Moon Impact"
+
+    - "Summer Mallet"
+
+    - "Winter Crusher"
+
+    - "Autumn Strike"
+
+    - "Spring Mace"
+
+    - "End of Everything"
+
+
+
+  SHIELD:
+
+    - "King's Bulwark"
+
+    - "Sun Shield"
+
+    - "Ice Wall"
+
+    - "Silver Guard"
+
+    - "Dawn Protection"
+
+    - "God's Bulwark"
+
+    - "Moon Shield"
+
+    - "Fire Wall"
+
+    - "Golden Guard"
+
+    - "Night Protection"
+
+    - "Chaos Bulwark"
+
+    - "War Shield"
+
+    - "Blood Wall"
+
+    - "Lightning Guard"
+
+    - "Sea Protection"
+
+    - "Dawn Bulwark"
+
+    - "Northern Shield"
+
+    - "Light Wall"
+
+    - "Star Guard"
+
+    - "Eternal Protection"
+
+    - "Martyr's Bulwark"
+
+    - "Shadow Shield"
+
+    - "Ash Wall"
+
+    - "Obsidian Guard"
+
+    - "Glory Protection"
+
+    - "Fire Bulwark"
+
+    - "Blood Shield"
+
+    - "Golden Wall"
+
+    - "Silver Guard"
+
+    - "Sun Protection"
+
+    - "Ice Bulwark"
+
+    - "Golden Shield"
+
+    - "Silver Wall"
+
+    - "Shadow Guard"
+
+    - "Moon Protection"
+
+    - "Golden Bulwark"
+
+    - "Silver Shield"
+
+    - "Shadow Wall"
+
+    - "Glory Guard"
+
+    - "Lightning Protection"
+
+    - "Summer Bulwark"
+
+    - "Winter Shield"
+
+    - "Autumn Wall"
+
+    - "Spring Guard"
+
+    - "Iron Protection"
+
+    - "Void Bulwark"
+
+    - "Titan's Shield"
+
+    - "Rock Wall"
+
+    - "Lion Guard"
+
+    - "Last Defense"
+
+
+
+  UNIVERSAL:
+
+    - "Genesis Shard"
+
+    - "Void Legacy"
+
+    - "Sacred Vestige"
+
+    - "Ethereal Anchor"
+
+    - "Creation Echo"
+
+    - "Time Whisper"
+
+    - "Infinite Splinter"
+
+    - "Soul Relic"
+
+    - "Core Power"
+
+    - "Chaos Breath"
+
+    - "Veil of Oblivion"
+
+    - "Eternity Song"
+
+    - "Legend Shadow"
+
+    - "Primordial Light"
+
+    - "Fate Mirror"
+
+    - "Earth Blood"
+
+    - "Stellar Shard"
+
+    - "War Legacy"
+
+    - "Honor Vestige"
+
+    - "Life Anchor"
+
+    - "Northern Whisper"
+
+    - "Ice Shard"
+
+    - "Fire Relic"
+
+    - "Lightning Power"
+
+    - "Sun Breath"
+
+    - "Moon Veil"
+
+    - "Star Song"
+
+    - "God's Shadow"
+
+    - "Martyr's Light"
+
+    - "King's Mirror"
+
+    - "Golden Blood"
+
+    - "Silver Shard"
+
+    - "Shadow Legacy"
+
+    - "Glory Vestige"
+
+    - "Thunder Anchor"
+
+    - "Dawn Whisper"
+
+    - "Night Shard"
+
+    - "Sea Relic"
+
+    - "Forest Power"
+
+    - "Winter Breath"
+
+    - "Ash Veil"
+
+    - "Summer Song"
+
+    - "Autumn Shadow"
+
+    - "Spring Light"
+
+    - "Void Mirror"
+
+    - "Arcane Essence"
+
+    - "Elder's Promise"
+
+    - "Banishment Rune"
+
+    - "Origin of the End"
+
+    - "Object of Power"
+
+
+
+boss_names:
+
+  # Nombres fijos para variantes especiales. Los demás bosses siguen usando
+
+  # los prefijos y sufijos de rareza de abajo.
+
+  types:
+
+    SPIDER: "Arachne the Veiled"
+
+    STEVE: "Steve, Your Shadow"
+
+    MAGMA_CUBE: "Magmageddon"
+
+    GHAST: "Cinderscream, The Herald of the Void"
+
+    BLAZE: "Ignis, Lord of the Blades"
+
+    ZOMBIFIED_PIGLIN: "The Forgotten Cacique"
+
+    HOGLIN: "Behemoth Ironfang"
+
+    PHANTOM: "Abyssal Nightmare"
+
+    VINDICATOR: "The Decapitating Executioner"
+
+
+
+  COMMON:
+
+    prefixes: ["Rat", "Wanderer", "Weakling", "Beggar", "Drifter", "Outcast", "Fool", "Peasant", "Coward", "Shade",
+
+               "Nomad", "Scavenger", "Lost One", "Broken", "Stray", "Miser", "Vagrant", "Hollow", "Fragile", "Forsaken, Cabusa"]
+
+    suffixes: ["the Clumsy", "Soulless", "the Lost", "the Feeble", "the Worthless", "the Shamed", "the Pitiful", "the Frail",
+
+               "the Forgotten", "the Craven", "the Miserable", "the Wandering", "the Ashen", "the Empty", "the Fallen",
+
+               "the Helpless", "the Shattered", "the Nameless", "the Weak", "the Doomed"]
+
+
+
+  UNCOMMON:
+
+    prefixes: ["Guardian", "Stalker", "Sentinel", "Watcher", "Protector", "Hunter", "Warden", "Seeker", "Scout", "Keeper",
+
+               "Defender", "Tracker", "Watcher of Shadows", "Patroller", "Observer", "Ranger", "Overseer", "Lookout", "Guard", "Surveyor"]
+
+    suffixes: ["of Bone", "of Mud", "of the Ruins", "of Dust", "of Ashes", "of Stone", "of the Mire", "of Shadows", "of the Forgotten",
+
+               "of the Hollow", "of the Abyss", "of the Wastes", "of the Broken", "of the Depths", "of the Tombs", "of the Relics",
+
+               "of the Caverns", "of the Rot", "of the Echoes", "of the Remnants"]
+
+
+
+  RARE:
+
+    prefixes: ["Ragnar", "Kael", "Morg", "Thalos", "Draven", "Vorak", "Zerath", "Korr", "Fenris", "Drok",
+
+               "Malrik", "Torvak", "Graven", "Skorn", "Varok", "Kelthar", "Orin", "Balthor", "Zarek", "Morgrim, Manudam"]
+
+    suffixes: ["the Bloodthirsty", "the Cursed", "the Defiler", "the Cruel", "the Ravager", "the Blight", "the Corruptor", "the Slayer",
+
+               "the Desecrator", "the Wicked", "the Destroyer", "the Malevolent", "the Harbinger", "the Darkened", "the Vile",
+
+               "the Tormentor", "the Savage", "the Unholy", "the Damned", "the Butcher"]
+
+
+
+  EPIC:
+
+    prefixes: ["Lord", "Emperor", "Archon", "High Warlord", "Overlord", "Grandmaster", "Dominus", "Supreme", "Conqueror", "Sovereign",
+
+               "Chancellor", "Patriarch", "Highlord", "Regent", "Commander", "Master", "Baron", "Dreadlord", "King", "Tyrant"]
+
+    suffixes: ["of the Abyss", "of Ashes", "of the Void", "of Eternal Flame", "of the Black Sun", "of Shadows", "of the Nether",
+
+               "of the Forgotten Realms", "of the Broken Crown", "of the End", "of the Eclipse", "of the Silent Tomb",
+
+               "of the Crimson Dawn", "of the Dark Star", "of the Hollow Throne", "of the Abyssal Depths", "of the Eternal Night",
+
+               "of the Shattered Domain", "of the Endless Hunger", "of the Blackened Sky"]
+
+
+
+  MYTHIC:
+
+    prefixes: ["The Primordial", "The Unnamable", "The Eternal", "The Infinite", "The Forgotten One", "The Ancient", "The Boundless",
+
+               "The Firstborn", "The Timeless", "The Origin", "The Abyssal One", "The Cosmic Horror", "The Nameless King",
+
+               "The Kinkin", "The Voidborn", "The Endbringer", "The Unfathomable", "The Eternal Flame", "The Worldbreaker", "The All-Seeing"]
+
+    suffixes: ["World-Eater", "Lord of the End", "Bearer of Chaos", "Harbinger of Doom", "Breaker of Realms", "Devourer of Stars",
+
+               "Shaper of Nightmares", "Bringer of Silence", "Voice of Eternity", "Herald of the Void", "Destroyer of Hope",
+
+               "Keeper of Secrets", "Unmaker of Worlds", "Scourge of Infinity", "Master of Oblivion", "Caller of the Abyss",
+
+               "Bearer of Shadows", "Ender of Time", "Architect of Ruin", "Seer of the Final Dawn"]

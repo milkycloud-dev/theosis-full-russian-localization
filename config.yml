@@ -1,0 +1,283 @@
+plugin:
+  debug: false                     # Modo depuración / Debug mode
+  default_locale: "ru_ru"          # Idioma principal / Main language
+  fallback_locale: "es_mx"         # Idioma de respaldo / Backup language
+                                   # Disponible / Available
+                                   #  "de_de" = Deutsch , Brazil ="pt_br" "en_old"
+                                   #  ru_ru = Русский, en_us = USA | Mexico es_mx (es_ve Venezuela, es_uy Uruguay, es_es España, es_ar Argentina)
+debug:
+  ghost_listener: true
+
+compat:                                   # EXPERIMENTAL
+  folia_support: true              # Soporte para Folia / Folia engine support
+
+resource_pack:
+  # Preferencia global para modelos namespaced opcionales. Las gemas además
+  # requieren gems.cosmetics.custom_models.prefer_namespaced_item_models=true.
+  # El Polvo Arcano siempre conserva un fallback vanilla seguro sin pack.
+  # Global preference for optional namespaced models. Gems also require
+  # gems.cosmetics.custom_models.prefer_namespaced_item_models=true.
+  # Arcane Dust always keeps a safe vanilla fallback when no pack is loaded.
+  prefer_namespaced_item_models: true
+
+
+worlds:
+  disabled_worlds: []              # Mundos desactivados / Disabled worlds
+  perks_enabled_in_disabled_worlds: true # Permitir perks en esos mundos / Allow perks in disabled worlds
+
+modules:                           # Módulos del plugin / Plugin modules
+  perks: true                      # Habilidades / Perks
+  gems: true                       # Gemas / Gems
+  structures: true                 # Estructuras / Structures
+  bosses: true                     # Jefes / Bosses
+  tiers: true                      # Niveles / Tiers
+  variants: true                   # Variantes / Variants
+  enchant_library: true            # Libreria arcana / Arcane Library)
+  arcane_decomposition_table: true # Alias interno recomendado
+  chisel_arcane: true              # Chisel Arcane - Estación de perks
+  arcane_lantern: true             # Farol Arcano / Arcane Lantern sanctuary
+
+loot:
+  enabled: true                    # Activar botín / Enable loot
+  apply_to_chests: true            # Aplicar a cofres / Apply to chests
+  apply_to_mobs: true              # Aplicar a mobs / Apply to mobs
+
+  name_personality: true           # Nombres con personalidad / Personality names
+  force_rarity_color_on_name: true # Color según rareza / Color by rarity
+  locale: "en_us"                  # Idioma forzado (vacío=auto) / Forced locale (empty=auto)
+
+  vanilla_mob_drops:               # Drops de mobs vanilla / Vanilla mob drops
+    enabled: false                  # Activar esta fuente de botín / Enable this loot source
+    require_player_kill: true      # Requiere muerte atribuida a jugador / Require a player-attributed kill
+    hostile_only: true             # Solo criaturas hostiles / Hostile creatures only
+    allow_spawner_mobs: false      # Permitir mobs de spawner y trial spawner / Allow spawner and trial-spawner mobs
+
+    overworld:
+      min_rarity: COMMON
+      max_rarity: RARE
+      chance_percent: 1.5          # 1.5% = aproximadamente 1 de cada 67 / roughly 1 in 67
+
+    nether:
+      min_rarity: UNCOMMON
+      max_rarity: EPIC
+      chance_percent: 0.8          # 0.8% = aproximadamente 1 de cada 125 / roughly 1 in 125
+
+    end:
+      min_rarity: RARE
+      max_rarity: MYTHIC
+      chance_percent: 0.4          # 0.4% = aproximadamente 1 de cada 250 / roughly 1 in 250
+
+
+anvil:
+  mode: VANILLA     # VANILLA = Use the vanilla anvil for all Theosis features (default). | Usa el yunque vanilla para todas las funciones de Theosis (predeterminado).
+                    # ARCANE = Use the Arcane Anvil instead. Theosis will no longer use the vanilla anvil, improving compatibility with other anvil-based plugins. | Usa el Yunque Arcano. Theosis dejará de usar el yunque vanilla, mejorando la compatibilidad con otros plugins que modifican el yunque.
+arcane_anvil:
+  enabled: true
+  durability: 25
+  break_chance_per_use: 0.12
+  use_vanilla_break_animation: true
+
+  xp_costs:
+    extract_enchant: 10
+    upgrade_gem:
+      level_1: 5
+      level_2: 10
+      level_3: 20
+
+  recipe:
+    ingredient_1: ANVIL
+    ingredient_2: ENDER_EYE
+
+                      # Bono de ayuda con el yunque / Anvil Assistance Bonus
+           # (Hacemos que los costos en el yunke sean mas accesibles) / (We make anvil costs more affordable)
+                 # NO APLICA PARA EL YUNKE ARCANO | DOES NOT APPLY TO THE ARCANUM ANVIL
+anvil_assistance:
+  enabled: true                    # Asistencia de yunque / Anvil assistance
+  preset: VANILLA                  # Preset activo / Active preset
+
+  presets:
+    VANILLA:
+      bypass_too_expensive: false
+      cost_multiplier: 1.0
+      prior_penalty_multiplier: 1.0
+      max_cost: 39
+      affect_rename: true
+
+    FRIENDLY:
+      bypass_too_expensive: true
+      cost_multiplier: 0.50
+      prior_penalty_multiplier: 0.25
+      max_cost: -1
+      affect_rename: true
+
+    RPG:
+      bypass_too_expensive: true
+      cost_multiplier: 0.25
+      prior_penalty_multiplier: 0.0
+      max_cost: -1
+      affect_rename: true
+
+    CHAOTIC:
+      bypass_too_expensive: true
+      cost_multiplier: 0.10
+      prior_penalty_multiplier: 0.0
+      max_cost: -1
+      affect_rename: true
+
+tiers:
+  enabled: true                    # Activar niveles / Enable tiers
+
+  # Armadura vanilla es común / Vanilla armor counts as common
+  treat_vanilla_as_common: true
+
+  requirements:                    # Requisitos de set / Set requirements
+    tier2:
+      armor_pieces_required: 3     # Piezas necesarias / Pieces needed
+      # Rarezas aceptadas por pieza; se pueden mezclar / Accepted rarities per piece; can be mixed
+      allowed_rarities: [COMMON, UNCOMMON, RARE]
+    tier5:
+      mythic_pieces_required: 4    # Piezas míticas necesarias / Mythic pieces needed
+
+  notify:                                 # Notificaciones / Notifications
+    actionbar: true                       # Barra de acción / Action bar
+    chat: true                            # Mensaje en chat / Chat message
+    particles: true                       # Partículas / Particles
+    sound: "UI_TOAST_CHALLENGE_COMPLETE"  # Sonido / Sound effect
+
+  combat:
+    enabled: true                  # Modificadores de combate / Combat modifiers
+    use_effective_armor_tier_for_defense: true # Usa el tier de armadura equipada en tiempo real / Use current equipped-armor tier
+    boss_uses_progression_multiplier: true      # Escalado extra de boss por tier de progreso / Extra boss scaling by progression tier
+
+    # Daño RECIBIDO final según tier de armadura equipada
+    # Final damage TAKEN based on equipped-armor tier
+    mob_damage_taken_multiplier:
+      "1": 1.00
+      "2": 0.92
+      "3": 0.84
+      "4": 0.76
+      "5": 0.68
+
+    # Daño RECIBIDO de mobs / Damage RECEIVED from mobs
+    # Se aplica como escalado EXTRA solo para bosses cuando boss_uses_progression_multiplier=true
+    # Applied as EXTRA scaling only for bosses when boss_uses_progression_multiplier=true
+    mob_damage_multiplier:
+      "1": 1.00
+      "2": 1.05
+      "3": 1.10
+      "4": 1.15
+      "5": 1.20
+
+    # Daño HECHO a mobs / Damage DEALT to mobs
+    player_damage_multiplier:
+      "1": 1.00
+      "2": 1.10
+      "3": 1.15
+      "4": 1.20
+      "5": 1.25
+
+    affect_players: false          # Afectar PvP (No recomendado) / Affect PvP (Not recommended)
+
+                                  ## Arcane Library Configuration
+enchant_library:
+  enabled: true
+  capacity: 3000
+  max_withdraw_level: 10          #Nivel maximo de la librería / Maximum library level
+  public_by_default: true
+  allow_bookshelf_and_chiseled_bookshelf: true
+
+arcane_decomposition_table:
+  enabled: true
+  extraction:
+    # One dust per selected gem. Crude destroys it (0 levels); refined keeps it
+    # (3 levels); pure keeps it (0 levels). Output space is reserved before use.
+    process_ticks:
+      crude: 160
+      refined: 120
+      pure: 80
+  process_ticks: 80
+  process_ticks_by_tier: # Tiempo que tarda en reciclar / Time it takes to recycle
+    tier_1: 80
+    tier_2: 120
+    tier_3: 160
+
+  extra_ticks_per_gem_by_tier: # Tiempo que tarda cada gema por reciclar / Time it takes for each gem to recycle
+    tier_1: 8
+    tier_2: 16
+    tier_3: 24
+
+  output_per_gem:       # Cantidad de polvo que se obtiene al reciclar / Amount of dust obtained from recycling
+    tier_1: 3
+    tier_2: 2
+    tier_3: 1
+
+  anvil:
+   level_cost: 12    # Costo para usar el tomo en el yunque / Cost to use the volume on the anvil
+
+                                            ## Chisel Arcane Configuration
+chisel_arcane_settings:
+  enabled: true
+
+  # Máximo de Resonancia almacenable por jugador / Maximum Resonance that can be stored per player
+  max_storage: 100000
+
+  # Costos en Resonancia por operación / Resonance costs per operation
+  costs:
+    remove_perk:   250
+    upgrade_perk:  750
+    inscribe_perk: 2000
+
+  # Resonancia ganada al depositar equipo (basada en rareza Theosis)
+  # Resonance gained by depositing equipment (based on Theosis rarity)
+  rarity_points:
+    COMMON:   60
+    UNCOMMON: 120
+    RARE:     300
+    EPIC:     550
+    MYTHIC:   1200
+
+  # Máximo de perks que puede tener un ítem según su rareza
+  # Maximum number of perks an item can have based on its rarity
+  max_perks_by_rarity:
+    COMMON:   2
+    UNCOMMON: 3
+    RARE:     3
+    EPIC:     4
+    MYTHIC:   6
+
+  # Awakening turns vanilla gear into early Theosis gear. / Despertar convierte equipo vanilla en equipo Theosis temprano.
+  # Powders are optional: they reduce the cost and improve the roll. / Los polvos son opcionales: reducen el costo y mejoran el roll.
+  awakening:
+    enabled: true
+    apply_random_name: true
+
+    profiles:
+      NO_DUST:
+        level_cost: 30
+        rarity_weights: { COMMON: 80, UNCOMMON: 20, RARE: 1 }
+      CRUDE:
+        level_cost: 20
+        rarity_weights: { COMMON: 65, UNCOMMON: 30, RARE: 5 }
+      REFINED:
+        level_cost: 12
+        rarity_weights: { COMMON: 25, UNCOMMON: 60, RARE: 15 }
+      PURE:
+        level_cost: 6
+        rarity_weights: { COMMON: 0, UNCOMMON: 45, RARE: 55 }
+
+    output_limits:
+      COMMON:
+        max_perks: 3
+        max_perk_level: 1
+        socket_min: 1
+        socket_max: 3
+      UNCOMMON:
+        max_perks: 3
+        max_perk_level: 1
+        socket_min: 1
+        socket_max: 3
+      RARE:
+        max_perks: 4
+        max_perk_level: 2
+        socket_min: 1
+        socket_max: 3

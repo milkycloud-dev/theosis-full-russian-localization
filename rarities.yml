@@ -1,0 +1,516 @@
+###########################################################################################
+#                                                                                         #
+#      SISTEMA DE RAREZAS / RARITY SYSTEM                                                 #
+#                                                                                         #
+#  Este archivo define los grados de poder de los objetos.                                #
+#  Configura aquí: Colores, Probabilidades (weight), Cantidad de Perks, Sockets           #
+#  y los rangos base de stats para armas y armaduras.                                     #
+#                                                                                         #
+#  This file defines the item power tiers.                                                #
+#  Configure here: Colors, Weights, Perk amounts, Sockets                                 #
+#  and the base stat ranges for weapons and armor.                                        #
+#                                                                                         #
+###########################################################################################
+
+# Mostrar la rareza antes del nombre / Show rarity before the item name.
+# Reload actualiza objetos cargados; los demás se actualizan al acceder a ellos.
+# Reload refreshes loaded items; other items refresh when accessed.
+Show_raritie_item: false
+
+# Texto visible editable; conservar los IDs / Editable labels; keep the IDs.
+rarity_item_names:
+  COMMON: "&f&lОБЫЧНЫЙ:"
+  UNCOMMON: "&a&lНЕОБЫЧНЫЙ:"
+  RARE: "&d&lРЕДКИЙ:"
+  EPIC: "&5&lЭПИЧЕСКИЙ:"
+  MYTHIC: "&6&lМИФИЧЕСКИЙ:"
+
+rarities:
+  COMMON:                          # RAREZA: COMÚN
+    color: "&f"                    # Blanco
+    weight: 40                     # Probabilidad de aparición (más alto = más frecuente)
+    min_perks: 1
+    max_perks: 3
+    socket_min: 1
+    socket_max: 3
+    level_bonus: 0
+
+    stats:
+      melee:                       # Espadas, hachas, palas, azadas
+        attack_damage_bonus_min: 0.5
+        attack_damage_bonus_max: 2.5
+        attack_speed_bonus_min: -0.45
+        attack_speed_bonus_max: 0.55
+
+      sword:
+        attack_damage_bonus_min: 1.0
+        attack_damage_bonus_max: 3.5
+        attack_speed_bonus_min: -0.45
+        attack_speed_bonus_max: 0.70
+
+      axe:
+        attack_damage_bonus_min: 1.5
+        attack_damage_bonus_max: 4.0
+        attack_speed_bonus_min: -0.55
+        attack_speed_bonus_max: 0.55
+
+      trident:
+        attack_damage_bonus_min: 1.5
+        attack_damage_bonus_max: 4.0
+        attack_speed_bonus_min: -0.65
+        attack_speed_bonus_max: 0.70
+
+      polearm:
+        attack_damage_bonus_min: 1.5
+        attack_damage_bonus_max: 4.0
+        attack_speed_bonus_min: -0.70
+        attack_speed_bonus_max: 0.70
+
+      mace:
+        attack_damage_bonus_min: 2.0
+        attack_damage_bonus_max: 4.5
+        attack_speed_bonus_min: -0.60
+        attack_speed_bonus_max: 0.45
+
+      armor:
+        helmet:
+          armor_bonus_min: 0.5
+          armor_bonus_max: 1.5
+          toughness_bonus_min: 0.0
+          toughness_bonus_max: 0.5
+          knockback_resistance_bonus_min: 0.00
+          knockback_resistance_bonus_max: 0.00
+
+        chestplate:
+          armor_bonus_min: 0.5
+          armor_bonus_max: 2.0
+          toughness_bonus_min: 0.0
+          toughness_bonus_max: 0.5
+          knockback_resistance_bonus_min: 0.00
+          knockback_resistance_bonus_max: 0.00
+
+        leggings:
+          armor_bonus_min: 0.5
+          armor_bonus_max: 2.0
+          toughness_bonus_min: 0.0
+          toughness_bonus_max: 0.5
+          knockback_resistance_bonus_min: 0.00
+          knockback_resistance_bonus_max: 0.00
+
+        boots:
+          armor_bonus_min: 0.5
+          armor_bonus_max: 1.5
+          toughness_bonus_min: 0.0
+          toughness_bonus_max: 0.5
+          knockback_resistance_bonus_min: 0.00
+          knockback_resistance_bonus_max: 0.00
+
+  UNCOMMON:                        # RAREZA: POCO COMÚN
+    color: "&a"                    # Verde
+    weight: 30
+    min_perks: 1
+    max_perks: 3
+    socket_min: 1
+    socket_max: 3
+    level_bonus: 0
+
+    stats:
+      melee:
+        attack_damage_bonus_min: 2.0
+        attack_damage_bonus_max: 5.0
+        attack_speed_bonus_min: -0.55
+        attack_speed_bonus_max: 0.65
+
+      sword:
+        attack_damage_bonus_min: 2.5
+        attack_damage_bonus_max: 6.0
+        attack_speed_bonus_min: -0.55
+        attack_speed_bonus_max: 0.80
+
+      axe:
+        attack_damage_bonus_min: 3.0
+        attack_damage_bonus_max: 6.5
+        attack_speed_bonus_min: -0.65
+        attack_speed_bonus_max: 0.65
+
+      trident:
+        attack_damage_bonus_min: 3.0
+        attack_damage_bonus_max: 6.5
+        attack_speed_bonus_min: -0.75
+        attack_speed_bonus_max: 0.80
+
+      polearm:
+        attack_damage_bonus_min: 3.0
+        attack_damage_bonus_max: 6.5
+        attack_speed_bonus_min: -0.80
+        attack_speed_bonus_max: 0.80
+
+      mace:
+        attack_damage_bonus_min: 3.5
+        attack_damage_bonus_max: 7.0
+        attack_speed_bonus_min: -0.65
+        attack_speed_bonus_max: 0.55
+
+      armor:
+        helmet:
+          armor_bonus_min: 1.5
+          armor_bonus_max: 3.0
+          toughness_bonus_min: 0.0
+          toughness_bonus_max: 1.0
+          knockback_resistance_bonus_min: 0.00
+          knockback_resistance_bonus_max: 0.01
+
+        chestplate:
+          armor_bonus_min: 2.0
+          armor_bonus_max: 4.0
+          toughness_bonus_min: 0.0
+          toughness_bonus_max: 1.0
+          knockback_resistance_bonus_min: 0.00
+          knockback_resistance_bonus_max: 0.01
+
+        leggings:
+          armor_bonus_min: 2.0
+          armor_bonus_max: 4.0
+          toughness_bonus_min: 0.0
+          toughness_bonus_max: 1.0
+          knockback_resistance_bonus_min: 0.00
+          knockback_resistance_bonus_max: 0.01
+
+        boots:
+          armor_bonus_min: 1.5
+          armor_bonus_max: 3.0
+          toughness_bonus_min: 0.0
+          toughness_bonus_max: 1.0
+          knockback_resistance_bonus_min: 0.00
+          knockback_resistance_bonus_max: 0.01
+
+  RARE:                            # RAREZA: RARO
+    color: "&d"                    # Rosa / Púrpura claro
+    weight: 18
+    min_perks: 2
+    max_perks: 4
+    socket_min: 1
+    socket_max: 3
+    level_bonus: 1
+
+    stats:
+      melee:
+        attack_damage_bonus_min: 4.5
+        attack_damage_bonus_max: 8.5
+        attack_speed_bonus_min: -0.65
+        attack_speed_bonus_max: 0.80
+
+      sword:
+        attack_damage_bonus_min: 5.5
+        attack_damage_bonus_max: 10.0
+        attack_speed_bonus_min: -0.65
+        attack_speed_bonus_max: 0.95
+
+      axe:
+        attack_damage_bonus_min: 6.5
+        attack_damage_bonus_max: 11.0
+        attack_speed_bonus_min: -0.75
+        attack_speed_bonus_max: 0.80
+
+      trident:
+        attack_damage_bonus_min: 6.5
+        attack_damage_bonus_max: 11.0
+        attack_speed_bonus_min: -0.85
+        attack_speed_bonus_max: 0.95
+
+      polearm:
+        attack_damage_bonus_min: 6.5
+        attack_damage_bonus_max: 11.0
+        attack_speed_bonus_min: -0.90
+        attack_speed_bonus_max: 0.95
+
+      mace:
+        attack_damage_bonus_min: 7.5
+        attack_damage_bonus_max: 12.0
+        attack_speed_bonus_min: -0.75
+        attack_speed_bonus_max: 0.70
+
+      armor:
+        helmet:
+          armor_bonus_min: 2.5
+          armor_bonus_max: 4.5
+          toughness_bonus_min: 0.5
+          toughness_bonus_max: 1.5
+          knockback_resistance_bonus_min: 0.00
+          knockback_resistance_bonus_max: 0.02
+
+        chestplate:
+          armor_bonus_min: 4.0
+          armor_bonus_max: 7.0
+          toughness_bonus_min: 0.5
+          toughness_bonus_max: 1.5
+          knockback_resistance_bonus_min: 0.00
+          knockback_resistance_bonus_max: 0.02
+
+        leggings:
+          armor_bonus_min: 4.0
+          armor_bonus_max: 7.0
+          toughness_bonus_min: 0.5
+          toughness_bonus_max: 1.5
+          knockback_resistance_bonus_min: 0.00
+          knockback_resistance_bonus_max: 0.02
+
+        boots:
+          armor_bonus_min: 2.5
+          armor_bonus_max: 4.5
+          toughness_bonus_min: 0.5
+          toughness_bonus_max: 1.5
+          knockback_resistance_bonus_min: 0.00
+          knockback_resistance_bonus_max: 0.02
+
+  EPIC:                            # RAREZA: ÉPICO
+    color: "&5"                    # Púrpura oscuro
+    weight: 9
+    min_perks: 2
+    max_perks: 5
+    socket_min: 1
+    socket_max: 4
+    level_bonus: 1
+
+    stats:
+      melee:
+        attack_damage_bonus_min: 8.0
+        attack_damage_bonus_max: 13.0
+        attack_speed_bonus_min: -0.75
+        attack_speed_bonus_max: 0.95
+
+      sword:
+        attack_damage_bonus_min: 10.0
+        attack_damage_bonus_max: 16.0
+        attack_speed_bonus_min: -0.75
+        attack_speed_bonus_max: 1.05
+
+      axe:
+        attack_damage_bonus_min: 12.0
+        attack_damage_bonus_max: 18.0
+        attack_speed_bonus_min: -0.85
+        attack_speed_bonus_max: 0.90
+
+      trident:
+        attack_damage_bonus_min: 12.0
+        attack_damage_bonus_max: 18.0
+        attack_speed_bonus_min: -0.95
+        attack_speed_bonus_max: 1.05
+
+      polearm:
+        attack_damage_bonus_min: 12.0
+        attack_damage_bonus_max: 18.0
+        attack_speed_bonus_min: -1.00
+        attack_speed_bonus_max: 1.05
+
+      mace:
+        attack_damage_bonus_min: 14.0
+        attack_damage_bonus_max: 20.0
+        attack_speed_bonus_min: -0.85
+        attack_speed_bonus_max: 0.85
+
+      armor:
+        helmet:
+          armor_bonus_min: 4.0
+          armor_bonus_max: 7.0
+          toughness_bonus_min: 1.0
+          toughness_bonus_max: 2.5
+          knockback_resistance_bonus_min: 0.01
+          knockback_resistance_bonus_max: 0.03
+
+        chestplate:
+          armor_bonus_min: 6.0
+          armor_bonus_max: 11.0
+          toughness_bonus_min: 1.0
+          toughness_bonus_max: 2.5
+          knockback_resistance_bonus_min: 0.01
+          knockback_resistance_bonus_max: 0.03
+
+        leggings:
+          armor_bonus_min: 6.0
+          armor_bonus_max: 11.0
+          toughness_bonus_min: 1.0
+          toughness_bonus_max: 2.5
+          knockback_resistance_bonus_min: 0.01
+          knockback_resistance_bonus_max: 0.03
+
+        boots:
+          armor_bonus_min: 4.0
+          armor_bonus_max: 7.0
+          toughness_bonus_min: 1.0
+          toughness_bonus_max: 2.5
+          knockback_resistance_bonus_min: 0.01
+          knockback_resistance_bonus_max: 0.03
+
+  MYTHIC:                          # RAREZA: MÍTICO
+    color: "&6"                    # Dorado / Naranja
+    weight: 3                      # Muy difícil de conseguir
+    min_perks: 3
+    max_perks: 6
+    socket_min: 2
+    socket_max: 5
+    level_bonus: 2
+
+    stats:
+      melee:
+        attack_damage_bonus_min: 13.0
+        attack_damage_bonus_max: 20.0
+        attack_speed_bonus_min: 0.00
+        attack_speed_bonus_max: 1.05
+
+      sword:
+        attack_damage_bonus_min: 16.0
+        attack_damage_bonus_max: 24.0
+        attack_speed_bonus_min: 0.00
+        attack_speed_bonus_max: 1.15
+
+      axe:
+        attack_damage_bonus_min: 18.0
+        attack_damage_bonus_max: 26.0
+        attack_speed_bonus_min: 0.00
+        attack_speed_bonus_max: 1.00
+
+      trident:
+        attack_damage_bonus_min: 18.0
+        attack_damage_bonus_max: 26.0
+        attack_speed_bonus_min: 0.00
+        attack_speed_bonus_max: 1.15
+
+      polearm:
+        attack_damage_bonus_min: 18.0
+        attack_damage_bonus_max: 26.0
+        attack_speed_bonus_min: 0.00
+        attack_speed_bonus_max: 1.15
+
+      mace:
+        attack_damage_bonus_min: 20.0
+        attack_damage_bonus_max: 28.0
+        attack_speed_bonus_min: 0.00
+        attack_speed_bonus_max: 0.95
+
+      armor:
+        helmet:
+          armor_bonus_min: 6.0
+          armor_bonus_max: 9.0
+          toughness_bonus_min: 2.0
+          toughness_bonus_max: 3.5
+          knockback_resistance_bonus_min: 0.02
+          knockback_resistance_bonus_max: 0.06
+
+        chestplate:
+          armor_bonus_min: 9.0
+          armor_bonus_max: 14.0
+          toughness_bonus_min: 2.0
+          toughness_bonus_max: 3.5
+          knockback_resistance_bonus_min: 0.02
+          knockback_resistance_bonus_max: 0.06
+
+        leggings:
+          armor_bonus_min: 9.0
+          armor_bonus_max: 14.0
+          toughness_bonus_min: 2.0
+          toughness_bonus_max: 3.5
+          knockback_resistance_bonus_min: 0.02
+          knockback_resistance_bonus_max: 0.06
+
+        boots:
+          armor_bonus_min: 6.0
+          armor_bonus_max: 9.0
+          toughness_bonus_min: 2.0
+          toughness_bonus_max: 3.5
+          knockback_resistance_bonus_min: 0.02
+          knockback_resistance_bonus_max: 0.06
+
+###########################################################################################
+#                                                                                         #
+#      JACKPOT ROLLS / ROLLS ESPECIALES                                                   #
+#                                                                                         #
+#  Estos rolls se aplican DESPUÉS del rango base de la rareza.                            #
+#  Su función es hacer que algunos items salgan mejor de lo normal.                       #
+#                                                                                         #
+#  These rolls are applied AFTER the rarity base stat roll.                               #
+#  Their purpose is to make some items roll better than usual.                            #
+#                                                                                         #
+###########################################################################################
+
+jackpot_rolls:
+  enabled: true
+
+  # Si es true, solo se aplica el jackpot más alto que haya ganado el item.
+  # If true, only the highest jackpot that succeeded is applied.
+  highest_only: true
+
+  tiers:
+    lucky:
+      chance: 0.0200               # 2.00%
+      stat_multiplier_min: 1.08
+      stat_multiplier_max: 1.18
+
+    masterwork:
+      chance: 0.0025               # 0.25%
+      stat_multiplier_min: 1.18
+      stat_multiplier_max: 1.38
+
+    divine:
+      chance: 0.0005               # 0.05%
+      stat_multiplier_min: 1.35
+      stat_multiplier_max: 1.60
+
+    apex:
+      chance: 0.0001               # 0.01% = 1 en 10,000
+      stat_multiplier_min: 1.60
+      stat_multiplier_max: 1.85
+
+###########################################################################################
+#                                                                                         #
+#      LIMITES SUAVES / SOFT LIMITS                                                       #
+#                                                                                         #
+#  Estos límites NO quitan el jackpot, solo evitan que los números se vayan demasiado     #
+#  arriba si más adelante agregas boosts extra, gems, perks o rerolls.                    #
+#                                                                                         #
+#  These limits do NOT remove the jackpot, they only prevent numbers from going too high   #
+#  if you later add extra boosts, gems, perks or rerolls.                                 #
+#                                                                                         #
+###########################################################################################
+
+stat_rolls:
+  attack_speed_positive_chance: 0.72
+  attack_speed_positive_power: 0.75
+  attack_speed_negative_power: 1.35
+
+soft_caps:
+  melee_attack_damage_bonus: 45.0
+  sword_attack_damage_bonus: 50.0
+  axe_attack_damage_bonus: 52.0
+  trident_attack_damage_bonus: 52.0
+  mace_attack_damage_bonus: 55.0
+  polearm_attack_damage_bonus: 52.0
+
+  melee_attack_speed_bonus: 1.05
+  sword_attack_speed_bonus: 1.15
+  axe_attack_speed_bonus: 1.00
+  trident_attack_speed_bonus: 1.15
+  mace_attack_speed_bonus: 0.95
+  polearm_attack_speed_bonus: 1.15
+  melee_attack_speed_penalty: -0.85
+  sword_attack_speed_penalty: -0.90
+  axe_attack_speed_penalty: -1.00
+  trident_attack_speed_penalty: -1.10
+  mace_attack_speed_penalty: -1.00
+  polearm_attack_speed_penalty: -1.15
+  melee_attack_speed_min_final: 0.70
+  sword_attack_speed_min_final: 0.75
+  axe_attack_speed_min_final: 0.45
+  trident_attack_speed_min_final: 0.55
+  mace_attack_speed_min_final: 0.55
+  polearm_attack_speed_min_final: 0.50
+
+  helmet_armor_bonus: 15.0
+  chestplate_armor_bonus: 22.0
+  leggings_armor_bonus: 22.0
+  boots_armor_bonus: 15.0
+
+  helmet_toughness_bonus: 8.0
+  chestplate_toughness_bonus: 8.0
+  leggings_toughness_bonus: 8.0
+  boots_toughness_bonus: 8.0
