@@ -1156,6 +1156,7 @@ gems:
       &8Для: Нагрудник'
 perks:
   theosis:storm_javelin:
+    name: '&bШтормовой дротик'
     desc_level_1: '&f◆ &eShift + ПКМ запускает электрический заряд &c(I)'
     desc_level_2: '&f◆ &eShift + ПКМ запускает электрический заряд &c(II)'
     desc_level_3: '&f◆ &9Shift + ПКМ запускает электрический заряд &c(III)'
@@ -1898,11 +1899,6 @@ perks:
     desc_level_1: '&f◆ &9Shift + ПКМ, призывает союзника в бой.'
     entity_name: '&bБоевой конь'
     actionbar_cooldown: '&cБоевой конь &7КД: &f{seconds}сек'
-  heosis:storm_javelin:
-    desc_level_1: '&f◆ &eShift + ПКМ выпускает электрический разряд &c(I)'
-    desc_level_2: '&f◆ &eShift + ПКМ выпускает электрический разряд &c(II)'
-    desc_level_3: '&f◆ &9Shift + ПКМ выпускает электрический разряд &c(III)'
-    actionbar_cooldown: '&cГрозовое копьё &7КД: &f{seconds}с'
   theosis:piercing_gale:
     name: '&aПронзающий шквал'
     desc_level_1: '&f◆ &eЛезвие рассекает воздух и поражает врагов, прячущихся позади.'
@@ -2502,7 +2498,7 @@ perks:
     actionbar_off: '&7Режим отключён.'
     actionbar_hunger: '&cВам нужна еда.'
     actionbar_cooldown: '&eПерезарядка: &c[{seconds}с]'
-    actionbar_data: '&e{state} | {value} | Breeding: &9[{number}]&es'
+    actionbar_data: '&e{state} | {value} | Разведение: &9[{number}]&es'
   theosis:light_reading:
     name: Замер света
     desc_level_1: '&f◆ &eПрисесть и смотреть: измеряет уровень света
